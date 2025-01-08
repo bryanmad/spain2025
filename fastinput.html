@@ -666,7 +666,7 @@
 			<td>&nbsp;</td>
 		</tr>
         <tr>
-			<td>1</td>
+			<td><div class="small scorelow" id="score1" onclick="numberScore(this.id)">1</div></td>
 			<td>2</td>
 			<td>3</td>
 		</tr>
@@ -794,7 +794,7 @@
 		</div>
 		
 		<div class="child-eight">
-			<div class="small scorelow" id="score1" onclick="numberScore(this.id)">1</div>
+			<!--<div class="small scorelow" id="score1" onclick="numberScore(this.id)">1</div>-->
 			<div class="small scorelow" id="score2" onclick="numberScore(this.id)">2</div>
 			<div class="small scorelow" id="score3" onclick="numberScore(this.id)">3</div>
 		</div>
@@ -1735,7 +1735,7 @@ document.getElementById("holedetails").innerText = ">  >  >  >  >  >  >  >  >  >
 					temppnameid.classList.remove("highlight");
 					// update score
 					document.getElementById(temppscore).innerText = id.replace("score", "")
-					
+					alert( id.replace("score", ""))
 		nextHole();			
 					
 					
