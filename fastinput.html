@@ -1056,11 +1056,6 @@ arrCourse = [
                     // change "select player to course
                    document.getElementById("dropbtn").innerText = player1name + " " + player1hcp + ":  " + course ;
 
-
-                    
-                    
-                    
-
 				}
 			}
 			// find player in options list
@@ -1077,11 +1072,11 @@ arrCourse = [
 				var tc = parseInt(arrOptions[temppos][1]) + 1;
 				arrOptions[temppos][1] = tc;
 				// store new order
-				localStorage.wwdropdown = JSON.stringify(arrOptions);
+				//localStorage.wwdropdown = JSON.stringify(arrOptions);
 			}
 			// update player choice
 			player = document.getElementById("myLink" + temppos.toString()).innerText;
-			document.getElementById("p1name").innerText = player + " " + player1hcp;
+			//document.getElementById("p1name").innerText = player + " " + player1hcp;
 			// global player
 			player = playerName;
 
@@ -1421,8 +1416,17 @@ document.getElementById('mx83976721').value = (front9points + tempcb9)
 					//===== submit data ==========
 					//============================
 					document.forms[0].submit();
-var audio = new Audio('golf.wav');
-            audio.play();
+                    
+                    
+// vibrate if android phone or "pop" for anything else 
+   const canVibrate = window.navigator.vibrate
+   if (canVibrate) {
+      window.navigator.vibrate(50)
+   } else {
+      var audio = new Audio('golf.wav');
+      audio.play();   
+   }   
+
 }
 
 
