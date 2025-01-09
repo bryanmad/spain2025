@@ -1298,7 +1298,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
 				//finalWrite();
 				if(player1name !== "player 1") {
 					// player1 score entry
-console.log("step 1")
+
 					//comp = localStorage.wwtodayscomp
 					document.getElementById('mx1433824128').value = player1name;
 					
@@ -1327,7 +1327,7 @@ document.getElementById('mx1199544885').value = document.getElementById("strokes
 document.getElementById('mx1903245588').value = document.getElementById("strokes17").innerText; 
 document.getElementById('mx1737150484').value = document.getElementById("strokes18").innerText; 
 						
-						console.log("step 2")
+						
 // points for each hole						
 // pointsCalc(hcp, par, si, score)					
 
@@ -1421,7 +1421,8 @@ document.getElementById('mx83976721').value = (front9points + tempcb9)
 					//===== submit data ==========
 					//============================
 					document.forms[0].submit();
-
+var audio = new Audio('golf.wav');
+            audio.play();
 }
 
 
