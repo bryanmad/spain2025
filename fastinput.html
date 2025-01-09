@@ -634,11 +634,36 @@
     }
     
     
+    #score1,
+    #score2 {
+        background: black;
+    }
+    
+    
     
 	</style>
 </head>
 
 <body>
+
+<div class="child-one">
+			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
+			<div id="playersDropdown" class="dropdown-content"></div>
+</div>
+
+<div class="child-six" onclick="displayInfo()">
+			<div id="holedetails">hole 1 par si etc.</div>
+</div>
+
+<div class="child-seven">
+			<div id="p1name" onclick="selected(this.id)">player 1</div>
+			<div id="p1score" onclick="selected(this.id)">0</div>
+</div>
+
+
+
+
+
 <div id="front9">
 <table align="left" border="1" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
 	<tbody>
@@ -751,33 +776,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
 	
 		<!-- invisible but necessary for submit of data	-->
 		<!-- form to construct data prior to submit -->
@@ -1041,25 +1039,6 @@ arrCourse = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function setupMondayCourse() {
 // set up courses with details for calculations etc.
 // array ["hole num",par,si]
@@ -1184,19 +1163,34 @@ arrCourse = [
 
 
 
-console.log(arrCourse[1][2])
+function setupFridayCourse() {
+// set up courses with details for calculations etc.
+// array ["hole num",par,si]
+// Richmond yellow tees
+// Richmond hole, par, si
+arrCourse = [
+[0,0,0],
+[1,4,16],
+[2,4,8],
+[3,4,2],
+[4,3,12],
+[5,4,4],
+[6,3,14],
+[7,5,6],
+[8,3,18],
+[9,4,10],
+[10,4,1],
+[11,5,15],
+[12,3,7],
+[13,5,9],
+[14,3,17],
+[15,4,3],
+[16,3,13],
+[17,5,5],
+[18,4,11]
+]
 
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -1246,26 +1240,14 @@ console.log(arrCourse[1][2])
 	
 	
 	
-	   startNewDay();
+	   
 		start();
 	
 	
 	}
 	
 
-		//=============================================================
-		// functions - run when called
-		//=============================================================  
-		function startNewDay() {
-		
-
-      var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[whichhole][1] +
-      "</a>" + ", si <a class='yyellow'>" +
-      arrCourse[whichhole][2] + "</a>";
-
-		document.getElementById("holedetails").innerHTML = holedetails
-				setupScores()
-		}
+	
 		//=============================================================
 		//=============================================================
 		// function start()
@@ -1431,45 +1413,8 @@ document.getElementById("dropbtn").innerText = course;
 				}
 			}
 			}
-			// new player so reset scores
-			for(i = 1; i <= 18; i++) {
-			    localStorage.setItem("wwp1h" + i, "0");
-			}
-			// go to first hole
-			whichhole = 1;
-			//holedetails = course + ", hole " + whichhole + ", par " + arrCourse[whichhole][1] + ", si " + arrCourse[whichhole][2];
 
-
-
-
-var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[whichhole][1] + "</a>" + ", si <a class='yyellow'>" + arrCourse[whichhole][2] + "</a>";
-
-
-
-
-
-
-				// get hole details
-			document.getElementById("holedetails").innerHTML = holedetails
-				// get hole scores
-			document.getElementById("p1h" + whichhole).innerText = localStorage.getItem("wwp1h" + whichhole);
-			// reset all player name backgrounds
-			document.getElementById("p1name").classList.remove("highlight");
-			document.getElementById("p1score").innerText = "0"
-			selectedplayer = 1
-			document.getElementById("p1name").classList.add("highlight");
-			
-			// cope with left over highlight that occurs when doing really fast
-			// score input
-			for(m = 0; m <= 9; m++) {
-			   document.getElementById("score" + m).classList.remove("scorehigh");
-			   document.getElementById("score" + m).classList.add("scorelow");
-         }			
-         document.getElementById("scoreprev").classList.remove("scorehigh");
-			document.getElementById("scoreprev").classList.add("scorelow");
-			document.getElementById("scorenext").classList.remove("scorehigh");
-			document.getElementById("scorenext").classList.add("scorelow");
-			
+	
 			
 			getScores();
 
@@ -1483,25 +1428,8 @@ var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[
 			document.getElementById("playersDropdown").classList.toggle("show");
 		}
 
-		function shortName(nom) {
-			// shorten player name
-			s1 = nom.split(" ")
-			shortPlayername = s1[0] + " " + s1[1].substring(0, 1);
-			shortPlayername = shortPlayername.replace("Stephen", "Steve")
-			shortPlayername = shortPlayername.replace("Malcolm", "Mal")
-			return shortPlayername;
-		}
-
-		//=================================================================================
-		// highlight the current player number
-		// 
-		//=================================================================================	
-		function selected(id) {
-			// reset all player names
-			document.getElementById("p1name").classList.remove("highlight");
-			// highlight selected
-			document.getElementById("p1name").classList.add("highlight");
-		}
+	
+	
 		//=================================================================================
 		// put score in the selected player
 		// and move on	
@@ -1510,23 +1438,30 @@ var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[
 			// id is something like score2
 			// selectedplayer is global 1, 2, 3, 4
 				// id is number button pressed eg. score5
-				
+                
+                // color the button
+				document.getElementById(id).style.color = "black" 
+                document.getElementById(id).style.background = "lime" 
+                
 				currenthole++
                if (currenthole > 18) {
                    currenthole = 18
                }
 					// update score
 					document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
-					//alert( temppscore + " = " + id.replace("score", ""))
-		//nextHole();			
-				
-                    //console.log("xar - " + arrCourse[currenthole][1])
-             //    function pointsCalc(xhcp, xpar, xsi, xscore) {   
                  
                 document.getElementById("points" + currenthole).innerText = 
                 pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][1], id.replace("score", ""))    
                     
 			 totalScores()
+             
+             // put button color back
+             setTimeout (function() {
+                 document.getElementById(id).style.background = "black"
+                 document.getElementById(id).style.color = "lime"
+             },100)
+             
+             
 		}
 		
         function  resethole(id) {
@@ -1583,34 +1518,8 @@ var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[
             
         }
         
-		//=================================================================================
-		// create an empty set of local storage score containers
-		// and move on	
-		//=================================================================================
-		function setupScores() {
-			for(var i = 1; i <= 18; i++) {
-				localStorage.setItem("wwp1h" + i, "0")
-			}
-		}
-		//=================================================================================
-		// save scores for a single page to local storage
-		// 
-		//=================================================================================
-		function saveScores() {
-				localStorage.setItem("wwp1h" + whichhole, document.getElementById("p1score").innerText)
-		}
-		//=================================================================================
-		// get scores for a single page from local storage
-		// 
-		//=================================================================================
-		function getScores() {
-			document.getElementById("p1score").innerText = localStorage.getItem("wwp1h" + whichhole)
-                                        // update all holes
-					for(i = 1; i <= 18; i++) {
-					    document.getElementById("xh" + i).innerText = 
-					    localStorage.getItem("wwp1h" + i)
-					}
-		}
+	
+	
 
 
 		// helper function to deep copy array
@@ -1629,135 +1538,7 @@ var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[
 			return bObject;
 		}
 
-		function getScoring() {
-				// initial save of data
-			saveAllToLocalStorage()
-		}
-		// calculated additional totals, countback etc.
-		function totalScore() {
-			// front 9 scores
-			var p1ih = 0;
-			// front 9 points
-			var p1ip = 0;
-			// back 9 scores
-			var p1jh = 0;
-			// back 9 points
-			var p1jp = 0;
-			// totals
-			var p1f = 0;
-			var p1b = 0;
-			var p1t = 0;
-			// do scores and points
-			for(i = 1; i <= 9; i++) {
-				//const [name, street, unit, city, state, zip] = input.split("/");
-				var [tempp1ih, tempp1ip] = document.getElementById("p1h" + i).innerText.split("/");
-				p1ih += parseInt(tempp1ih)
-				p1ip += parseInt(tempp1ip)
-			}
-			for(j = 10; j <= 18; j++) {
-				//const [name, street, unit, city, state, zip] = input.split("/");
-				var [tempp1jh, tempp1jp] = document.getElementById("p1h" + j).innerText.split("/");
-				p1jh += parseInt(tempp1jh)
-				p1jp += parseInt(tempp1jp)
-			}
-			p1f = p1ih + p1jh;
-			p1fp = p1ip + p1jp;
-			document.getElementById("p1hf").innerText = p1ih + "/" + p1ip;
-			document.getElementById("p1hb").innerText = p1jh + "/" + p1jp;
-			document.getElementById("p1ht").innerText = p1f + "/" + p1fp;
-		}
-
-		function doSomethingRecover() {
-			//  compdate = localStorage.date4ball
-			// etc.
-			document.getElementById("popuppanel").style.display = "none";
-			// get all the data back and put in right places
-			retrieveAllFromLocalStorage()
-				// setup number of players and proceed
-			getScoring();
-			moveToCurrent();
-		}
-
-		function saveAllToLocalStorage() {
-			// save player names
-			localStorage.setItem("wwplayer1name", player1name)
-				// save player hcps
-			localStorage.setItem("wwplayer1hcp", player1hcp)
-			
-				// save date
-			localStorage.setItem("wwcompdate", compdate)
-				// save all scores and points
-			var temp1 = "";
-			for(i = 1; i <= 18; i++) {
-				j = 1;
-				temp1 = document.getElementById("p1h" + i).innerText
-				if(temp1.indexOf("/") > -1) {
-					temp1array = temp1.split("/")
-					localStorage.setItem("wwp1h" + i, temp1array[0])
-				} else {
-					localStorage.setItem("wwp1h" + i, "0")
-				}
-			}
-			// save totals
-			// front 9
-			temp1 = document.getElementById("p1hf").innerText
-			if(temp1.indexOf("/") > -1) {
-				temp1array = temp1.split("/")
-				localStorage.setItem("wwp1hf", temp1array[0])
-			} else {
-				localStorage.setItem("wwp1hf", "0")
-			}
-			temp1 = document.getElementById("p1hb").innerText
-			if(temp1.indexOf("/") > -1) {
-				temp1array = temp1.split("/")
-				localStorage.setItem("wwp1hb", temp1array[0])
-			} else {
-				localStorage.setItem("wwp1hb", "0")
-			}
-			temp1 = document.getElementById("p1ht").innerText
-			if(temp1.indexOf("/") > -1) {
-				temp1array = temp1.split("/")
-				localStorage.setItem("wwp1ht", temp1array[0])
-			} else {
-				localStorage.setItem("wwp1ht", "0")
-			}
-		}
-
-
-		function totalsCalc() {
-			p1front = 0
-			
-			p1frontpoints = 0
-			
-			p1back = 0
-			
-			p1backpoints = 0
-			
-			for(var i = 1; i <= 9; i++) {
-				var tempp1txt = document.getElementById("p1h" + i).innerText
-				if(!(tempp1txt == "0")) {
-					tempp1 = tempp1txt.split("/");
-					p1front += parseInt(tempp1[0])
-					p1frontpoints += parseInt(tempp1[1])
-				}
-				
-			}
-			for(var i = 10; i <= 18; i++) {
-				var tempp1txt = document.getElementById("p1h" + i).innerText
-				if(!(tempp1txt == "0")) {
-					tempp1 = tempp1txt.split("/");
-					p1back += parseInt(tempp1[0])
-					p1backpoints += parseInt(tempp1[1])
-				}
-				
-			}
-			document.getElementById("p1hf").innerText = p1front.toString() + "/" + p1frontpoints.toString();
-			
-			document.getElementById("p1hb").innerText = p1back.toString() + "/" + p1backpoints.toString();
-			
-			document.getElementById("p1ht").innerText = (p1front + p1back).toString() + "/" + (p1frontpoints + p1backpoints).toString();
-			
-		}
+	
 
 		// convert scores to stableford points
 		function pointsCalc(xhcp, xpar, xsi, xscore) {
@@ -1795,11 +1576,6 @@ var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[
 				if(points < 0) {
 					points = 0;
 				}
-					
-			
-	//console.log("hcp="+xhcp + " par=" + xpar + " si=" + xsi + " score=" + xscore + " points= " + points)		
-			
-			
 		
 				return points;
 			}
