@@ -606,6 +606,35 @@
     .head {
         font-size: 2vh;
     }
+    
+    #hole1,
+    #hole2,
+    #hole3,
+    #hole4,
+    #hole5,
+    #hole6,
+    #hole7,
+    #hole8,
+    #hole9,
+    #hole10,
+    #hole11,
+    #hole12,
+    #hole13,
+    #hole14,
+    #hole15,
+    #hole16,
+    #hole17,
+    #hole18 {
+        color: cyan;
+    }
+    
+    #front9points ,
+    #back9points {
+        border: 1px solid cyan;
+    }
+    
+    
+    
 	</style>
 </head>
 
@@ -1483,7 +1512,9 @@ var holedetails = "hole " + whichhole + ", par <a class='yyellow'>" + arrCourse[
 				// id is number button pressed eg. score5
 				
 				currenthole++
-
+               if (currenthole > 18) {
+                   currenthole = 18
+               }
 					// update score
 					document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
 					//alert( temppscore + " = " + id.replace("score", ""))
