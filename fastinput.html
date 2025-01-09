@@ -594,7 +594,7 @@
     
     #front9 {
       color:  white;  
-      height:  100vh;
+      //height:  100vh;
     }
     
     tr {
@@ -639,7 +639,7 @@
         background: black;
     }
     
-    #player {
+    #page {
         
     }
     
@@ -648,16 +648,14 @@
 
 <body>
 
-<div id="player">
+<div id="page">
 <div class="child-one">
 			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
 			<div id="playersDropdown" class="dropdown-content"></div>
 </div>
 
-<div class="child-seven">
-			<div id="p1name" onclick="selected(this.id)">player 1</div>
-</div>
-</div>
+
+
 
 
 
@@ -831,8 +829,10 @@
 
 			<input type="submit"> </form>
 		<!-- google iframe inserted here - invisible -->
-		<iframe height="200" id="my-response-iframe" name="my-response-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhjabhjg1JvCQg/viewform?embedded=true" width="600"></iframe>
-		<br>
+		<iframe height="1" id="my-response-iframe" name="my-response-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhjabhjg1JvCQg/viewform?embedded=true" width="600"></iframe>
+
+</div>
+	
 		<script>
       //=================================================================================
 		// this runs on startup or reload
@@ -1359,7 +1359,7 @@ arrCourse = [
 		// name selected, do stuff
 		function dropSelected(playerName) {
 // change "select player to course
-document.getElementById("dropbtn").innerText = course ;
+document.getElementById("dropbtn").innerText = playerName + ":  " + course ;
 
 
 
