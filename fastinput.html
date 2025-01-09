@@ -241,19 +241,7 @@
 	}
 	
 		
-	#blackout {
-		display: none;
-		color: white;
-		font-size: 2vh;
-		background: rgba(13, 13, 13, 255); //black;
-		height: 100vh;
-		width: 100vw;
-		position: absolute;
-		top: 0;
-		left: 0;
-		justify-content: center;
-		padding-top: 40%;
-	}
+	
 	
 	#sending {
 		position: relative;
@@ -510,7 +498,7 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 
 			<input type="submit"> </form>
 		<!-- google iframe inserted here - invisible -->
-		<iframe height="1" id="my-response-iframe" name="my-response-iframe" 
+		<iframe height="0" id="my-response-iframe" name="my-response-iframe" 
         src="https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/viewform?embedded=true" width="600">
         </iframe>
 
@@ -1049,9 +1037,6 @@ arrCourse = [
 		
 		// name selected, do stuff
 		function dropSelected(playerName) {
-// change "select player to course
-document.getElementById("dropbtn").innerText = playerName + ":  " + course ;
-
 
 
          
@@ -1067,6 +1052,14 @@ document.getElementById("dropbtn").innerText = playerName + ":  " + course ;
 					//pos = k;
 					hcp = arrHcps[k]
 					player1hcp = hcp;
+                    player1name = playerName;
+                    // change "select player to course
+                   document.getElementById("dropbtn").innerText = player1name + " " + player1hcp + ":  " + course ;
+
+
+                    
+                    
+                    
 
 				}
 			}
@@ -1299,15 +1292,15 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
 		function submitForm() {
 			// get the relevant info into a form
 			// dont allow submit for an incorrect day
-			compday = localStorage.wwcompday;
+			//compday = localStorage.wwcompday;
 
 				// make sure everything is updated
-				finalWrite();
-				if(player1name !== "no player") {
+				//finalWrite();
+				if(player1name !== "player 1") {
 					// player1 score entry
-
+console.log("step 1")
 					//comp = localStorage.wwtodayscomp
-					document.getElementById('mx1433824128').value = player;
+					document.getElementById('mx1433824128').value = player1name;
 					
 					document.getElementById('mx1064629217').value = player1hcp;
 
@@ -1315,108 +1308,108 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
 					
                //document.getElementById('mx83976721').value = "39"; /* moved down */				
 // shots for each hole					
-document.getElementById('mx1724692121').value = document.getElementById("xh1").innerText; 
-document.getElementById('mx1342174744').value = document.getElementById("xh2").innerText;  
-document.getElementById('mx758799387').value = document.getElementById("xh3").innerText; 
-document.getElementById('mx2062182607').value = document.getElementById("xh4").innerText;  
-document.getElementById('mx1930917032').value = document.getElementById("xh5").innerText; 
-document.getElementById('mx1329253100').value = document.getElementById("xh6").innerText; 
-document.getElementById('mx737258175').value = document.getElementById("xh7").innerText; 
-document.getElementById('mx1107474420').value = document.getElementById("xh8").innerText; 
-document.getElementById('mx801125525').value = document.getElementById("xh9").innerText; 
-document.getElementById('mx481613746').value = document.getElementById("xh10").innerText; 
-document.getElementById('mx375771739').value = document.getElementById("xh11").innerText; 
-document.getElementById('mx515491474').value = document.getElementById("xh12").innerText; 
-document.getElementById('mx153870929').value = document.getElementById("xh13").innerText; 
-document.getElementById('mx534588764').value = document.getElementById("xh14").innerText; 
-document.getElementById('mx1709130776').value = document.getElementById("xh15").innerText; 
-document.getElementById('mx1199544885').value = document.getElementById("xh16").innerText; 
-document.getElementById('mx1903245588').value = document.getElementById("xh17").innerText; 
-document.getElementById('mx1737150484').value = document.getElementById("xh18").innerText; 
+document.getElementById('mx1724692121').value = document.getElementById("strokes1").innerText; 
+document.getElementById('mx1342174744').value = document.getElementById("strokes2").innerText;  
+document.getElementById('mx758799387').value = document.getElementById("strokes3").innerText; 
+document.getElementById('mx2062182607').value = document.getElementById("strokes4").innerText;  
+document.getElementById('mx1930917032').value = document.getElementById("strokes5").innerText; 
+document.getElementById('mx1329253100').value = document.getElementById("strokes6").innerText; 
+document.getElementById('mx737258175').value = document.getElementById("strokes7").innerText; 
+document.getElementById('mx1107474420').value = document.getElementById("strokes8").innerText; 
+document.getElementById('mx801125525').value = document.getElementById("strokes9").innerText; 
+document.getElementById('mx481613746').value = document.getElementById("strokes10").innerText; 
+document.getElementById('mx375771739').value = document.getElementById("strokes11").innerText; 
+document.getElementById('mx515491474').value = document.getElementById("strokes12").innerText; 
+document.getElementById('mx153870929').value = document.getElementById("strokes13").innerText; 
+document.getElementById('mx534588764').value = document.getElementById("strokes14").innerText; 
+document.getElementById('mx1709130776').value = document.getElementById("strokes15").innerText; 
+document.getElementById('mx1199544885').value = document.getElementById("strokes16").innerText; 
+document.getElementById('mx1903245588').value = document.getElementById("strokes17").innerText; 
+document.getElementById('mx1737150484').value = document.getElementById("strokes18").innerText; 
 						
-						
+						console.log("step 2")
 // points for each hole						
 // pointsCalc(hcp, par, si, score)					
 
     document.getElementById('mx1766971895').value = 
-    pointsCalc(player1hcp, arrCourse[1][1], arrCourse[1][2], document.getElementById("xh1").innerText); 
+    pointsCalc(player1hcp, arrCourse[1][1], arrCourse[1][2], document.getElementById("strokes1").innerText); 
     document.getElementById('mx1446347715').value = 
-    pointsCalc(player1hcp, arrCourse[2][1], arrCourse[2][2], document.getElementById("xh2").innerText); 
+    pointsCalc(player1hcp, arrCourse[2][1], arrCourse[2][2], document.getElementById("strokes2").innerText); 
     document.getElementById('mx1043639386').value = 
-    pointsCalc(player1hcp, arrCourse[3][1], arrCourse[3][2], document.getElementById("xh3").innerText);
+    pointsCalc(player1hcp, arrCourse[3][1], arrCourse[3][2], document.getElementById("strokes3").innerText);
     document.getElementById('mx1058489368').value = 
-    pointsCalc(player1hcp, arrCourse[4][1], arrCourse[4][2], document.getElementById("xh4").innerText); 
+    pointsCalc(player1hcp, arrCourse[4][1], arrCourse[4][2], document.getElementById("strokes4").innerText); 
     document.getElementById('mx984229340').value = 
-    pointsCalc(player1hcp, arrCourse[5][1], arrCourse[5][2], document.getElementById("xh5").innerText);
+    pointsCalc(player1hcp, arrCourse[5][1], arrCourse[5][2], document.getElementById("strokes5").innerText);
     document.getElementById('mx888962172').value = 
-    pointsCalc(player1hcp, arrCourse[6][1], arrCourse[6][2], document.getElementById("xh6").innerText);
+    pointsCalc(player1hcp, arrCourse[6][1], arrCourse[6][2], document.getElementById("strokes6").innerText);
     document.getElementById('mx662079754').value = 
-    pointsCalc(player1hcp, arrCourse[7][1], arrCourse[7][2], document.getElementById("xh7").innerText); 
+    pointsCalc(player1hcp, arrCourse[7][1], arrCourse[7][2], document.getElementById("strokes7").innerText); 
     document.getElementById('mx857756573').value = 
-    pointsCalc(player1hcp, arrCourse[8][1], arrCourse[8][2], document.getElementById("xh8").innerText); 
+    pointsCalc(player1hcp, arrCourse[8][1], arrCourse[8][2], document.getElementById("strokes8").innerText); 
     document.getElementById('mx213108632').value = 
-    pointsCalc(player1hcp, arrCourse[9][1], arrCourse[9][2], document.getElementById("xh9").innerText);
+    pointsCalc(player1hcp, arrCourse[9][1], arrCourse[9][2], document.getElementById("strokes9").innerText);
     document.getElementById('mx965823425').value = 
-    pointsCalc(player1hcp, arrCourse[10][1], arrCourse[10][2], document.getElementById("xh10").innerText);
+    pointsCalc(player1hcp, arrCourse[10][1], arrCourse[10][2], document.getElementById("strokes10").innerText);
     document.getElementById('mx1721064168').value = 
-    pointsCalc(player1hcp, arrCourse[11][1], arrCourse[11][2], document.getElementById("xh11").innerText);
+    pointsCalc(player1hcp, arrCourse[11][1], arrCourse[11][2], document.getElementById("strokes11").innerText);
     document.getElementById('mx343171143').value = 
-    pointsCalc(player1hcp, arrCourse[12][1], arrCourse[12][2], document.getElementById("xh12").innerText);
+    pointsCalc(player1hcp, arrCourse[12][1], arrCourse[12][2], document.getElementById("strokes12").innerText);
     document.getElementById('mx32888434').value = 
-    pointsCalc(player1hcp, arrCourse[13][1], arrCourse[13][2], document.getElementById("xh13").innerText);
+    pointsCalc(player1hcp, arrCourse[13][1], arrCourse[13][2], document.getElementById("strokes13").innerText);
     document.getElementById('mx1203648652').value = 
-    pointsCalc(player1hcp, arrCourse[14][1], arrCourse[14][2], document.getElementById("xh14").innerText);
+    pointsCalc(player1hcp, arrCourse[14][1], arrCourse[14][2], document.getElementById("strokes14").innerText);
     document.getElementById('mx1811069542').value = 
-    pointsCalc(player1hcp, arrCourse[15][1], arrCourse[15][2], document.getElementById("xh15").innerText);
+    pointsCalc(player1hcp, arrCourse[15][1], arrCourse[15][2], document.getElementById("strokes15").innerText);
     document.getElementById('mx410870339').value = 
-    pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2], document.getElementById("xh16").innerText);
+    pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2], document.getElementById("strokes16").innerText);
     document.getElementById('mx488847840').value = 
-    pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2], document.getElementById("xh17").innerText);
+    pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2], document.getElementById("strokes17").innerText);
     document.getElementById('mx2086486082').value = 
-    pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2], document.getElementById("xh18").innerText);
+    pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2], document.getElementById("strokes18").innerText);
 
 
 // points for countback etc.
 var front9points = 0								
-front9points += pointsCalc(player1hcp, arrCourse[1][1], arrCourse[1][2],document.getElementById("xh1").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[2][1], arrCourse[2][2],document.getElementById("xh2").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[3][1], arrCourse[3][2],document.getElementById("xh3").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[4][1], arrCourse[4][2],document.getElementById("xh4").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[5][1], arrCourse[5][2],document.getElementById("xh5").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[6][1], arrCourse[6][2],document.getElementById("xh6").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[7][1], arrCourse[7][2],document.getElementById("xh7").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[8][1], arrCourse[8][2],document.getElementById("xh8").innerText);
-front9points += pointsCalc(player1hcp, arrCourse[9][1], arrCourse[9][2],document.getElementById("xh9").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[1][1], arrCourse[1][2],document.getElementById("strokes1").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[2][1], arrCourse[2][2],document.getElementById("strokes2").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[3][1], arrCourse[3][2],document.getElementById("strokes3").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[4][1], arrCourse[4][2],document.getElementById("strokes4").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[5][1], arrCourse[5][2],document.getElementById("strokes5").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[6][1], arrCourse[6][2],document.getElementById("strokes6").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[7][1], arrCourse[7][2],document.getElementById("strokes7").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[8][1], arrCourse[8][2],document.getElementById("strokes8").innerText);
+front9points += pointsCalc(player1hcp, arrCourse[9][1], arrCourse[9][2],document.getElementById("strokes9").innerText);
 
 
 
 var tempcb9 = 0;
-tempcb9 += pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2],document.getElementById("xh18").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2],document.getElementById("xh17").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2],document.getElementById("xh16").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[15][1], arrCourse[15][2],document.getElementById("xh15").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[14][1], arrCourse[14][2],document.getElementById("xh14").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[13][1], arrCourse[13][2],document.getElementById("xh13").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[12][1], arrCourse[12][2],document.getElementById("xh12").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[11][1], arrCourse[11][2],document.getElementById("xh11").innerText);
-tempcb9 += pointsCalc(player1hcp, arrCourse[10][1], arrCourse[10][2],document.getElementById("xh10").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2],document.getElementById("strokes18").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2],document.getElementById("strokes17").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2],document.getElementById("strokes16").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[15][1], arrCourse[15][2],document.getElementById("strokes15").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[14][1], arrCourse[14][2],document.getElementById("strokes14").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[13][1], arrCourse[13][2],document.getElementById("strokes13").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[12][1], arrCourse[12][2],document.getElementById("strokes12").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[11][1], arrCourse[11][2],document.getElementById("strokes11").innerText);
+tempcb9 += pointsCalc(player1hcp, arrCourse[10][1], arrCourse[10][2],document.getElementById("strokes10").innerText);
 var tempcb6 = 0;
-tempcb6 += pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2],document.getElementById("xh18").innerText);
-tempcb6 += pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2],document.getElementById("xh17").innerText);
-tempcb6 += pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2],document.getElementById("xh16").innerText);
-tempcb6 += pointsCalc(player1hcp, arrCourse[15][1], arrCourse[15][2],document.getElementById("xh15").innerText);
-tempcb6 += pointsCalc(player1hcp, arrCourse[14][1], arrCourse[14][2],document.getElementById("xh14").innerText);
-tempcb6 += pointsCalc(player1hcp, arrCourse[13][1], arrCourse[13][2],document.getElementById("xh13").innerText);
+tempcb6 += pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2],document.getElementById("strokes18").innerText);
+tempcb6 += pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2],document.getElementById("strokes17").innerText);
+tempcb6 += pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2],document.getElementById("strokes16").innerText);
+tempcb6 += pointsCalc(player1hcp, arrCourse[15][1], arrCourse[15][2],document.getElementById("strokes15").innerText);
+tempcb6 += pointsCalc(player1hcp, arrCourse[14][1], arrCourse[14][2],document.getElementById("strokes14").innerText);
+tempcb6 += pointsCalc(player1hcp, arrCourse[13][1], arrCourse[13][2],document.getElementById("strokes13").innerText);
 var tempcb3 = 0;
-tempcb3 += pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2],document.getElementById("xh18").innerText);
-tempcb3 += pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2],document.getElementById("xh17").innerText);
-tempcb3 += pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2],document.getElementById("xh16").innerText);
+tempcb3 += pointsCalc(player1hcp, arrCourse[18][1], arrCourse[18][2],document.getElementById("strokes18").innerText);
+tempcb3 += pointsCalc(player1hcp, arrCourse[17][1], arrCourse[17][2],document.getElementById("strokes17").innerText);
+tempcb3 += pointsCalc(player1hcp, arrCourse[16][1], arrCourse[16][2],document.getElementById("strokes16").innerText);
 			
 /* countbacks */
 document.getElementById('mx717166862').value = tempcb9; 
 document.getElementById('mx1175424116').value = tempcb6; 
 document.getElementById('mx849660193').value = tempcb3; 
-document.getElementById('mx1919564852').value = pointsCalc(player1hcp, arrCourse[9][1], arrCourse[9][2],document.getElementById("xh18").innerText);	
+document.getElementById('mx1919564852').value = pointsCalc(player1hcp, arrCourse[9][1], arrCourse[9][2],document.getElementById("strokes18").innerText);	
 	
 	
 /* total score */	
@@ -1425,16 +1418,16 @@ document.getElementById('mx83976721').value = (front9points + tempcb9)
 
 
 
+					//===== submit data ==========
+					//============================
+					document.forms[0].submit();
 
 }
 
 
 
-					//===== submit data ==========
-					//============================
-					document.forms[0].submit();
 			
-
+/*
 					// do some indicator of stuff	
 				window.scrollTo({
 					top: 0,
@@ -1449,7 +1442,11 @@ document.getElementById('mx83976721').value = (front9points + tempcb9)
 			}, 2000);
          // change course to prompt select player 
          document.getElementById("dropbtn").innerText = "select player";
-		}
+		
+        */
+        
+        
+        }
 
 
 		function finalWrite() {
@@ -1470,46 +1467,9 @@ document.getElementById('mx83976721').value = (front9points + tempcb9)
 			}
 		}
 	
-function recover() {
-document.getElementById("recoverclear").style.display = "none"; 
 
-}		
  
  
- function clear() {
- document.getElementById("recoverclear").style.display = "none";
- }		
-
-	function displayInfo() {
-	//console.log("in displayInfo")
-			saveScores();
-			//saveAllToLocalStorage()
-			// get players, all strokes and points
-			document.getElementById("p1h0").innerText = shortName(player1name);
-			
-			for(var i = 1; i <= 18; i++) {
-				//if(course == "Lakes") {
-					if(player1teecolor == "yellow") {
-						temp = localStorage.getItem("wwp1h" + i)
-						document.getElementById("p1h" + i).innerText = temp + "/" + pointsCalc(player1hcp, arrCourse[i][1], arrCourse[i][2], temp)
-					}
-
-			}
-			totalScore()
-				//shots()
-				// show screen as overlay
-			if(document.getElementById("info").style.display !== "block") {
-				document.getElementById("info").style.display = "block"
-			} else {
-				document.getElementById("info").style.display = "none"
-			}
-		}	
-		
-		
-		
-		function hideInfo() {
-		     document.getElementById("info").style.display = "none";
-		}
 		</script>
 </body>
 
