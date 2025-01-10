@@ -961,7 +961,7 @@ arrCourse = [
 					//found = true;
 					//pos = k;
 					hcp = arrHcps[k]
-					player1hcp = hcp;
+					player1hcp = Math.round(hcp);
                     player1name = playerName;
                     // change "select player to course
                    document.getElementById("dropbtn").innerText = player1name + " " + player1hcp + ":  " + course ;
@@ -1003,7 +1003,7 @@ arrCourse = [
 
 	
 			
-			getScores();
+			//getScores();
 
 		}
 		//=============================================================
@@ -1038,7 +1038,7 @@ arrCourse = [
 					document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
                  
                 document.getElementById("points" + currenthole).innerText = 
-                pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][1], id.replace("score", ""))    
+                pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][2], id.replace("score", ""))    
                     
 			 totalScores()
              
@@ -1129,7 +1129,7 @@ arrCourse = [
 
 		// convert scores to stableford points
 		function pointsCalc(xhcp, xpar, xsi, xscore) {
-		
+	console.log(xhcp +","+ xpar+","+xsi+","+xscore+" = ")	
 			hcp = parseInt(xhcp)
 			hcp = hcp.toFixed()
 			par = parseInt(xpar)
@@ -1163,7 +1163,7 @@ arrCourse = [
 				if(points < 0) {
 					points = 0;
 				}
-		
+		console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
 				return points;
 			}
 			
