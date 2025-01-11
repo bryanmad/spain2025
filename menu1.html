@@ -11,179 +11,360 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 <style>
+@mixin transition($params) {
+  -webkit-transition: $params;
+     -moz-transition: $params;
+   -khtml-transition: $params;
+       -o-transition: $params;
+          transition: $params;
+}
+
+@mixin scale($params) {
+  -webkit-transform: scale($params);
+     -moz-transform: scale($params);
+   -khtml-transform: scale($params);
+       -o-transform: scale($params);
+          transform: scale($params);
+}
+
+@mixin box-shadow($params) {
+  -webkit-box-shadow:$params;
+     -moz-box-shadow:$params;
+   -khtml-box-shadow:$params;
+       -o-box-shadow:$params;
+          box-shadow:$params;
+}
+
+@mixin rotate($params) {
+  -webkit-transform: rotate($params);
+     -moz-transform: rotate($params);
+   -khtml-transform: rotate($params);
+       -o-transform: rotate($params);
+          transform: rotate($params);
+}
+
+@mixin opacity($opacity) {
+  -webkit-opacity:$opacity;
+     -moz-opacity:$opacity;
+   -khtml-opacity:$opacity;
+       -o-opacity:$opacity;
+          opacity:$opacity;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+   -khtml-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+body, html {
+  margin:0;
+  padding:0;
+}
+
 body {
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-}
-a {
-  text-decoration: none;
-  color: #1E1E23;
-  opacity:1;
-  font-family: 'work sans', sans serif;
-  font-size: 1.5em;
-  font-weight: 400;
-  transition: 200ms;
-}
-a:hover {
-  opacity:0.5;
-}
-ul {
-  padding: 0;
-  list-style-type: none;
+  background:#f8f7f5;
+  font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color:#888888;
 }
 
-
-
-.container {
-  margin-top: 50px; 
-  Display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.phone {
-  //background-color: #36383F;
-  //border-radius: 40px;
-  width: 300px;
-  height: 600px;
-  Display: flex;
-  justify-content: center;
-  align-items: center;
-  //box-shadow: 30px 50px 100px #85888C;
-}
-.content {
-  //border: 1px solid #36383F;
-  //border-radius: 20px;
-  width: 94%;
-  height: 91%;
-  //background-color: #F5F6FA;
-  overflow: hidden;
-}
-nav {
-  background-color: gray;
-  height: 65px;
+#mobile {
+  height:667px;
+  width:375px;
+  background:#c6c4c1;
+  position:relative;
+  margin:30px auto;
+  @include box-shadow(0px 0px 20px 0px rgba(0,0,0,0.1));
+  overflow:hidden;
 }
 
-
-#menuToggle {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  top: 25px;
-  left: 25px;
-  z-index: 1;
-  -webkit-user-select: none;
-  user-select: none;
+#mobileBodyContent {
+  background:#f8f7f5;
+  position:relative;
+  z-index:20;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  visibility:visible;
+  @include transition(all 0.3s ease-in);
 }
 
-#menuToggle input
-{
-  display: flex;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  cursor: pointer;
-  opacity: 0;
-  z-index: 2;
+#header {
+  height:60px;
+  background:#eae8e5;
 }
 
-#menuToggle span
-{
-  display: flex;
-  width: 29px;
-  height: 2px;
-  margin-bottom: 5px;
-  position: relative;
-  background: #ffffff;
-  border-radius: 3px;
-  z-index: 1;
-  transform-origin: 5px 0px;
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
+#image {
+  height:280px;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+  }
 }
 
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
+#title {
+  height:20px;
+  width:200px;
+  margin:40px auto;
+  background:#eae8e5;
 }
 
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
+#text .item {
+  height:10px;
+  width:calc(100% - 40px);
+  margin:20px auto;
+  background:#eae8e5;
 }
 
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-3px, -1px);
-  background: #36383F;
-}
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-#menu
-{
-  position: absolute;
-  width: 180px;
-  height: 400px;
-  box-shadow: 0 0 10px #85888C;
-  margin: -50px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  background-color: #F5F6FA;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-
-#menu li
-{
-  padding: 10px 0;
-  transition-delay: 2s;
+#burgerBtn {
+  border-top:2px solid #f85051;
+  height:25px;
+  width:30px;
+  box-sizing:border-box;
+  position:absolute;
+  z-index:30;
+  left:20px;
+  top:15px;
+  cursor:pointer;
+  @include transition(all 0.3s ease-in);
+  &:before {
+    content:"";
+    display:block;
+    position:absolute;
+    height:2px;
+    width:30px;
+    left:0;
+    background:#f85051;
+    top:10px;
+    @include transition(all 0.3s ease-in);
+  }
+  &:after {
+    content:"";
+    display:block;
+    position:absolute;
+    height:2px;
+    width:30px;
+    left:0;
+    background:#f85051;
+    bottom:0;
+    @include transition(all 0.3s ease-in);
+  }
 }
 
-#menuToggle input:checked ~ ul
-{
-  transform: none;
+#nav {
+  position:absolute;
+  z-index:10;
+  list-style-type:none;
+  margin:100px 0 0 20px;
+  padding:0;
+  overflow:hidden;
+  li {
+    height:30px;
+    width:0;
+    margin:30px 0;
+    background:#eae8e5;
+    @include transition(all 0.6s ease-in);
+    & + li {
+      margin-left:-40px;
+      & + li {
+        margin-left:-80px;
+        & + li {
+          margin-left:-120px;
+        }
+      }
+    }
+  }
+}
+
+#demoSelector {
+  position:absolute;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  top:333px;
+  left:50%;
+  margin-left:227px;
+  li {
+    padding:10px 0 10px 30px;
+    position:relative;
+    cursor:pointer;
+    &:after {
+      content:"";
+      position:absolute;
+      height:10px;
+      width:10px;
+      @include border-radius(5px);
+      background:#d8d5d0;
+      left:0;
+      top:18px;
+    }
+    &:before {
+      content:"";
+      position:absolute;
+      height:18px;
+      width:18px;
+      @include border-radius(12px);
+      border:2px solid #888888;
+      left:-6px;
+      top:12px;
+      @include scale(0);
+      @include transition(all 0.3s ease-in);
+    }
+    &.active:before { 
+      @include scale(1);
+    }
+  }
+}
+
+.navigation {
+  #nav li {
+    width:200px;
+    margin-left:0;
+  }
+  #burgerBtn {
+    border-color:transparent;
+    &:before {
+      @include rotate(45deg);
+      width:33px;
+      left:-2px;
+    }
+    &:after {
+      @include rotate(135deg);
+      bottom:11px;
+      width:33px;
+      left:-2px;
+    }
+  }
+}
+
+.demo1.navigation {
+  #mobileBodyContent {
+    @include scale(0.85);
+    margin-left:260px;
+  }
+}
+
+.demo2.navigation {
+  #mobileBodyContent {
+    margin-left:320px;
+    @include opacity (0.4);
+  }
+}
+
+.demo3.navigation {
+  #mobileBodyContent {
+    @include opacity(0);
+    @include scale(0.85);
+    visibility:hidden;
+  }
+}
+
+footer {
+  position:fixed;
+  z-index:1000;
+  left:0;
+  bottom:0;
+  display:block;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+footer a {
+  text-decoration:none;
+  display:block;
+  width:50px;
+}
+
+footer a svg {
+  width:100%;
+  max-width:50px;
+  min-width:40px;
+  display:inline-block;
 }
 </style>
 
 </head>
 
   <body>
-    <div class="container">
-      <div class="phone">
-        <div class="content">
-          
-          <nav role="navigation">
-            <div id="menuToggle">
-              <input type="checkbox" />
-                <span></span>
-                <span></span>
-                <span></span>
-            <ul id="menu">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Info</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-           </div>
-          </nav>
-        </div>
-       </div>
+   <div id="mobile" class="demo1">
+  <div id="burgerBtn"></div>
+  <ul id="nav">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <div id="mobileBodyContent">
+    <div id="header"></div>
+    <div id="image">
+      <img src="https://unsplash.com/photos/rAlGkaDAeOo/download?w=640" alt="" />
     </div>
-<script>
+    <div id="title"></div>
+    <div id="text">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </div>
+</div>
+<ul id="demoSelector">
+  <li id="demo1" class="active">Démo 1</li>
+  <li id="demo2">Démo 2</li>
+  <li id="demo3">Démo 3</li>
+</ul>
 
+<footer>
+      <a target="_blank" href="https://www.made-on-mars.com"><svg id="Calque_logo2" data-name="Calque logo2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1306.42"><defs><style>.cls-logo2{fill:#f85051;}</style></defs><path class="cls-logo2" d="M2043.47,2428a39,39,0,1,0,23.28,8.1c55.42,11,96.65,60.62,96.65,117.45a120,120,0,0,1-119.93,119.91,118.29,118.29,0,0,1-48.7-10.47v-359.6a38.92,38.92,0,0,0-38.87-38.87h-87.24v-32a38.92,38.92,0,0,0-38.87-38.87h-87.18v-27.75a38.92,38.92,0,0,0-38.87-38.87H1638.8a69.8,69.8,0,0,0,0,139.6,16.78,16.78,0,1,0-16.76-16.76,16.6,16.6,0,0,0,3,9.51,64.08,64.08,0,0,1,13.8-126.67,27,27,0,0,1,27,27v343.09a38.92,38.92,0,0,0,38.87,38.87h37.94V2199.38h22.23a27,27,0,0,1,27,27v276.43a38.92,38.92,0,0,0,38.87,38.87h37.94V2270.23h22.27a27,27,0,0,1,27,27v256.37A125.53,125.53,0,1,0,2043.47,2428Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M2128.54,2873.92V3393H1609.46V2873.92h519.08m40.46-40.46H1569v600h600v-600Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1794.74,3133.7a44.44,44.44,0,0,1-2.74,15.88,36.33,36.33,0,0,1-7.74,12.43,34.6,34.6,0,0,1-12,8.09,43.16,43.16,0,0,1-31,0,34.73,34.73,0,0,1-12-8.09,36.33,36.33,0,0,1-7.74-12.43,47.39,47.39,0,0,1,0-31.75,36.67,36.67,0,0,1,7.74-12.47,34.69,34.69,0,0,1,12-8.13,42.72,42.72,0,0,1,31,0,34.55,34.55,0,0,1,12,8.13,36.67,36.67,0,0,1,7.74,12.47A44.48,44.48,0,0,1,1794.74,3133.7Zm-10.69,0a39.07,39.07,0,0,0-1.93-12.73,26.83,26.83,0,0,0-5.48-9.54,23.65,23.65,0,0,0-8.59-6,31.24,31.24,0,0,0-22.51,0,24,24,0,0,0-8.62,6,26.65,26.65,0,0,0-5.51,9.54,42.85,42.85,0,0,0,0,25.44,26.69,26.69,0,0,0,5.51,9.51,23.8,23.8,0,0,0,8.62,6,31.68,31.68,0,0,0,22.51,0,23.48,23.48,0,0,0,8.59-6,26.87,26.87,0,0,0,5.48-9.51A38.86,38.86,0,0,0,1784,3133.7Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1816.42,3095.52A5.55,5.55,0,0,1,1818,3097l44.59,58c-.1-.93-.18-1.84-.22-2.72s-.05-1.73-.05-2.55v-54.54h9.13v77h-5.27a4.52,4.52,0,0,1-2.07-.43,5.12,5.12,0,0,1-1.64-1.45l-44.54-58c.07.9.12,1.77.16,2.63s.06,1.65.06,2.36v54.86H1809v-77h5.37A4.71,4.71,0,0,1,1816.42,3095.52Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1759.12,3038.25c.36-1,28.53-53,28.53-53a3.1,3.1,0,0,1,1.45-1.5,6.66,6.66,0,0,1,2.15-.27h7.69v77h-9.13v-56.57c0-.76,0-1.56.05-2.42s.09-1.73.16-2.63L1763.63,3047a4.15,4.15,0,0,1-3.76,2.41h-1.51a4.14,4.14,0,0,1-3.76-2.41l-27-48.3c.11.93.19,1.85.24,2.74s.08,1.72.08,2.48v56.57h-9.13v-77h7.68a6.69,6.69,0,0,1,2.15.27,3.12,3.12,0,0,1,1.45,1.5S1758.76,3037.29,1759.12,3038.25Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1881,3060.5H1873a3.42,3.42,0,0,1-2.26-.7,4.16,4.16,0,0,1-1.29-1.77l-7.2-18.58h-34.55l-7.2,18.58a4.13,4.13,0,0,1-1.29,1.72,3.42,3.42,0,0,1-2.26.76h-8.06l30.79-77h10.58Zm-50.45-28.58h28.75l-12.09-31.32a59.28,59.28,0,0,1-2.31-7.25q-.59,2.2-1.15,4.06c-.37,1.23-.74,2.32-1.1,3.24Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1957.48,3022a43.32,43.32,0,0,1-2.74,15.74,34.84,34.84,0,0,1-7.74,12.14,34.37,34.37,0,0,1-12,7.82,41.65,41.65,0,0,1-15.48,2.77h-28.79v-77h28.79a41.65,41.65,0,0,1,15.48,2.77,34.42,34.42,0,0,1,12,7.84,35.27,35.27,0,0,1,7.74,12.17A43.36,43.36,0,0,1,1957.48,3022Zm-10.69,0a38.61,38.61,0,0,0-1.94-12.68,26.55,26.55,0,0,0-5.48-9.45,23.44,23.44,0,0,0-8.59-5.92,29.88,29.88,0,0,0-11.23-2h-18.32v60.12h18.32a29.88,29.88,0,0,0,11.23-2,23.62,23.62,0,0,0,8.59-5.89,26.36,26.36,0,0,0,5.48-9.43A38.57,38.57,0,0,0,1946.79,3022Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M2019.11,2983.51V2992h-37v25.57h29.92v8.16h-29.92V3052h37v8.49h-47.44v-77Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1759.12,3260.68c.36-1,28.53-53,28.53-53a3.1,3.1,0,0,1,1.45-1.5,6.66,6.66,0,0,1,2.15-.27h7.69v77h-9.13v-56.57c0-.76,0-1.56.05-2.42s.09-1.73.16-2.63l-26.38,48.14a4.15,4.15,0,0,1-3.76,2.41h-1.51a4.14,4.14,0,0,1-3.76-2.41l-27-48.3c.11.93.19,1.85.24,2.74s.08,1.72.08,2.48v56.57h-9.13v-77h7.68a6.69,6.69,0,0,1,2.15.27,3.12,3.12,0,0,1,1.45,1.5S1758.76,3259.72,1759.12,3260.68Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1881,3282.93H1873a3.42,3.42,0,0,1-2.26-.7,4.16,4.16,0,0,1-1.29-1.77l-7.2-18.58h-34.55l-7.2,18.58a4.13,4.13,0,0,1-1.29,1.72,3.42,3.42,0,0,1-2.26.76h-8.06l30.79-77h10.58Zm-50.45-28.58h28.75L1847.24,3223a59.28,59.28,0,0,1-2.31-7.25q-.59,2.2-1.15,4.06c-.37,1.23-.74,2.32-1.1,3.24Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1902.2,3250.8v32.13h-10.37v-77h21.76a47.48,47.48,0,0,1,12.62,1.48,24,24,0,0,1,8.78,4.27,17.05,17.05,0,0,1,5.13,6.74,22.53,22.53,0,0,1,1.67,8.85,22.18,22.18,0,0,1-1.29,7.63,20.11,20.11,0,0,1-3.74,6.36,22.29,22.29,0,0,1-6,4.82,29.37,29.37,0,0,1-8,3,11,11,0,0,1,3.44,3.28l22.46,30.57h-9.24a4.55,4.55,0,0,1-4.19-2.2l-20-27.5a5.86,5.86,0,0,0-2-1.86,7.16,7.16,0,0,0-3.23-.57Zm0-7.58h10.91a26.51,26.51,0,0,0,8-1.1,16.32,16.32,0,0,0,5.8-3.12,12.87,12.87,0,0,0,3.52-4.81,15.71,15.71,0,0,0,1.18-6.18q0-6.88-4.54-10.37t-13.51-3.49H1902.2Z" transform="translate(-1569 -2127.04)"></path><path class="cls-logo2" d="M1999.39,3218a4.09,4.09,0,0,1-1,1.21,2.24,2.24,0,0,1-1.4.41,3.66,3.66,0,0,1-2.12-.92,34.71,34.71,0,0,0-3.06-2,26.49,26.49,0,0,0-4.46-2,19.19,19.19,0,0,0-6.31-.91,18.61,18.61,0,0,0-6.18.94,13.28,13.28,0,0,0-4.49,2.55,10.53,10.53,0,0,0-2.71,3.79,12,12,0,0,0-.91,4.7,8.72,8.72,0,0,0,1.58,5.35,13.52,13.52,0,0,0,4.19,3.62,31.77,31.77,0,0,0,5.91,2.61q3.31,1.1,6.77,2.28t6.77,2.67a23.9,23.9,0,0,1,5.91,3.73,17.2,17.2,0,0,1,4.19,5.54,18.43,18.43,0,0,1,1.58,8.06,25.86,25.86,0,0,1-1.72,9.48,21.77,21.77,0,0,1-5,7.71,23.68,23.68,0,0,1-8.11,5.16,30,30,0,0,1-10.93,1.88,33.27,33.27,0,0,1-13.62-2.72,31.81,31.81,0,0,1-10.5-7.34l3-4.94a3.92,3.92,0,0,1,1-1,2.41,2.41,0,0,1,1.37-.41,4.29,4.29,0,0,1,2.58,1.22,43.78,43.78,0,0,0,3.63,2.65,27.29,27.29,0,0,0,5.26,2.65,20.73,20.73,0,0,0,7.55,1.22,19.83,19.83,0,0,0,6.61-1,13.9,13.9,0,0,0,4.92-2.88,12.31,12.31,0,0,0,3.09-4.43,14.76,14.76,0,0,0,1.08-5.75,9.66,9.66,0,0,0-1.58-5.72,13.16,13.16,0,0,0-4.16-3.74,29.17,29.17,0,0,0-5.89-2.55l-6.77-2.15a69,69,0,0,1-6.77-2.55,22,22,0,0,1-5.89-3.77,17.21,17.21,0,0,1-4.16-5.77,20.51,20.51,0,0,1-1.58-8.57,20.53,20.53,0,0,1,6.18-14.66,22.3,22.3,0,0,1,7.45-4.73,27.17,27.17,0,0,1,10.18-1.77,32.54,32.54,0,0,1,11.77,2,26.92,26.92,0,0,1,9.29,5.91Z" transform="translate(-1569 -2127.04)"></path></svg></a>
+    </footer>
+<script>
+var burgerBtn = document.getElementById('burgerBtn');
+var mobile = document.getElementById('mobile');
+var demo1 = document.getElementById('demo1');
+var demo2 = document.getElementById('demo2');
+var demo3 = document.getElementById('demo3');
+
+burgerBtn.addEventListener('click', function() {
+  mobile.classList.toggle('navigation');
+}, false);
+
+demo1.addEventListener('click', function() {
+  demo1.classList.add('active');
+  demo2.classList.remove('active');
+  demo3.classList.remove('active');
+  mobile.classList.add('demo1');
+  mobile.classList.remove('demo2', 'demo3', 'navigation');
+}, false);
+
+demo2.addEventListener('click', function() {
+  demo2.classList.add('active');
+  demo1.classList.remove('active');
+  demo3.classList.remove('active');
+  mobile.classList.add('demo2');
+  mobile.classList.remove('demo1', 'demo3', 'navigation');
+}, false);
+
+demo3.addEventListener('click', function() {
+  demo3.classList.add('active');
+  demo1.classList.remove('active');
+  demo2.classList.remove('active');
+  mobile.classList.add('demo3');
+  mobile.classList.remove('demo1', 'demo2', 'navigation');
+}, false);
 </script>
 </body>
 </html>
