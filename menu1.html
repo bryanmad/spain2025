@@ -128,7 +128,7 @@ input[type=checkbox] {
 
 .head {
     
-    font-size: 3vh;
+    font-size: 2.5vh;
     padding-left: 10%;
 }
 </style>
@@ -143,19 +143,22 @@ input[type=checkbox] {
 <table align="left" border="1" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
 	<tbody>
         <tr>
-			<td class="head">day:</td>
+			<td class="head" id="line1">day:</td>
             </tr>
             <tr>
-			<td class="head">course:</td>
+			<td class="head" id="line2">course:</td>
             </tr>
             <tr>
-			<td class="head">hotel departure time:</td>
+			<td class="head" id="line3">hotel departure time:</td>
             </tr>
             <tr>
-            <td class="head">first tee time:</td>
+            <td class="head" id="line4">first tee time:</td>
             </tr>
             <tr>
-			<td class="head">pickup time:</td>
+			<td class="head" id="line5">pickup time:</td>
+            </tr>
+            <tr>
+			<td class="head" id="line6">pickup time:</td>
             </tr>
             <tr>
 			<td class="head">notes:</td>
@@ -180,6 +183,27 @@ input[type=checkbox] {
     </ul>
   </div>
 <script>
+
+datetoday = new Date();
+arrDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+daytoday =  arrDays[datetoday.getDay()];
+document.getElementById("line1").innerText = daytoday;
+
+if (daytoday == "Sunday") {
+    var txt1 = "La Cala America";
+    var txt2 = "bus leaves hotel at 9:30am.";
+    var txt3 = "bus arrives at course at 10:00am.";
+    var txt4 = "first tee time is 10:00am.'";
+    var txt5 = "bus leaves course at  4:00pm.";
+    var txt6 = "bus arrives at hotel at 4:30pm.";
+}
+document.getElementById("line1").innerText = daytoday + "  "  + txt1;
+document.getElementById("line2").innerText = txt2;
+document.getElementById("line3").innerText = txt3;
+document.getElementById("line4").innerText = txt4;
+document.getElementById("line5").innerText = txt5;
+document.getElementById("line5").innerText = txt6;
+
 function hidePage() {
     document.getElementById("page").classList.toggle("hidepage");
     
