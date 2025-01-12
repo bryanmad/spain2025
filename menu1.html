@@ -228,14 +228,14 @@ if (daytoday == "Sunday") {
     var txt4 = "first tee time is 10:00am.";
     var txt5 = "bus leaves course at  4:00pm.";
     var txt6 = "bus arrives at hotel at 4:30pm.";
-    var txt7 = "notes:/nthese are  the timings etc."}
+    var txt7 = "notes:<br>these are  the timings etc."}
 document.getElementById("line1").innerText = daytoday + " at  "  + txt1;
 document.getElementById("line2").innerText = txt2;
 document.getElementById("line3").innerText = txt3;
 document.getElementById("line4").innerText = txt4;
 document.getElementById("line5").innerText = txt5;
 document.getElementById("line6").innerText = txt6;
-document.getElementById("line7").innerText = txt7;
+document.getElementById("line7").innerHTML = txt7;
 function hidePage() {
     document.getElementById("page").classList.toggle("hidepage");
     
