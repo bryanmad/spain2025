@@ -118,12 +118,53 @@ input[type=checkbox] {
   }
 }
 
+.hidepage {
+    
+    display: none;
+}
+
+.head {
+    
+    font-size: 3vh;
+    padding-left: 10%;
+}
 </style>
 
 </head>
 
   <body>
-<input type="checkbox" id="overlay-input" />
+  
+  <div id="page">
+ <br><br><br><br><br><br><br><br>
+ <img src="LaCalaAmerica.jpg" alt="p"  style="width:100%;">
+<table align="left" border="1" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
+	<tbody>
+        <tr>
+			<td class="head">day:</td>
+            </tr>
+            <tr>
+			<td class="head">course:</td>
+            </tr>
+            <tr>
+			<td class="head">hotel departure time:</td>
+            </tr>
+            <tr>
+            <td class="head">first tee time:</td>
+            </tr>
+            <tr>
+			<td class="head">pickup time:</td>
+            </tr>
+            <tr>
+			<td class="head">notes:</td>
+		</tr>
+		
+ </tbody>
+ </table>
+  
+  </div>
+  
+  
+<input type="checkbox" id="overlay-input" onclick="hidePage()"/>
 <label for="overlay-input" id="overlay-button"><span></span></label>
   <div id="overlay">
     <ul>
@@ -136,7 +177,10 @@ input[type=checkbox] {
     </ul>
   </div>
 <script>
-
+function hidePage() {
+    document.getElementById("page").classList.toggle("hidepage");
+    
+}
 </script>
 </body>
 </html>
