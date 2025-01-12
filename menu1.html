@@ -91,7 +91,7 @@ input[type=checkbox] {
 #overlay {
   height: 88vh;
   width: 100vw;
-  background: salmon;
+  background: black;
   z-index: 2;
   visibility: hidden;
   position: fixed;
@@ -159,39 +159,44 @@ img {
   z-index: 0;
 }
 
+#blankli {
+    background: black;
+    height: calc(88vh / 6);
+}
+
 #mondayli {
     background: #347B98;
-    height: calc(88vh / 5);
+    height: calc(88vh / 6);
     width: 100%;
 }
 
 #tuesdayli {
     background: #FE2712;
-    height: calc(88vh / 5);
+    height: calc(88vh / 6);
     width: 100%;
 }
 
 #wednesdayli {
     background: #347B98;
-    height: calc(88vh / 5);
+    height: calc(88vh / 6);
     width: 100%;
 }
 
 #thursdayli {
     background: #A3BA4F;
-    height: calc(88vh / 5);
+    height: calc(88vh / 6);
     width: 100%;
 }
 
 #fridayli {
     background: #347B98;
-    height: calc(88vh / 5);
+    height: calc(88vh / 6);
     width: 100%;
 }
 
 #finalli {
     background: violet;
-    height: calc(88vh / 5);
+    height: calc(88vh / 6);
     width: 100%;
 }
 
@@ -243,6 +248,7 @@ img {
 <label for="overlay-input" id="overlay-button"><span></span></label>
   <div id="overlay">
     <ul>
+      <li id="blankli"></li>
       <li id="mondayli"><a href="#" id="monday">Monday - La Cala America</a></li>
       <li id="tuesdayli"><a href="#" id="tuesday">Tuesday - Cabopino</a></li>
       <li id="wednesdayli"><a href="#" id="wednesday">Wednesday - La Cala Europa</a></li>
