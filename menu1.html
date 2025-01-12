@@ -159,6 +159,43 @@ img {
   z-index: 0;
 }
 
+#mondayli {
+    background: red;
+    height: calc(88vh / 5);
+    width: 100%;
+}
+
+#tuesdayli {
+    background: orange;
+    height: calc(88vh / 5);
+    width: 100%;
+}
+
+#wednesdayli {
+    background: yellow;
+    height: calc(88vh / 5);
+    width: 100%;
+}
+
+#thursdayli {
+    background: green;
+    height: calc(88vh / 5);
+    width: 100%;
+}
+
+#fridayli {
+    background: blue;
+    height: calc(88vh / 5);
+    width: 100%;
+}
+
+#finalli {
+    background: violet;
+    height: calc(88vh / 5);
+    width: 100%;
+}
+
+
 
 
 </style>
@@ -206,14 +243,16 @@ img {
 <label for="overlay-input" id="overlay-button"><span></span></label>
   <div id="overlay">
     <ul>
-      <li><a href="#">Monday</a></li>
-      <li><a href="#">Tuesday</a></li>
-      <li><a href="#">Wednesday</a></li>
-      <li><a href="#">Thursday</a></li>
-      <li><a href="#">Friday</a></li>
-      <li><a href="#">Final results</a></li>
+      <li id="mondayli"><a href="#" id="monday">Monday - La Cala America</a></li>
+      <li id="tuesdayli"><a href="#" id="tuesday">Tuesday - Cabopino</a></li>
+      <li id="wednesdayli"><a href="#" id="wednesday">Wednesday - La Cala Europa</a></li>
+      <li id="thursdayli"><a href="#" id="thursday">Thursday - Mijas Los Lagos</a></li>
+      <li id="fridayli"><a href="#" id="friday">Friday - La Cala Asia</a></li>
+      <li id="finalli"><a href="#" id="final">Final</a></li>
     </ul>
   </div>
+  
+
 <script>
 
 datetoday = new Date();
@@ -229,6 +268,7 @@ if (daytoday == "Sunday") {
     var txt5 = "bus leaves course at  4:00pm.";
     var txt6 = "bus arrives at hotel at 4:30pm.";
     var txt7 = "notes:<br>these are  the timings etc."}
+    
 document.getElementById("line1").innerText = daytoday + " -  "  + txt1;
 document.getElementById("line2").innerText = txt2;
 document.getElementById("line3").innerText = txt3;
@@ -236,9 +276,9 @@ document.getElementById("line4").innerText = txt4;
 document.getElementById("line5").innerText = txt5;
 document.getElementById("line6").innerText = txt6;
 document.getElementById("line7").innerHTML = txt7;
+
 function hidePage() {
     document.getElementById("page").classList.toggle("hidepage");
-    
 }
 </script>
 </body>
