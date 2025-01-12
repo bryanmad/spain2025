@@ -127,9 +127,20 @@ input[type=checkbox] {
 }
 
 .head {
-    
+    color: white;
     font-size: 2.5vh;
     padding-left: 10%;
+}
+
+#line1 {
+    font-size: 3vh;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    
+    
+    text-align: center;
 }
 </style>
 
@@ -140,6 +151,7 @@ input[type=checkbox] {
   <div id="page">
  
  <img src="LaCalaAmerica.jpg" alt="p"  style="width:100%;">
+ <br><br>
 <table align="left" border="1" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
 	<tbody>
         <tr>
@@ -197,12 +209,12 @@ if (daytoday == "Sunday") {
     var txt5 = "bus leaves course at  4:00pm.";
     var txt6 = "bus arrives at hotel at 4:30pm.";
 }
-document.getElementById("line1").innerText = daytoday + "  "  + txt1;
+document.getElementById("line1").innerText = daytoday + " at  "  + txt1;
 document.getElementById("line2").innerText = txt2;
 document.getElementById("line3").innerText = txt3;
 document.getElementById("line4").innerText = txt4;
 document.getElementById("line5").innerText = txt5;
-document.getElementById("line5").innerText = txt6;
+document.getElementById("line6").innerText = txt6;
 
 function hidePage() {
     document.getElementById("page").classList.toggle("hidepage");
