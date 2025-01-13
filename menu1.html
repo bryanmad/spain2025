@@ -3,15 +3,15 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-      <title>selby</title>
+      <title>spain2025</title>
       <meta content="Bryan M" name="author" />
-      <link rel="manifest" href="bricks.webmanifest">
       <link href="bricksicon.png" rel="icon" type="image/x-icon" />
       <link rel="apple-touch-icon" sizes="180x180" href="bricksicon.png" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 <style>
 body {
+  box-sizing: border-box;
   background: black; //mediumSeaGreen;
   margin: 0;
   font-family: arial;
@@ -215,7 +215,10 @@ img {
 }
 
 
-
+.addselection{
+    //border: 2px solid lime;
+    opacity: 50%;
+}
 
 </style>
 
@@ -263,12 +266,12 @@ img {
   <div id="overlay">
     <ul>
       <li id="blankli"><a></a></li>
-      <li id="mondayli"><a href="#" id="monday">Monday - La Cala America</a></li>
-      <li id="tuesdayli"><a href="#" id="tuesday">Tuesday - Cabopino</a></li>
-      <li id="wednesdayli"><a href="#" id="wednesday">Wednesday - La Cala Europa</a></li>
-      <li id="thursdayli"><a href="#" id="thursday">Thursday - Mijas Los Lagos</a></li>
-      <li id="fridayli"><a href="#" id="friday">Friday - La Cala Asia</a></li>
-      <li id="finalli"><a href="#" id="final">Final</a></li>
+      <li id="mondayli" onclick="highLight(this.id)"><a href="#" id="monday">Monday - La Cala America</a></li>
+      <li id="tuesdayli" onclick="highLight(this.id)"><a href="#" id="tuesday">Tuesday - Cabopino</a></li>
+      <li id="wednesdayli" onclick="highLight(this.id)"><a href="#" id="wednesday">Wednesday - La Cala Europa</a></li>
+      <li id="thursdayli" onclick="highLight(this.id)"><a href="#" id="thursday">Thursday - Mijas Los Lagos</a></li>
+      <li id="fridayli" onclick="highLight(this.id)"><a href="#" id="friday">Friday - La Cala Asia</a></li>
+      <li id="finalli" onclick="highLight(this.id)"><a href="#" id="final">Final</a></li>
     </ul>
   </div>
   
@@ -287,7 +290,18 @@ if (daytoday == "Sunday") {
     var txt4 = "first tee time is 10:00am.";
     var txt5 = "bus leaves course at  4:00pm.";
     var txt6 = "bus arrives at hotel at 4:30pm.";
-    var txt7 = "notes:<br>these are  the timings etc."}
+    var txt7 = "notes:<br>these are  the timings etc."
+    }
+    
+    if (daytoday == "Monday") {
+    var txt1 = "La Cala America";
+    var txt2 = "bus leaves hotel at 9:30am.";
+    var txt3 = "bus arrives at course at 10:00am.";
+    var txt4 = "first tee time is 10:00am.";
+    var txt5 = "bus leaves course at  4:00pm.";
+    var txt6 = "bus arrives at hotel at 4:30pm.";
+    var txt7 = "notes:<br>these are  the timings etc.";
+    }
     
 document.getElementById("line1").innerText = daytoday + " -  "  + txt1;
 document.getElementById("line2").innerText = txt2;
@@ -300,6 +314,11 @@ document.getElementById("line7").innerHTML = txt7;
 function hidePage() {
     document.getElementById("page").classList.toggle("hidepage");
 }
+function highLight(id) {
+    document.getElementById(id).classList.toggle("addselection");
+}
+
+
 </script>
 </body>
 </html>
