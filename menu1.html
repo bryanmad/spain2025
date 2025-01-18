@@ -88,23 +88,14 @@ input[type=checkbox] {
   }
 }
 
-#overlay {
-  height: 88vh;
-  width: 100vw;
-  background: black;
-  z-index: 2;
-  visibility: hidden;
-  position: fixed;
-  &.active {
-    visibility: visible;
-  }
+
   ul {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    height: 88vh;
+    height: 100%; //88vh;
     padding-left: 0;
     list-style-type: none;
     li {
@@ -119,12 +110,8 @@ input[type=checkbox] {
       }
     }
   }
-}
 
-.hidepage {
-    
-    display: none;
-}
+
 
 .head {
     color: white;
@@ -151,87 +138,93 @@ img {
   //top: 25px;
   //left: 25px;
   
-}
-.mainimg {
-  z-index: -5;
-}
-.secondimg {
-  z-index: 0;
+  //display: inline-block;
 }
 
-#blankli {
-    background: black;
-    height: calc(88vh / 7);
-    width: 100%;
-}
+
 
 #mondayli {
     background: #347B98;
-    height: calc(88vh / 7);
+    height: calc(70vh / 6);
     width: 100%;
-   // padding-top: 10vh;
+   //padding-top: 10vh;
    text-align: center;
-   line-height: calc(88vh / 7);
+   line-height: calc(70vh / 6);
 }
 
 #tuesdayli {
     background: #FE2712;
-    height: calc(88vh / 7);
+    height: calc(70vh / 6);
     width: 100%;
      text-align: center;
-   line-height: calc(88vh / 7);
+   line-height: calc(70vh / 6);
 }
 
 #wednesdayli {
     background: #347B98;
-    height: calc(88vh / 7);
+    height: calc(70vh / 6);
     width: 100%;
      text-align: center;
-   line-height: calc(88vh / 7);
+   line-height: calc(70vh / 6);
 }
 
 #thursdayli {
     background: #A3BA4F;
-    height: calc(88vh / 7);
+    height: calc(70vh / 6);
     width: 100%;
      text-align: center;
-   line-height: calc(88vh / 7);
+   line-height: calc(70vh / 6);
 }
 
 #fridayli {
     background: #347B98;
-    height: calc(88vh / 7);
+    height: calc(70vh / 6);
     width: 100%;
      text-align: center;
-   line-height: calc(88vh / 7);
+   line-height: calc(70vh / 6);
 }
 
 #finalli {
     background: violet;
-    height: calc(88vh / 7);
+  height: calc(70vh / 6);
     width: 100%;
      text-align: center;
-   line-height: calc(88vh / 7);
+   line-height: calc(70vh / 6);
 }
 
-
-.addselection{
-    //border: 2px solid lime;
-    opacity: 50%;
+#blankdiv {
+    height: 28vh;
 }
 
+#secondblankdiv {
+    // height: 5vh;
+}
+
+#page {
+    display: block;
+    padding-top: 10%;
+}
+
+#overlay {
+    display: none;
+}
 </style>
 
 </head>
 
   <body>
   
-  <div id="page">
+ <div id="images">
+
+ <img src="LaCalaAmerica.jpg" alt="a"  style="height:30vh;">
+ </div>
  
- <img src="LaCalaAmerica.jpg" alt="p" id="mainimg" style="width:100%;">
- <img src="LaCalaLogo.png" alt="p" id="second" style="width:25%;">
- <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<table align="left" border="0" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
+ <div id="blankdiv">
+</div>
+ 
+ 
+ <div id="page">
+<table align="left" border="0" cellpadding="0" cellspacing="0" style="height: 85%; width: 100%;">
 	<tbody>
         <tr>
 			<td class="head" id="line1">day:</td>
@@ -257,15 +250,16 @@ img {
 		
  </tbody>
  </table>
-  
-  </div>
-  
+
+  </div> <!-- page -->
   
 <input type="checkbox" id="overlay-input" onclick="hidePage()"/>
 <label for="overlay-input" id="overlay-button"><span></span></label>
+
   <div id="overlay">
+  
     <ul>
-      <li id="blankli"><a></a></li>
+
       <li id="mondayli" onclick="highLight(this.id)"><a href="#" id="monday">Monday - La Cala America</a></li>
       <li id="tuesdayli" onclick="highLight(this.id)"><a href="#" id="tuesday">Tuesday - Cabopino</a></li>
       <li id="wednesdayli" onclick="highLight(this.id)"><a href="#" id="wednesday">Wednesday - La Cala Europa</a></li>
@@ -274,14 +268,31 @@ img {
       <li id="finalli" onclick="highLight(this.id)"><a href="#" id="final">Final</a></li>
     </ul>
   </div>
-  
+
 
 <script>
 
 datetoday = new Date();
 arrDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 daytoday =  arrDays[datetoday.getDay()];
-document.getElementById("line1").innerText = daytoday;
+//document.getElementById("line1").innerText = daytoday;
+
+
+// default
+ var txt1 = "Spain 2025 golf trip";
+ var txt2 = "Monday - La Cala America.";
+ var txt3 = "Tuesday - Cabopino.";
+ var txt4 = "Wednesday - La Cala Europa.";
+ var txt5 = "Thursday - Mijas Los Lagos.";
+ var txt6 = "Friday - La Cala Asia.";
+ var txt7 = "some other notes.";
+ 
+
+
+
+
+
+
 
 if (daytoday == "Sunday") {
     var txt1 = "La Cala America";
@@ -294,6 +305,7 @@ if (daytoday == "Sunday") {
     }
     
     if (daytoday == "Monday") {
+        
     var txt1 = "La Cala America";
     var txt2 = "bus leaves hotel at 9:30am.";
     var txt3 = "bus arrives at course at 10:00am.";
@@ -303,7 +315,7 @@ if (daytoday == "Sunday") {
     var txt7 = "notes:<br>these are  the timings etc.";
     }
     
-document.getElementById("line1").innerText = daytoday + " -  "  + txt1;
+document.getElementById("line1").innerText = txt1;
 document.getElementById("line2").innerText = txt2;
 document.getElementById("line3").innerText = txt3;
 document.getElementById("line4").innerText = txt4;
@@ -312,11 +324,115 @@ document.getElementById("line6").innerText = txt6;
 document.getElementById("line7").innerHTML = txt7;
 
 function hidePage() {
-    document.getElementById("page").classList.toggle("hidepage");
+    
+    alert(document.getElementById("page").style.display)
+    
+    if (document.getElementById("page").style.display == "none") {
+         document.getElementById("overlay").style.display = "none"
+         document.getElementById("page").style.display = "block"
+    } else {
+         document.getElementById("overlay").style.display = "block"
+         document.getElementById("page").style.display = "none"
+    }
+    
+    
+    
+    
+    //document.getElementById("page").classList.toggle("hidepage");
 }
+
 function highLight(id) {
-    document.getElementById(id).classList.toggle("addselection");
+   // vibrate if android phone or "pop" for anything else 
+   const canVibrate = window.navigator.vibrate
+   if (canVibrate) {
+      window.navigator.vibrate(50)
+   } else {
+      var audio = new Audio('pop.wav');
+      audio.play();   
+   }   
+   
+    
+    if (id == "mondayli") {
+        window.location.assign("monday.html");   
+    }
+    if (id == "tuesdayli") {
+        window.location.assign("tuesday.html");   
+    }
+    if (id == "wednesdayli") {
+        window.location.assign("wednesday.html");   
+    }
+    if (id == "thursdayli") {
+        window.location.assign("thursday.html");   
+    }
+    if (id == "fridayli") {
+        window.location.assign("friday.html");   
+    }
+    if (id == "finalli" ) {
+        window.location.assign("finalli.html");   
+    }
+
+ }
+
+
+function clicked(id) {
+   // resize
+   //document.getElementById(id).classList.toggle("half");
+   // vibrate if android phone or "pop" for anything else 
+   const canVibrate = window.navigator.vibrate
+   if (canVibrate) {
+      window.navigator.vibrate(50)
+   } else {
+      var audio = new Audio('pop.wav');
+      audio.play();   
+   }   
+   
+   document.getElementById(id).classList.toggle("half")
+   
+  
+  
+     // setTimeout(function() {
+      document.getElementById(id).classList.toggle("half")
+      if (id == "oneone") {
+         window.location.assign("monday.html");   
+      }
+      if (id == "twoone") {
+         window.location.assign("tuesday.html");
+      }
+      if (id == "threeone") {   
+         window.location.assign("wednesday.html"); 
+      }  
+     // },500 )
+  
+   
+   
+   
+      
 }
+
+
+
+
+//monday
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vSFuTT5WoiC3w5CVkhxqHK9hSzwqaHqW6jykll_KjWtGP97iGnANXyA5Vr3ArBS2FkYQFMWLyxpvipl/pubhtml?gid=1753542789&single=true
+
+//tuesday
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vSFuTT5WoiC3w5CVkhxqHK9hSzwqaHqW6jykll_KjWtGP97iGnANXyA5Vr3ArBS2FkYQFMWLyxpvipl/pubhtml?gid=2058017908&single=true
+
+//wednesday
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vSFuTT5WoiC3w5CVkhxqHK9hSzwqaHqW6jykll_KjWtGP97iGnANXyA5Vr3ArBS2FkYQFMWLyxpvipl/pubhtml?gid=714475951&single=true
+
+//thursday
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vSFuTT5WoiC3w5CVkhxqHK9hSzwqaHqW6jykll_KjWtGP97iGnANXyA5Vr3ArBS2FkYQFMWLyxpvipl/pubhtml?gid=1277775461&single=true
+
+
+//friday
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vSFuTT5WoiC3w5CVkhxqHK9hSzwqaHqW6jykll_KjWtGP97iGnANXyA5Vr3ArBS2FkYQFMWLyxpvipl/pubhtml?gid=372607619&single=true
+
+
+//final
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vSFuTT5WoiC3w5CVkhxqHK9hSzwqaHqW6jykll_KjWtGP97iGnANXyA5Vr3ArBS2FkYQFMWLyxpvipl/pubhtml?gid=1676361864&single=true
+
+
 
 
 </script>
