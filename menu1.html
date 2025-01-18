@@ -259,7 +259,6 @@ img {
   <div id="overlay">
   
     <ul>
-
       <li id="mondayli" onclick="highLight(this.id)"><a href="#" id="monday">Monday - La Cala America</a></li>
       <li id="tuesdayli" onclick="highLight(this.id)"><a href="#" id="tuesday">Tuesday - Cabopino</a></li>
       <li id="wednesdayli" onclick="highLight(this.id)"><a href="#" id="wednesday">Wednesday - La Cala Europa</a></li>
@@ -325,8 +324,6 @@ document.getElementById("line7").innerHTML = txt7;
 
 function hidePage() {
     
-    alert(document.getElementById("page").style.display)
-    
     if (document.getElementById("page").style.display == "none") {
          document.getElementById("overlay").style.display = "none"
          document.getElementById("page").style.display = "block"
@@ -334,10 +331,7 @@ function hidePage() {
          document.getElementById("overlay").style.display = "block"
          document.getElementById("page").style.display = "none"
     }
-    
-    
-    
-    
+
     //document.getElementById("page").classList.toggle("hidepage");
 }
 
