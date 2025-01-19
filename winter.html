@@ -20,7 +20,6 @@
 
     html {
       height: 100vh;
-
     }
 
     body {
@@ -28,13 +27,13 @@
       height: 100vh;
       /* linear-gradient syntax */
       background: indigo;
-      background: -webkit-linear-gradient(to top, slateBlue 0%, dodgerBlue 100%);
-      /* Chrome 10-25, Safari 5.1-6 */
-      //background: linear-gradient(to top, #007adf 0%, #00ecbc 100%);
       
+     
+      /* Chrome 10-25, Safari 5.1-6 */
       background: linear-gradient(to top, slateBlue 0%, dodgerBlue 100%);
       
       /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: -webkit-linear-gradient(to top, slateBlue 0%, dodgerBlue 100%);
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -khtml-user-select: none;
@@ -151,7 +150,6 @@
       z-index: 4;
       border: 5px solid white;
       box-shadow: 10px 10px 25px black;
-  //    display: none;
     }
 
     .bubble_menu {
@@ -397,7 +395,7 @@
 
     .contentinfo {
       font-family: 'Kalam';
-      color: white; //silver;
+      color: white;
       font-size: 2vh;
     }
 
@@ -430,13 +428,6 @@
 
     #xdcomp1 {
       font-size: 3vh;
-      //animation: fadeIn 2s ease-in;
-    }
-
-
-
-    #nav {
-     // animation: fadeIn 1s ease-in;
     }
 
     @keyframes fadeIn {
@@ -515,6 +506,8 @@
 
     /* end of marque CSS */
 
+
+
     .blob {
       -webkit-animation: blob 0.5s linear;
       -moz-animation: blob 0.5s linear;
@@ -575,8 +568,6 @@
       }
     }
 
-
-
     #warning, #notavailable {
       display: none;
       position: absolute;
@@ -607,19 +598,10 @@
       padding-top: 40vh;
     }
         
-        
-    #tooltip {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        }
-        
-        #cyantxt {
-            color:  white;
-        }
-        
-        
-        
+    #cyantxt {
+      color:  white;
+    }
+ 
     </style>
 
   <body oncontextmenu="return false;">
@@ -629,7 +611,9 @@
     
   
     <div id="notavaialble"><img id="img" style="padding-top: 40vh; padding-right: 10vw;float: right; border: 0; height: 40vh; width: 80vw; " src="notavailable.png" alt="na"></div>
-  -->  
+ 
+    -->  
+    
     <div id="warning">Not available in landscape orientation</div>
 
 
@@ -1013,11 +997,8 @@
     // runs on start or refresh
     //====================================
 
-   
-      getNextComps();
+    getNextComps();
     
-
-
     //=====================================
     // functions
     //=====================================
@@ -1030,45 +1011,51 @@
       dlist4 = "Thursday - Mijas Los Lagos" 
       dlist5 = "Friday - La Cala Asia" 
 
-      if (dd.getDay() == 0) {
+      if (dd.getDay() == 1) {
           dlist1 = '<a id="cyantxt">Today - La Cala America</a>'
       }
 
-     dlist = dlist1 + "<br>" + dlist2 + "<br>" + dlist3 + "<br>" + dlist4 + "<br>" + dlist5 + "<br>" 
+      if (dd.getDay() == 2) {
+          dlist2 = '<a id="cyantxt">Today - Cabopino</a>'
+      }
+
+      if (dd.getDay() == 3) {
+          dlist3 = '<a id="cyantxt">Today - La Cala Asia</a>'
+      }
+
+      if (dd.getDay() == 4) {
+          dlist4 = '<a id="cyantxt">Today - Mijas Los Lagos</a>'
+      }
+
+      if (dd.getDay() == 5) {
+          dlist5 = '<a id="cyantxt">Today - La Cala Europa</a>'
+      }
 
 
-      
+
+
+
+
+
+      dlist = dlist1 + "<br>" + dlist2 + "<br>" + dlist3 + "<br>" + dlist4 + "<br>" + dlist5 + "<br>" 
+
       document.getElementById("xdcomp1").innerHTML = dlist;
-      // get rid of bubble
- //     document.getElementById("tooltip").style.display = "none";
+
       // show menu
       document.getElementById("nav").style.display = "block";
 
-  
-
     }
-
 
     // resize flagicon
     function enlarge() {
       document.getElementById('img').classList.toggle("half");
-      //x = document.getElementById('flagicon').innerHTML
-     // document.getElementById('flagicon').innerHTML =
-     //    x.replace("seniorswhite.png","winterqrcode.png");
     }
-
-
-
-
-
 
     // prevent default img menu of options
     document.addEventListener('contextmenu', event => {
       event.preventDefault()
     })
 
-
-    
     </script>
   </body>
 
