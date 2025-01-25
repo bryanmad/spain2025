@@ -810,23 +810,31 @@
         opacity: '1'
       }, Math.floor(Math.random() * 500) + 400);
     
-/*
-      // grayout score entry and leaderboard if not a comp day
+
+      // grayout
+      grayedout == "yes"
       if (grayedout == "yes") {
-        // disable 3 buttons
+        // disable buttons
+        one.animate({
+          opacity: '0.2'
+        }, 800);
         two.animate({
           opacity: '0.2'
         }, 800);
-
+        three.animate({
+          opacity: '0.2'
+        }, 800);
+        four.animate({
+          opacity: '0.2'
+        }, 800);
         five.animate({
           opacity: '0.2'
         }, 800);
-
         six.animate({
           opacity: '0.2'
         }, 800);
       }
-*/
+
       menuIsOpen = true;
       // hide pressbutton
       $("#pressbutton").html("");
@@ -916,7 +924,7 @@
       isTop = true;
     });
 
-
+/*
     function doOne() {
       // put menu back then move to hcp page
       setTimeout(function() {
@@ -979,7 +987,7 @@
       }
     }
 
-
+*/
     function doSeven() {
       // put menu back then move to results page
       setTimeout(function() {
