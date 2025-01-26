@@ -172,7 +172,8 @@
     #four,
     #five,
     #six,
-    #seven {
+    #seven,
+    #eight {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -225,6 +226,12 @@
 
     #seven {
       background-color: mediumSlateBlue;
+      display: flex;
+      justify-content: center;
+    }
+    
+    #eight {
+      background-color: gold;
       display: flex;
       justify-content: center;
     }
@@ -317,6 +324,14 @@
       font-family: 'Kalam';
     }
 
+    /*crimson*/
+    #eighttxt {
+      margin: auto;
+      font-size: 20px;
+      color: navy;
+      font-family: 'Kalam';
+    }
+
     #one:active {
       border: 5px solid white; //salmon;
     }
@@ -345,6 +360,10 @@
       border: 5px solid white; //mediumSlateBlue;
     }
 
+    #eight:active {
+      border: 5px solid white; //
+    }
+    
     nav:active {
       border: 5px solid white; //dodgerBlue;
     }
@@ -628,6 +647,7 @@
       <div class="bubble" id="five" onclick="doFive();"> <a id="fivetxt">Fri</a></div>
       <div class="bubble" id="six" onclick="doSix();"> <a id="sixtxt">Final</a></div>
       <div class="bubble" id="seven" onclick="doSeven();"> <a id="seventxt">Info</a> </div>
+      <div class="bubble" id="eight" onclick="doEight();"> <a id="eighttxt">Leader<br>Board</a> </div>
     </nav>
     <section class="start">
       <div class="content">
@@ -677,6 +697,7 @@
     var five = $('#five');
     var six = $('#six');
     var seven = $('#seven');
+    var eight = $('#eight');
     // menuIcon.click(function() {
     bubblemenu.click(function() {
       if (isTop === true) {
@@ -708,7 +729,7 @@
       five.css('opacity', '0.0');
       six.css('opacity', '0.0');
       seven.css('opacity', '0.0');
-
+      eight.css('opacity', '0.0');
       menuIcon.addClass('is-active');
       one.addClass('shadow');
       two.addClass('shadow');
@@ -717,7 +738,7 @@
       five.addClass('shadow');
       six.addClass('shadow');
       seven.addClass('shadow');
-
+      eight.addClass('shadow');
       // Returns a random integer from 200 to 700:
       //Math.floor(Math.random() * 700) + 200;    
       setTimeout(function() {
@@ -755,7 +776,11 @@
       }, Math.floor(Math.random() * 700) + 100, function() {
         // Animation complete.
       })
-
+      setTimeout(function() {
+        eight.addClass('blob');
+      }, Math.floor(Math.random() * 700) + 100, function() {
+        // Animation complete.
+      })
       setTimeout(function() {
         one.removeClass('blob');
         two.removeClass('blob');
@@ -764,6 +789,7 @@
         five.removeClass('blob');
         six.removeClass('blob');
         seven.removeClass('blob');
+        eight.removeClass('blob');
       }, 2000, function() {
         // Animation complete.
       })
@@ -810,7 +836,12 @@
         opacity: '1'
       }, Math.floor(Math.random() * 500) + 400);
     
-
+      eight.animate({
+        top: '140px',
+        left: '140px',
+        opacity: '1'
+      }, Math.floor(Math.random() * 500) + 400);
+      
       // grayout
       grayedout == "yes"
       if (grayedout == "yes") {
@@ -833,6 +864,9 @@
         six.animate({
           opacity: '0.2'
         }, 800);
+        
+        
+      
       }
 
       menuIsOpen = true;
@@ -852,6 +886,7 @@
         five.removeClass('shadow');
         six.removeClass('shadow');
         seven.removeClass('shadow');
+        eight.removeClass('shadow');
       }, 500);
       setTimeout(function() {
         // move x icon back to hamburger
@@ -905,8 +940,18 @@
         left: '50%'
       }, 200);
       seven.animate({
+        top: '50%'
+      }, 200);
+      seven.animate({
         left: '50%'
       }, 200);
+      eight.animate({
+        top: '50%'
+      }, 200);
+      eight.animate({
+        left: '50%'
+      }, 200);
+      
       menuIsOpen = false;
       isTop = true;
       //one.addClass('blob');
@@ -994,6 +1039,15 @@
         window.location.assign("info.html");
       }, 800);
     }
+    function doEight() {
+      // put menu back then move to results page
+      setTimeout(function() {
+        window.location.assign("info.html");
+      }, 800);
+    }
+    
+    
+    
     //====================================
     // end of menu code
     //====================================
