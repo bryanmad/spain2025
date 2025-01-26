@@ -1014,29 +1014,36 @@
     function getNextComps() {
       dd = new Date(); /* today */
       dlist1 = "Monday - La Cala America"     
-      dlist2 = "Tuesday - Cabopino" 
+      dlist2 = "Tuesday - La Cabopino" 
       dlist3 = "Wednesday - La Cala Europa" 
       dlist4 = "Thursday - Mijas Los Lagos" 
       dlist5 = "Friday - La Cala Asia" 
 
-      if (dd.getDay() == 1) {
-          dlist1 = '<a id="cyantxt">Today - La Cala America</a>'
-      }
+      var dd1 = new Date("2025-10-12"); // start date
+      var dd2 = new Date("2025-10-18"); // end date
 
-      if (dd.getDay() == 2) {
-          dlist2 = '<a id="cyantxt">Today - Cabopino</a>'
-      }
+      if (dd > dd1 && dd < dd2) {
+      
+          if (dd.getDay() == 1) {
+              dlist1 = '<a id="cyantxt">Today - La Cala America</a>'
+          }
 
-      if (dd.getDay() == 3) {
-          dlist3 = '<a id="cyantxt">Today - La Cala Europa</a>'
-      }
+          if (dd.getDay() == 2) {
+              dlist2 = '<a id="cyantxt">Today - La Cabopino</a>'
+          }
 
-      if (dd.getDay() == 4) {
-          dlist4 = '<a id="cyantxt">Today - Mijas Los Lagos</a>'
-      }
+          if (dd.getDay() == 3) {
+              dlist3 = '<a id="cyantxt">Today - La Cala Europa</a>'
+          }
 
-      if (dd.getDay() == 5) {
-          dlist5 = '<a id="cyantxt">Today - La Cala Asia</a>'
+          if (dd.getDay() == 4) {
+              dlist4 = '<a id="cyantxt">Today - Mijas Los Lagos</a>'
+          }
+
+          if (dd.getDay() == 5) {
+              dlist5 = '<a id="cyantxt">Today - La Cala Asia</a>'
+          }
+
       }
 
       dlist = dlist1 + "<br>" + dlist2 + "<br>" + dlist3 + "<br>" + dlist4 + "<br>" + dlist5 + "<br>" 
