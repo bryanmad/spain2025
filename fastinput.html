@@ -909,6 +909,7 @@ arrCourse = [
 		//=============================================================
 		// functions - run when called
 		//=============================================================  
+        
 		//=============================================================
 		// function resetNames()
 		// - gets rid of "selected" names
@@ -944,13 +945,12 @@ arrCourse = [
 		// refresh page
 		location.reload();
 		}
-		
+		//=============================================================
+		// function dropSelected(playerName)
+		// - selects player
+		//=============================================================  
 		// name selected, do stuff
 		function dropSelected(playerName) {
-
-
-         
-
 		   //console.log(playerName)
 			if(playerName == "reset list") {
 		           resetNames();
@@ -1001,8 +1001,8 @@ arrCourse = [
 			}
 			}
 
-	
-			
+	        // recalc in case a player name has changed
+			calcAllHoles()
 			//getScores();
 
 		}
@@ -1013,51 +1013,47 @@ arrCourse = [
 		function toggleDropdown() {
 			// When the user clicks on the button, toggle between hiding and showing the dropdown content
 			document.getElementById("playersDropdown").classList.toggle("show");
-		}
-
-	
-	
+		}	
 		//=================================================================================
-		// put score in the selected player
-		// and move on	
+		// function numberScore(id)
+		// - enter player score and move on	
 		//=================================================================================
 		function numberScore(id) {
-			// id is something like score2
-			// selectedplayer is global 1, 2, 3, 4
-				// id is number button pressed eg. score5
-                
-                // color the button
-				document.getElementById(id).style.color = "black" 
-                document.getElementById(id).style.background = "lime" 
-                
-				currenthole++
-               if (currenthole > 18) {
-                   currenthole = 18
-               }
-					// update score
-					document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
-                 
-                document.getElementById("points" + currenthole).innerText = 
-                pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][2], id.replace("score", ""))    
-                    
-			 totalScores()
-             
-             // put button color back
-             setTimeout (function() {
-                 document.getElementById(id).style.background = "black"
-                 document.getElementById(id).style.color = "lime"
-             },100)
-             
-             
+			// id is number button pressed eg. score5
+            // color the button
+			document.getElementById(id).style.color = "black" 
+            document.getElementById(id).style.background = "lime" 
+            currenthole++
+            if (currenthole > 18) {
+                currenthole = 18
+            }
+			// update score
+			document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
+            document.getElementById("points" + currenthole).innerText = 
+               pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][2], id.replace("score", ""))    
+            // calc totals       
+			totalScores()
+            // put button color back
+            setTimeout (function() {
+               document.getElementById(id).style.background = "black"
+               document.getElementById(id).style.color = "lime"
+            },100)
 		}
-		
+		//=============================================================
+		// function resethole(id)
+		// - allow restart of score entry from a point
+		//=============================================================  
         function  resethole(id) {
             currenthole = id.replace("hole","");
-            document.getElementById("strokes" + currenthole).style.color = "cyan"
+            document.getElementById("strokes" + currenthole).style.color = "cyan";
             currenthole--;
-            totalScores()
+            // recalc totals
+            totalScores();
         }
-        
+        //=============================================================
+		// function totalScores()
+		// - calc totals
+		//=============================================================  
         function totalScores() {
             totalstrokesfront9 = 0;
             totalstrokesback9 = 0;
@@ -1108,7 +1104,10 @@ arrCourse = [
 	
 	
 
-
+        //=============================================================
+		// function arrDeepCopy(aObject)
+		// - helper function to deep copy array
+		//=============================================================  
 		// helper function to deep copy array
 		function arrDeepCopy(aObject) {
 			// deep copy array
@@ -1126,8 +1125,10 @@ arrCourse = [
 		}
 
 	
-
-		// convert scores to stableford points
+        //=============================================================
+		// function pointsCalc(xhcp, xpar, xsi, xscore)
+		// - convert scores to stableford points
+		//=============================================================  
 		function pointsCalc(xhcp, xpar, xsi, xscore) {
 	console.log(xhcp +","+ xpar+","+xsi+","+xscore+" = ")	
 			hcp = parseInt(xhcp)
@@ -1166,11 +1167,7 @@ arrCourse = [
 		console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
 				return points;
 			}
-			
-			
-			
-			
-			
+
 		}
 
 
@@ -1367,8 +1364,18 @@ setTimeout(function() {
 		}
 	
 
- 
- 
+function calcAllHoles() {
+     
+ for(var i = 1; i <= 18; i++) {
+     temp = document.getElementById("strokes" + i).innerText
+     document.getElementById("points" + i).innerText = pointsCalc(player1hcp, 
+                                                                  arrCourse[i][1],
+                                                                  arrCourse[i][2],
+                                                                  document.getElementById("strokes" + i).innerText
+                                                                  );	
+ }
+ totalScores();
+}
 		</script>
 </body>
 
