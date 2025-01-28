@@ -843,7 +843,7 @@
       }, Math.floor(Math.random() * 500) + 400);
       
       // grayout
-      grayedout == "yes"
+      grayedout = "no"
       if (grayedout == "yes") {
         // disable buttons
         one.animate({
@@ -864,8 +864,9 @@
         six.animate({
           opacity: '0.2'
         }, 800);
-        
-        
+        seven.animate({
+          opacity: '0.2'
+        }, 800);
         eight.animate({
           opacity: '0.2'
         }, 800);
@@ -971,12 +972,12 @@
       isTop = true;
     });
 
-/*
+
     function doOne() {
       // put menu back then move to hcp page
       setTimeout(function() {
         window.location.assign("monday.html");
-      }, 1000);
+      }, 800);
     }
 
 
@@ -985,8 +986,8 @@
       if (grayedout == "no") {
         setTimeout(function() {
           // put menu back then move to score entry page
-          window.location.assign("scoreentry.html");
-        }, 1000);
+          window.location.assign("tuesday.html");
+        }, 800);
       } else {
         noCompMsg();
       }
@@ -996,16 +997,16 @@
     function doThree() {
       // put menu back then move to twos page
       setTimeout(function() {
-        window.location.assign("twos.html");
-      }, 1000);
+        window.location.assign("wednesday.html");
+      }, 800);
     }
 
 
     function doFour() {
       // put menu back then move to results page
       setTimeout(function() {
-        window.location.assign("results.html");
-      }, 1000);
+        window.location.assign("thursday.html");
+      }, 800);
     }
 
 
@@ -1014,8 +1015,8 @@
       if (grayedout == "no") {
         // put menu back then move to results page
         setTimeout(function() {
-          window.location.assign("leaderboard.html");
-        }, 1000);
+          window.location.assign("friday.html");
+        }, 800);
       } else {
         noCompMsg();
       }
@@ -1027,28 +1028,27 @@
       if (grayedout == "no") {
         // put menu back then move to results page
         setTimeout(function() {
-          window.location.assign("scoreentry4ball.html");
-        }, 1000);
+          window.location.assign("final.html");
+        }, 800);
       } else {
         noCompMsg();
       }
     }
 
-*/
     function doSeven() {
       // put menu back then move to results page
       setTimeout(function() {
         window.location.assign("info.html");
       }, 800);
     }
-    /*
+    
     function doEight() {
       // put menu back then move to results page
       setTimeout(function() {
-        window.location.assign("info.html");
+        window.location.assign("leaderboard.html");
       }, 800);
     }
-    */
+    
     
     
     //====================================

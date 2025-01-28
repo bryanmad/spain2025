@@ -413,11 +413,11 @@
 		</tr>
 		<tr>
 			<td>total</td>
-			<td id="front9strokes">&nbsp;</td>
-			<td id="front9points">&nbsp;</td>
+			<td id="front9strokes">0</td>
+			<td id="front9points">0</td>
             <td>total</td>
-			<td id="back9strokes">&nbsp;</td>
-			<td id="back9points">&nbsp;</td>
+			<td id="back9strokes">0</td>
+			<td id="back9points">0</td>
 		</tr>
         <tr>
 			<td colspan="2"><div class="small scorelow" id="score1" onclick="numberScore(this.id)">1</div></td>
@@ -602,7 +602,7 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 			}
 			if(day == 2) {
 			        console.log(day + " Tuesday")
-			        course = "Cabopino"
+			        course = "La Cabopino"
 			        fullday = "Tuesday";
 				setupTuesdayCourse()
 			}
@@ -810,6 +810,10 @@ arrCourse = [
                 arrPlayers = arrPlayers.filter(function(el) {return el != "";})
                 arrHcps = arrHcps.filter(function(el) {return el != "";})
                 
+                
+                
+                
+                
 			       dd = new Date();
 			       day = dd.getDay();
 			
@@ -952,8 +956,8 @@ arrCourse = [
 		// name selected, do stuff
 		function dropSelected(playerName) {
 		   //console.log(playerName)
-			if(playerName == "reset list") {
-		           resetNames();
+			if(playerName == "reset input") {
+		           resetInput();
 	      } else {
 				// retrieve dropdown info
 			for(var k = 0; k < arrPlayers.length; k++) {
@@ -1023,7 +1027,17 @@ arrCourse = [
             // color the button
 			document.getElementById(id).style.color = "black" 
             document.getElementById(id).style.background = "lime" 
+            
             currenthole++
+            
+            // color the hole
+            for(var i = 1; i <= 18; i++) {
+                document.getElementById("hole" + i).style.color = "cyan" 
+                document.getElementById("hole" + i).style.background = "black"  
+            }    
+            document.getElementById("hole" + currenthole).style.color = "black" 
+            document.getElementById("hole" + currenthole).style.background = "lime"
+            
             if (currenthole > 18) {
                 currenthole = 18
             }
@@ -1365,17 +1379,29 @@ setTimeout(function() {
 	
 
 function calcAllHoles() {
-     
+ var teststring = "0123456789";    
  for(var i = 1; i <= 18; i++) {
      temp = document.getElementById("strokes" + i).innerText
-     document.getElementById("points" + i).innerText = pointsCalc(player1hcp, 
-                                                                  arrCourse[i][1],
-                                                                  arrCourse[i][2],
-                                                                  document.getElementById("strokes" + i).innerText
-                                                                  );	
+     if (teststring.indexOf(temp) > -1) {
+         document.getElementById("points" + i).innerText = pointsCalc(player1hcp, 
+                                                           arrCourse[i][1],
+                                                           arrCourse[i][2],
+                                                           document.getElementById("strokes" + i).innerText
+                                                           );	
+     }
  }
+     
  totalScores();
 }
+
+function resetInput() {
+    
+  window.location.reload();  
+   
+    
+    
+}
+
 		</script>
 </body>
 
