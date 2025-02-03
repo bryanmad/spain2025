@@ -309,6 +309,7 @@
     }
     
    #acceptpanel {
+       display: none;
        position: fixed;
        //top: 20vh;
        
@@ -1082,8 +1083,9 @@ arrCourse = [
             document.getElementById("hole" + currenthole).style.color = "black" 
             document.getElementById("hole" + currenthole).style.background = "lime"
             
-            if (currenthole > 18) {
+            if (currenthole >= 18) {
                 currenthole = 18
+                document.getElementById("acceptpanel").style.display = "block";
             }
 			// update score
 			document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
