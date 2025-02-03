@@ -308,8 +308,39 @@
         
     }
     
-   
+   #acceptpanel {
+       position: fixed;
+       //top: 20vh;
+       
+       bottom: 5vh;
+       //left: 2vw;
+       //right: 20vw;
+
+     border: 1px silver solid;
+       background: black;
+       color: white;
+       font-size: 4vw;
+       padding: 5vw;
+       border-radius: 5px;
+       text-align: center;
+       
+       margin-left: 14vw;
+       //margin-right: 5vw;
+       //margin: auto;
+       //width: 80vw;
+       //height: 40vh;
+   }
     
+.button1 {
+    width: 25vw;
+    height: 10vh;
+    text-align: center;
+    //padding: 2vw;
+   font-size: 4vw;
+    border-radius: 5px;
+    //margin: 5vw;
+    background: silver;
+}
     
 	</style>
 </head>
@@ -321,6 +352,19 @@
 			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
 			<div id="playersDropdown" class="dropdown-content"></div>
 </div>
+
+
+
+
+<div id="acceptpanel">
+Accept to save or Reject to re-edit.
+<br><br>
+<button class="button1">Reject</button>
+<button class="button1">Accept</button>
+</div>
+
+
+
 
 
 
@@ -585,8 +629,8 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 			
 		  //============================================	
 		  // default
-		  console.log(day + " using Monday as default")
-		  			        console.log(day + " Monday")
+		  //console.log(day + " using Monday as default")
+		  			       // console.log(day + " Monday")
 			        course = "La Cala America"
 			        fullday = "Monday";
 				setupMondayCourse()
@@ -595,31 +639,31 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 			
 			
 			if(day == 1) {
-			        console.log(day + " Monday")
+			        //console.log(day + " Monday")
 			        course = "La Cala America"
 			        fullday = "Monday";
 				setupMondayCourse()
 			}
 			if(day == 2) {
-			        console.log(day + " Tuesday")
+			        //console.log(day + " Tuesday")
 			        course = "La Cabopino"
 			        fullday = "Tuesday";
 				setupTuesdayCourse()
 			}
 			if(day == 3) {
-			        console.log(day + " Wednesday")
+			        //console.log(day + " Wednesday")
 			        course = "La Cala Europa"
 			        fullday = "Wednesday";
 				setupWednesdayCourse()
 			}
 			if(day == 4) {
-			        console.log(day + " Thursday")
+			        //console.log(day + " Thursday")
 			        course = "Mijas Los Lagos"
 			        fullday = "Thursday";
 				setupThursdayCourse()
 			}
             if(day == 5) {
-			        console.log(day + " Friday")
+			        //console.log(day + " Friday")
 			        course = "La Cala Asia"
 			        fullday = "Friday";
 				setupFridayCourse()
@@ -1058,8 +1102,14 @@ arrCourse = [
 		// - allow restart of score entry from a point
 		//=============================================================  
         function  resethole(id) {
+            // reset hole current selection
+            for(var i = 1; i <= 18; i++) {
+                document.getElementById("strokes" + i).style.color = "cyan" 
+                document.getElementById("strokes" + i).style.background = "black"  
+            }  
             currenthole = id.replace("hole","");
-            document.getElementById("strokes" + currenthole).style.color = "cyan";
+            document.getElementById("strokes" + currenthole).style.color = "black"
+            document.getElementById("strokes" + currenthole).style.background = "lime";
             currenthole--;
             // recalc totals
             totalScores();
@@ -1144,7 +1194,7 @@ arrCourse = [
 		// - convert scores to stableford points
 		//=============================================================  
 		function pointsCalc(xhcp, xpar, xsi, xscore) {
-	console.log(xhcp +","+ xpar+","+xsi+","+xscore+" = ")	
+	//console.log(xhcp +","+ xpar+","+xsi+","+xscore+" = ")	
 			hcp = parseInt(xhcp)
 			hcp = hcp.toFixed()
 			par = parseInt(xpar)
@@ -1178,7 +1228,7 @@ arrCourse = [
 				if(points < 0) {
 					points = 0;
 				}
-		console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
+		//console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
 				return points;
 			}
 
