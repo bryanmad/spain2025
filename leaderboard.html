@@ -186,14 +186,13 @@ async function getData() {
 )
 	
 	var resultsarray = await dataStream.json();
-	
+	console.log(resultsarray)
 	var dataFound = "no"
 
-
-
-if (resultsarray[0].points == "") {
-document.getElementById("notyet").innerHTML = "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
-}
+    if (resultsarray[0].points == "") {
+        document.getElementById("notyet").innerHTML = 
+           "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
+    }
 
 
 
@@ -213,7 +212,7 @@ document.getElementById("notyet").innerHTML = "<br>Leaderboard ... <a style='col
        if(resultsarray[0].points > 0) {
            dataFound = "yes";
        }
-//  }
+//    }
 
 if (dataFound == "yes") {
 	
@@ -379,7 +378,7 @@ if (dataFound == "yes") {
 			
 
 		document.getElementById("notyet").innerHTML = "<br>Leaderboard for today at " + ddhours + ":" + ddminutes + '<a id="secs">' + ":" + ddseconds + "</a><br><br>";
-		document.getElementById("footer").innerHTML = "Updated every 60 seconds.<br>There is a delay before this information is available in the results'"
+		document.getElementById("footer").innerHTML = "Updated every 60 seconds.<br>There is a delay before this information is available in the results"
 		
 		
 		
