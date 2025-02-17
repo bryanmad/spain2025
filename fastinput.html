@@ -330,6 +330,9 @@
        //margin: auto;
        //width: 80vw;
        //height: 40vh;
+       
+       //opacity: 1;
+       
    }
     
 .button1 {
@@ -358,10 +361,13 @@
 
 
 <div id="acceptpanel">
+<span id="playerx"></span>
+<br><br>
+
 Accept to save or Reject to re-edit.
 <br><br>
-<button class="button1">Reject</button>
-<button class="button1">Accept</button>
+<button class="button1" onclick="rejectButton()">Reject</button>
+<button class="button1" onclick="acceptButton()">Accept</button>
 </div>
 
 
@@ -1075,17 +1081,32 @@ arrCourse = [
             
             currenthole++
             
+            nexthole = currenthole
+            nexthole++
+            
+            if (nexthole >= 18) {
+                nexthole = 18
+          //      document.getElementById("acceptpanel").style.display = "block";
+            }
+            
             // color the hole
             for(var i = 1; i <= 18; i++) {
                 document.getElementById("hole" + i).style.color = "cyan" 
                 document.getElementById("hole" + i).style.background = "black"  
             }    
-            document.getElementById("hole" + currenthole).style.color = "black" 
-            document.getElementById("hole" + currenthole).style.background = "lime"
+            document.getElementById("hole" + nexthole).style.color = "black" 
+            document.getElementById("hole" + nexthole).style.background = "lime"
             
             if (currenthole >= 18) {
                 currenthole = 18
+                var total18points = parseInt(document.getElementById("front9points").innerText) +
+                                    parseInt(document.getElementById("front9points").innerText)
+                
+                document.getElementById("playerx").innerHTML = player1name&nbsp; + total18points + "&nbsp;points"
+                
+                
                 document.getElementById("acceptpanel").style.display = "block";
+
             }
 			// update score
 			document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
@@ -1452,6 +1473,16 @@ function resetInput() {
    
     
     
+}
+
+
+function acceptButton() {
+    document.getElementById("acceptpanel").style.display = "none";
+    submitForm()
+}
+
+function rejectButton() {
+    document.getElementById("acceptpanel").style.display = "none";
 }
 
 		</script>
