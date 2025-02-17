@@ -1097,6 +1097,15 @@ arrCourse = [
             document.getElementById("hole" + nexthole).style.color = "black" 
             document.getElementById("hole" + nexthole).style.background = "lime"
             
+            
+			// update score
+            
+            console.log("strokes" + currenthole)
+            
+			document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
+            document.getElementById("points" + currenthole).innerText = 
+               pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][2], id.replace("score", ""))    
+            
             if (currenthole >= 18) {
                 currenthole = 18
                 var total18points = parseInt(document.getElementById("front9points").innerText) +
@@ -1108,15 +1117,10 @@ arrCourse = [
                 document.getElementById("acceptpanel").style.display = "block";
 
             }
-			// update score
             
-            console.log("strokes" + currenthole)
-            
-			document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
-            document.getElementById("points" + currenthole).innerText = 
-               pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][2], id.replace("score", ""))    
             // calc totals       
 			totalScores()
+            
             // put button color back
             setTimeout (function() {
                document.getElementById(id).style.background = "black"
