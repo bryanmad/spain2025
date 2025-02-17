@@ -1080,7 +1080,7 @@ arrCourse = [
             document.getElementById(id).style.background = "lime" 
             
             currenthole++
-            
+            console.log("currenthole = "+currenthole)
             nexthole = currenthole
             nexthole++
             
@@ -1100,15 +1100,18 @@ arrCourse = [
             if (currenthole >= 18) {
                 currenthole = 18
                 var total18points = parseInt(document.getElementById("front9points").innerText) +
-                                    parseInt(document.getElementById("front9points").innerText)
+                                    parseInt(document.getElementById("back9points").innerText)
                 
-                document.getElementById("playerx").innerHTML = player1name&nbsp; + total18points + "&nbsp;points"
+                document.getElementById("playerx").innerHTML = player1name + " " + total18points + " points"
                 
                 
                 document.getElementById("acceptpanel").style.display = "block";
 
             }
 			// update score
+            
+            console.log("strokes" + currenthole)
+            
 			document.getElementById("strokes" + currenthole).innerText = id.replace("score", "")
             document.getElementById("points" + currenthole).innerText = 
                pointsCalc(hcp, arrCourse[currenthole][1], arrCourse[currenthole][2], id.replace("score", ""))    
