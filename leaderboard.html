@@ -29,6 +29,9 @@ body {
       display: grid;
       grid-template-columns: 15vw 50vw 15vw 15vw;
    //   padding-left: 20px;
+   
+  
+   
    border: 1px solid lightGray; //#E5E4E2;
    //border-radius: 5px;
     }
@@ -335,7 +338,7 @@ if (dataFound == "yes") {
 				displaypos    = bg + arrPos[i]    + "&nbsp;</p>";
 				displayplayer = bg + arrPlayer[i] + "&nbsp;</p>";
 				displaypoints = bg + arrPoints[i] + "&nbsp;</p>";
-			
+			    displaytwos = bg + " " + "&nbsp;</p>";
 				
 				// add class
 				document.getElementById("leaderlist").classList.add("grid-container");
@@ -343,7 +346,7 @@ if (dataFound == "yes") {
 				document.getElementById("pos"    + i).innerHTML = displaypos
 				document.getElementById("player" + i).innerHTML = displayplayer
 				document.getElementById("points" + i).innerHTML = displaypoints
-			
+			    document.getElementById("twos" + i).innerHTML = displaytwos
 
 			} else {
 				// new player
@@ -356,15 +359,16 @@ if (dataFound == "yes") {
 				displaypos    = bg + arrPos[i]    + "&nbsp;</p>";
 				displayplayer = bg + arrPlayer[i] + "&nbsp;</p>";
 				displaypoints = bg + arrPoints[i] + "&nbsp;</p>";
+				displaytwos = bg + " " + "&nbsp;</p>";
 		
-				
-				// add class
+                // add class
 				document.getElementById("leaderlist").classList.add("grid-container");
 				
 				document.getElementById("pos"    + i).innerHTML = displaypos
 				document.getElementById("player" + i).innerHTML = displayplayer
 				document.getElementById("points" + i).innerHTML = displaypoints
-			
+			    document.getElementById("twos" + i).innerHTML = displaytwos
+                
 			}
 			
 			
