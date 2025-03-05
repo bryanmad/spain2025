@@ -1430,12 +1430,12 @@ document.getElementById('mx83976721').value = (front9points + tempcb9)
       audio.play();   
    }   
 
-document.getElementById("score5").style.background = "lime"
-setTimeout(function() {
-    document.getElementById("score5").style.background = ""
-}, 200)
+//document.getElementById("score5").style.background = "lime"
+//setTimeout(function() {
+//    document.getElementById("score5").style.background = ""
+//}, 200)
 
-
+clearForm()
 
 }
 
@@ -1478,7 +1478,7 @@ function calcAllHoles() {
 
 function resetInput() {
     
-  window.location.reload();  
+  location.reload();  
    
     
     
@@ -1493,6 +1493,36 @@ function acceptButton() {
 function rejectButton() {
     document.getElementById("acceptpanel").style.display = "none";
 }
+
+function clearForm() {
+    // reset each hole
+    for(var i = 1; i <= 18; i++) {
+        document.getElementById("strokes" + i).innerText = "0"; 
+        document.getElementById("points" + i).innerText  = "0";  
+    } 
+    
+    document.getElementById("front9strokes").innerText = "0";
+    document.getElementById("back9strokes").innerText  = "0";
+    document.getElementById("front9points").innerText  = "0";
+    document.getElementById("back9points").innerText   = "0";
+
+    currenthole = 1;
+    document.getElementById("hole18").style.background = "black";
+    document.getElementById("hole18").style.color = "cyan";
+    
+    
+    
+    document.getElementById("strokes" + currenthole).style.color = "white"
+    document.getElementById("strokes" + currenthole).style.background = "black";
+            
+    currenthole--;
+    // recalc totals
+    totalScores();
+
+}
+
+
+
 
 		</script>
 </body>
