@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>fastinput</title>
+	<link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+
+	/* icon color #bef081 */
+	
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	html {
+		//height: 100vh;
+		width: 100vw; 
+	}
+	
+	body {
+	   overflow/ hidden;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 3vh;
+		background: black;
+		height: 100%;
+		width: 100%;
+	}
+	/* dropdown */
+	
+	#dropbtn {
+		color: white;
+		background: black;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid Gray;
+	}
+	
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+	
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: black;
+		min-width: 160px;
+		overflow: auto;
+		z-index: 1;
+		border-radius: 5px;
+		box-shadow: 10px 10px 25px black;
+		max-height: 70vh;
+	}
+	
+	.dropdown-content a {
+		color: black;
+		font-size: 4vh;
+		background: whiteSmoke;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+		border: 1px solid gray;
+		border-radius: 5px;
+	}
+	
+	.show {
+		display: block;
+	}
+	/* end of dropdown */
+	
+	
+	/* highlights selected player */
+	
+	.highlight {
+		color: white;
+		background: dodgerBlue;
+	}
+	
+	.scorelow {
+		font-size: 4vh;
+		color: lime;
+		display: inline-block;
+		border: 1px solid Gray;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		border-radius: 5px;
+	}
+	/* highlights keyboard score pressed */
+	
+	.scorehigh {
+		font-size: 4vh;
+		color: white;
+		display: inline-block;
+		border: 5px solid Gray;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		border-radius: 5px;
+		background: dodgerBlue;
+	}
+	
+	#info {
+		display: none;
+		overflow: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		color: white;
+		background-color: black;
+		padding-left: 1px;
+		padding-right: 1px;
+		padding-bottom: 1px;
+
+	}
+	
+	#popuppanel {
+		background-color: #ddd;
+		font-size: 3vh;
+		display: inline-block;
+		border-radius: 3px;
+		border: 1px solid #aaa;
+		padding: 10px;
+		margin: 5vw;
+		text-align: center;
+		width: 80vw;
+
+		cursor: pointer;
+	}
+	/* hide forms */
+	
+	#my-response-iframe,
+	#my-form {
+		display: none;
+	}
+	/* */
+	
+	.child-one {
+		height: 7vh;
+		font-size: 3vh;
+		border: 2px solid Gray;
+		border-radius: 5px;
+	}
+	
+
+	/* player names */
+	
+	#p1name {
+		font-size: 3vh;
+		display: inline-block;
+		width: calc(100% / 3 * 2);
+		height: 8vh;
+		line-height: 8vh;
+		border: 1px solid Gray;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		border-radius: 5px;
+	}
+	/* player scores */
+	
+	#p1score {
+		font-size: 4vh;
+		display: inline-block;
+		width: calc(100% / 3);
+		height: 8vh; //calc(100% / 9);
+		line-height: 8vh;
+		padding-left: 5%;
+		padding-right: 5%;
+		border: 1px solid Gray;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		border-radius: 5px;
+	}
+	/* default "keyboard" */
+	
+	.small {
+		font-size: 4vh;
+		display: inline-block;
+		height: 7vh;
+		line-height: 7vh;
+		padding-left: 20%;
+		padding-right: 20%;
+		border: 1px solid Gray;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		border-radius: 5px;
+	}
+	/* banner hole details */
+	
+	#holedetails {
+		color: white;
+		background: black;
+		font-size: 3vh;
+		display: inline-block;
+		width: 100%;
+		height: 5vh;
+		line-height: 5vh;
+		padding-left: 5%;
+		padding-right: 5%;
+		border: 1px solid Gray;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		border-radius: 5px;
+	}
+	
+	
+	
+	#player4ballplayer {
+		width: 30%;
+		padding: 1vw;
+
+	}
+	
+	#player4ballname {
+		width: 55%;
+		padding: 1vw;
+
+	}
+	
+	#player4ballhcp {
+		width: 15%;
+		padding: 1vw;
+	
+	}
+	
+	.submit {
+		font-size: 100%;
+		color: white;
+		//background: dodgerBlue;
+		height: 100%;
+		line-height: 10vh;
+		text-align: center;
+	}
+	
+		
+	
+	
+	#sending {
+		position: relative;
+		background: black;
+	}
+	
+	
+	
+    #front9 {
+      color:  white;  
+      //height:  100vh;
+    }
+    
+    tr {
+        text-align: center;
+    }
+    td {
+        width: calc(100vw/6);
+    }
+    .head {
+        font-size: 2vh;
+    }
+    
+    #hole1
+  {
+        color: cyan;
+		
+		
+		
+		height: 10vh;
+		
+		
+    }
+    
+    #front9points ,
+    #back9points {
+        border: 1px solid cyan;
+    }
+    
+    
+    #score1 {
+        margin: 3vh;
+    }
+    
+    #page {
+        
+    }
+    
+   #acceptpanel {
+       display: none;
+       position: fixed;
+       //top: 20vh;
+       
+       bottom: 5vh;
+       //left: 2vw;
+       //right: 20vw;
+
+     border: 1px silver solid;
+       background: black;
+       color: white;
+       font-size: 4vw;
+       padding: 5vw;
+       border-radius: 5px;
+       text-align: center;
+       
+       margin-left: 14vw;
+       //margin-right: 5vw;
+       //margin: auto;
+       //width: 80vw;
+       //height: 40vh;
+       
+       //opacity: 1;
+       
+   }
+    
+.button1 {
+    width: 25vw;
+    height: 10vh;
+    text-align: center;
+    //padding: 2vw;
+   font-size: 4vw;
+    border-radius: 5px;
+    //margin: 5vw;
+    background: silver;
+}
+    
+	
+.scoreheight {
+	height: 10vh;
+}	
+	
+.buttonheight {
+	height: 20vh;
+}	
+	
+#fscore1, #fscore2, #fscore3 {
+	color: white;
+}	
+
+#fscore1td, #fscore2td, #fscore3 {
+	color: white;
+}
+	
+#submit {
+	color: yellow;
+	background: dodgerBlue;
+}	
+	
+	</style>
+</head>
+
+<body>
+
+<div id="page">
+<div class="child-one">
+			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
+			<div id="playersDropdown" class="dropdown-content"></div>
+</div>
+
+
+
+
+<div id="acceptpanel">
+<span id="playerx"></span>
+<br><br>
+
+Accept to save or Reject to re-edit.
+<br><br>
+<button class="button1" onclick="rejectButton()">Reject</button>
+<button class="button1" onclick="acceptButton()">Accept</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="xfront9">
+<table align="left" border="1" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
+	<tbody>
+        <tr class="scoreheight">
+			<td colspan="2" class="head" id="front9" onclick="high(this.id)">Front 9</td>
+			<td colspan="2" class="head" id="back9" onclick="high(this.id)">Back 9</td>
+			<td colspan="2" class="head" id="total">Total</td>
+		</tr>
+		<tr class="scoreheight">
+			<td colspan="2" id="fscore1td"><div class="xsmall xscorelow" id="fscore1" onclick="numberScore(this.id)">0</div></td>
+			<td colspan="2" id="fscore2td"><div class="xsmall xscorelow" id="fscore2" onclick="numberScore(this.id)">0</div></td>
+			<td colspan="2"><div class="xsmall xscorelow" id="fscore3" onclick="numberScore(this.id)">0</div></td>
+		</tr>
+        <tr class="buttonheight">
+			<td colspan="2"><div class="small scorelow" id="score1" onclick="numberScore(this.id)">1</div></td>
+			<td colspan="2"><div class="small scorelow" id="score2" onclick="numberScore(this.id)">2</div></td>
+			<td colspan="2"><div class="small scorelow" id="score3" onclick="numberScore(this.id)">3</div></td>
+		</tr>
+        <tr class="buttonheight">
+			<td colspan="2"><div class="small scorelow" id="score4" onclick="numberScore(this.id)">4</div></td>
+			<td colspan="2"><div class="small scorelow" id="score5" onclick="numberScore(this.id)">5</div></td>
+			<td colspan="2"><div class="small scorelow" id="score6" onclick="numberScore(this.id)">6</div></td>
+		</tr>
+        <tr class="buttonheight">
+			<td colspan="2"><div class="small scorelow" id="score7" onclick="numberScore(this.id)">7</div></td>
+			<td colspan="2"><div class="small scorelow" id="score8" onclick="numberScore(this.id)">8</div></td>
+			<td colspan="2"><div class="small scorelow" id="score9" onclick="numberScore(this.id)">9</div></td>
+		</tr>
+		
+		<tr class="buttonheight">
+		<td  colspan="6" id="submit" onclick="submitForm()">
+		Submit
+		</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+
+<!--
+https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/preview
+-->	
+		<!-- invisible but necessary for submit of data	-->
+		<!-- form to construct data prior to submit -->
+		<form action="https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/formResponse" id="my-form" method="post" name="my-form" target="my-response-iframe">
+			<!-- name, hcp, day, total -->
+			<input id='mx1433824128' name='entry.1433824128' type='text' value='default'>
+			<input id='mx1064629217' name='entry.1064629217' type='text' value='default'>
+			<input id='mx1119360478' name='entry.1119360478' type='text' value='default'>
+			<input id='mx83976721' name='entry.83976721' type='text' value='default'>
+			
+			<input id='mx717166862' name='entry.717166862' type='text' value='default'>
+			<input id='mx1175424116' name='entry.1175424116' type='text' value='default'>
+			<input id='mx849660193' name='entry.849660193' type='text' value='default'>
+			<input id='mx1919564852' name='entry.1919564852' type='text' value='default'>
+			
+			<input id='mx1724692121' name='entry.1724692121' type='text' value='default'>
+			<input id='mx1342174744' name='entry.1342174744' type='text' value='default'>
+			<input id='mx758799387' name='entry.758799387' type='text' value='default'>
+			<input id='mx2062182607' name='entry.2062182607' type='text' value='default'>
+			<input id='mx1930917032' name='entry.1930917032' type='text' value='default'>
+			<input id='mx1329253100' name='entry.1329253100' type='text' value='default'>
+			<input id='mx737258175' name='entry.737258175' type='text' value='default'>
+			<input id='mx1107474420' name='entry.1107474420' type='text' value='default'>
+			<input id='mx801125525' name='entry.801125525' type='text' value='default'>
+			
+			<input id='mx481613746' name='entry.481613746' type='text' value='default'>
+			<input id='mx375771739' name='entry.375771739' type='text' value='default'>
+			<input id='mx515491474' name='entry.515491474' type='text' value='default'>
+			<input id='mx153870929' name='entry.153870929' type='text' value='default'>
+			<input id='mx534588764' name='entry.534588764' type='text' value='default'>
+			<input id='mx1709130776' name='entry.1709130776' type='text' value='default'>
+			<input id='mx1199544885' name='entry.1199544885' type='text' value='default'>
+			<input id='mx1903245588' name='entry.1903245588' type='text' value='default'>
+			<input id='mx1737150484' name='entry.1737150484' type='text' value='default'>
+			
+			<input id='mx1766971895' name='entry.1766971895' type='text' value='default'>
+			<input id='mx1446347715' name='entry.1446347715' type='text' value='default'>
+			<input id='mx1043639386' name='entry.1043639386' type='text' value='default'>
+			<input id='mx1058489368' name='entry.1058489368' type='text' value='default'>
+			<input id='mx984229340' name='entry.984229340' type='text' value='default'>
+			<input id='mx888962172' name='entry.888962172' type='text' value='default'>
+			<input id='mx662079754' name='entry.662079754' type='text' value='default'>
+			<input id='mx857756573' name='entry.857756573' type='text' value='default'>
+			<input id='mx213108632' name='entry.213108632' type='text' value='default'>
+			
+			<input id='mx965823425' name='entry.965823425' type='text' value='default'>
+			<input id='mx1721064168' name='entry.1721064168' type='text' value='default'>
+			<input id='mx343171143' name='entry.343171143' type='text' value='default'>
+			<input id='mx32888434' name='entry.32888434' type='text' value='default'>
+			<input id='mx1203648652' name='entry.1203648652' type='text' value='default'>
+			<input id='mx1811069542' name='entry.1811069542' type='text' value='default'>
+			<input id='mx410870339' name='entry.410870339' type='text' value='default'>
+			<input id='mx488847840' name='entry.488847840' type='text' value='default'>
+			<input id='mx2086486082' name='entry.2086486082' type='text' value='default'>
+
+			<input type="submit"> </form>
+		<!-- google iframe inserted here - invisible -->
+		<iframe height="0" id="my-response-iframe" name="my-response-iframe" 
+        src="https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/viewform?embedded=true" width="600">
+        </iframe>
+
+</div>
+
+<!--
+	
+			<div class="submit" onclick="submitForm()">
+				<div id="submit">submit</div>
+			</div>
+	
+-->
+
+		<script>
+      //=================================================================================
+		// this runs on startup or reload
+		// 
+		//=================================================================================
+		// declare global variables
+	    var currenthole = 0;
+
+
+
+
+
+
+
+
+		var selectedplayer = 1;
+		// highlight first player entry
+	//	document.getElementById("p1name").classList.add("highlight");
+		var arrCourse = [];
+		var arrHcps = [];
+		var arrPlayers = [];
+		var arrLadies = [];
+		var arrOptions = [];
+		var oldArrOptions = [];
+		var compcourse = "none";
+		var compdate = "";
+		var shotsscore = "";
+	
+		// declare global variables
+		var hcp = "0";
+		var player = "select player";
+		var comp;
+		var course = "";
+		var arrOptions = [];
+		var hcplist = "";
+		var msglist = "";
+		var msglistcount = 0;
+		var player1name = "player 1";
+		
+		var player1hcp = "?";
+		var fullday = "";
+		
+		var player1teecolor = "yellow";
+		var holdingscoreinput = 0;
+		var sselected
+		
+		
+		var whichhole = 1;
+		var frontp1 = 0
+		var frontp2 = 0
+		var frontp3 = 0
+		var backp1 = 0
+		var backp2 = 0
+		var backp3 = 0
+		var allp1 = 0
+		var allp2 = 0
+		var allp3 = 0
+		var fronttxt9 = "";
+		var backtxt9 = "";
+		var alltxt18 = "";
+		
+		var scorelist = "";
+		//==============================================================
+		// data may change so retrieve it on each occasion
+		//==============================================================
+		// retrieve arrays
+		
+
+			dd = new Date();
+			day = dd.getDay();
+			
+		  //============================================	
+		  // default
+		  //console.log(day + " using Monday as default")
+		  			       // console.log(day + " Monday")
+			        course = "La Cala America"
+			        fullday = "Monday";
+				setupMondayCourse()
+		  //============================================	
+			
+			
+			
+			if(day == 1) {
+			        //console.log(day + " Monday")
+			        course = "La Cala America"
+			        fullday = "Monday";
+				setupMondayCourse()
+			}
+			if(day == 2) {
+			        //console.log(day + " Tuesday")
+			        course = "La Cabopino"
+			        fullday = "Tuesday";
+				setupTuesdayCourse()
+			}
+			if(day == 3) {
+			        //console.log(day + " Wednesday")
+			        course = "La Cala Europa"
+			        fullday = "Wednesday";
+				setupWednesdayCourse()
+			}
+			if(day == 4) {
+			        //console.log(day + " Thursday")
+			        course = "Mijas Los Lagos"
+			        fullday = "Thursday";
+				setupThursdayCourse()
+			}
+            if(day == 5) {
+			        //console.log(day + " Friday")
+			        course = "La Cala Asia"
+			        fullday = "Friday";
+				setupFridayCourse()
+			}
+
+
+
+
+function setupMondayCourse() {
+// set up courses with details for calculations etc.
+// array ["hole num",par,si]
+// La Cala America
+// hole, par, si
+arrCourse = [
+[0,0,0],
+[1,5,10],
+[2,4,14],
+[3,4,16],
+[4,3,6],
+[5,4,12],
+[6,5,2],
+[7,4,4],
+[8,3,18],
+[9,5,8],
+[10,4,7],
+[11,3,13],
+[12,4,5],
+[13,4,3],
+[14,3,15],
+[15,5,1],
+[16,3,17],
+[17,4,9],
+[18,5,11]
+]
+
+}
+
+
+function setupTuesdayCourse() {
+// set up courses with details for calculations etc.
+// array ["hole num",par,si]
+// Cabopino
+// hole, par, si
+arrCourse = [
+[0,0,0],
+[1,4,11],
+[2,4,12],
+[3,4,13],
+[4,4,9],
+[5,4,1],
+[6,4,10],
+[7,3,15],
+[8,4,6],
+[9,4,3],
+[10,4,7],
+[11,4,2],
+[12,5,5],
+[13,3,18],
+[14,5,4],
+[15,3,17],
+[16,4,14],
+[17,4,16],
+[18,4,8]
+]
+}
+
+
+function setupWednesdayCourse() {
+// set up courses with details for calculations etc.
+// array ["hole num",par,si]
+// La Cala Europa
+// hole, par, si
+arrCourse = [
+[0,0,0],
+[1,4,18],
+[2,4,8],
+[3,3,14],
+[4,4,2],
+[5,4,6],
+[6,4,12],
+[7,4,4],
+[8,5,10],
+[9,3,16],
+[10,3,17],
+[11,5,1],
+[12,4,13],
+[13,4,9],
+[14,3,7],
+[15,5,5],
+[16,3,15],
+[17,5,3],
+[18,4,11]
+]
+
+}
+
+
+function setupThursdayCourse() {
+// set up courses with details for calculations etc.
+// array ["hole num",par,si]
+// Mijas Los Lagos
+// hole, par, si
+arrCourse = [
+[0,0,0],
+[1,5,9],
+[2,3,17],
+[3,4,15],
+[4,4,7],
+[5,5,3],
+[6,4,1],
+[7,4,13],
+[8,3,5],
+[9,4,11],
+[10,4,2],
+[11,3,8],
+[12,4,10],
+[13,5,4],
+[14,4,6],
+[15,5,16],
+[16,3,18],
+[17,4,14],
+[18,4,12]
+]
+
+}
+
+
+
+function setupFridayCourse() {
+// set up courses with details for calculations etc.
+// array ["hole num",par,si]
+// La Cala Asia
+// hole, par, si
+arrCourse = [
+[0,0,0],
+[1,4,12],
+[2,4,16],
+[3,3,18],
+[4,4,2],
+[5,5,10],
+[6,4,4],
+[7,3,14],
+[8,4,8],
+[9,5,6],
+[10,5,1],
+[11,3,13],
+[12,4,3],
+[13,4,5],
+[14,4,17],
+[15,4,11],
+[16,5,7],
+[17,3,15],
+[18,4,9]
+]
+
+}
+
+
+
+
+
+         //===========================
+			// this code runs at startup
+			//===========================
+			//change wording to show downloading, change back when complete
+         document.getElementById("dropbtn").innerText = "searching ..."
+                getData();
+		// need to set up a couple of arrays from the data in google sheets
+		async function getData() {
+
+	        var dataStream = await fetch("https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/setupcsv")
+			
+	        if (!dataStream.ok) {
+                    const message = `An error has occured: ${dataStream.status}`;
+                    //throw new Error(message);
+                    alert("error: " + message)
+                }
+		var resultsarray = await dataStream.json()
+                // split into separate arrays
+                arrPlayers = resultsarray.map(d => d.players);
+                arrHcps = resultsarray.map(d => d.hcps);
+                                
+              // remove null items
+                arrPlayers = arrPlayers.filter(function(el) {return el != null;})
+                arrHcps = arrHcps.filter(function(el) {return el != null;})
+                
+                // remove empty items
+                arrPlayers = arrPlayers.filter(function(el) {return el != "";})
+                arrHcps = arrHcps.filter(function(el) {return el != "";})
+                
+                
+                
+                
+                
+			       dd = new Date();
+			       day = dd.getDay();
+			
+		          // get rid of "old" localStorage but keep dropdown options
+		          for (var i = 0; i < localStorage.length; i++) {        
+                     if (localStorage.key(i).substring(0,2) == "ww") {
+                         if (localStorage.key(i) !== "wwdropdown") {
+                             localStorage.removeItem(localStorage.key(i));
+                         } 
+                     }       
+                }	
+	
+	             // put correct wording back - signifies download completed
+	             document.getElementById("dropbtn").innerText = "select player"
+	
+	
+	
+	   
+		start();
+	
+	
+	}
+	
+
+	
+		//=============================================================
+		//=============================================================
+		// function start()
+		// - initialise everything and do checks etc.
+		//=============================================================  
+		function start() {
+			// check for any previous selections
+			// setup local dropdown if not there
+			if("wwdropdown" in localStorage) {
+				oldArrOptions = JSON.parse(localStorage.wwdropdown);
+			}
+			// create options array for dropdown 
+			for(var i = 0; i < arrPlayers.length; i++) {
+				x = arrPlayers[i]
+				arrOptions.push([x, 0])
+			}
+			// update Options array with choices info
+			for(var i = 0; i < oldArrOptions.length; i++) {
+				// if there is a value
+				if(oldArrOptions[i][1] > 0) {
+					for(var j = 0; j < arrOptions.length; j++) {
+						// if names match
+						if(arrOptions[j][0] == oldArrOptions[i][0]) {
+							arrOptions[j][1] = oldArrOptions[i][1]
+						}
+					}
+				}
+			}
+			// save dropdown info
+			localStorage.wwdropdown = JSON.stringify(arrOptions);
+			// bring most commonly selected to the top
+			arrOptions.sort(compareSecondColumn);
+				// bring most commonly selected to the top
+				// create player dropdown
+			var select = document.getElementById("playersDropdown");
+			// this is what is created
+			//<a id="myLink1" href="#" onclick='dropSelected(this.innerText);return false;'>Graham Airey</a>
+			//
+			for(var i = 0; i < arrOptions.length; i++) {
+				var el = document.createElement("a");
+				el.id = "myLink" + (i);
+				el.setAttribute("onclick", "dropSelected(this.innerText);return false;");
+				el.setAttribute("href", "#");
+				el.innerText = arrOptions[i][0];
+				select.appendChild(el);
+				if(arrOptions[i][1] > 0) {
+					//console.log(arrOptions[i][0] + " " + arrOptions[i][1])
+					document.getElementById("myLink" + (i)).style.color = "blue";
+					document.getElementById("myLink" + (i)).style.background = "lightBlue";
+				}
+			}
+			//console.log("oldArrOptions = " + oldArrOptions.length + " - arrOptions = " + arrOptions.length)
+		} // end function start()	
+		
+		
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(event) {
+			if(!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for(i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if(openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
+				}
+			}
+		};
+		
+		
+		
+		//=============================================================
+		// functions - run when called
+		//=============================================================  
+        
+		//=============================================================
+		// function resetNames()
+		// - gets rid of "selected" names
+		//=============================================================  
+		function resetNames() {
+			// create player dropdown
+			var select = document.getElementById("playersDropdown");
+			// empty names
+			select.innerHTML = "";
+			// redo list for menu
+			// <a id="myLink1" href="#" onclick='dropSelected(this.innerText);return false;'>Graham Airey</a>
+			//
+			for(var i = 0; i < arrPlayers.length; i++) {
+				var el = document.createElement("a");
+				el.id = "myLink" + (i + 1);
+				el.setAttribute("onclick", "dropSelected(this.innerText);return false;");
+				el.setAttribute("href", "#");
+				el.innerText = arrPlayers[i];
+				select.appendChild(el);
+			}
+	
+		// create fresh options array for dropdown 
+		arrOptions = [];
+			for(var i = 0; i < arrPlayers.length; i++) {
+				x = arrPlayers[i]
+				arrOptions.push([x, 0])
+				// get rid of change of color on selection
+		document.getElementById(el.id).style.color = "";
+		document.getElementById(el.id).style.background = "";	
+			}
+		// save new array	
+		localStorage.wwdropdown = JSON.stringify(arrOptions);	
+		// refresh page
+		location.reload();
+		}
+		//=============================================================
+		// function dropSelected(playerName)
+		// - selects player
+		//=============================================================  
+		// name selected, do stuff
+		function dropSelected(playerName) {
+		   //console.log(playerName)
+			if(playerName == "reset input") {
+		           resetInput();
+	      } else {
+				// retrieve dropdown info
+			for(var k = 0; k < arrPlayers.length; k++) {
+				if(arrPlayers[k] == playerName) {
+					//found = true;
+					//pos = k;
+					hcp = arrHcps[k]
+					player1hcp = Math.round(hcp);
+                    player1name = playerName;
+                    // change "select player to course
+                   document.getElementById("dropbtn").innerText = player1name + " " + player1hcp + ":  " + course ;
+
+				}
+			}
+			// find player in options list
+			for(var k = 0; k < arrOptions.length; k++) {
+				if(arrOptions[k][0] == playerName) {
+					temppos = k;
+				}
+			}
+			// change color on selection
+			document.getElementById("myLink" + temppos.toString()).style.color = "blue";
+			document.getElementById("myLink" + temppos.toString()).style.background = "lightBlue";
+			if(temppos >= 0) {
+				// increment number of times chosen
+				var tc = parseInt(arrOptions[temppos][1]) + 1;
+				arrOptions[temppos][1] = tc;
+				// store new order
+				//localStorage.wwdropdown = JSON.stringify(arrOptions);
+			}
+			// update player choice
+			player = document.getElementById("myLink" + temppos.toString()).innerText;
+			//document.getElementById("p1name").innerText = player + " " + player1hcp;
+			// global player
+			player = playerName;
+
+			// close dropdown
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for(i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if(openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+			}
+
+
+high("front9")
+
+
+
+	        // recalc in case a player name has changed
+			//calcAllHoles()
+			//getScores();
+
+		}
+		//=============================================================
+		// function toggleDropdown()
+		// - show player name choices
+		//=============================================================  
+		function toggleDropdown() {
+			// When the user clicks on the button, toggle between hiding and showing the dropdown content
+			document.getElementById("playersDropdown").classList.toggle("show");
+		}	
+		//=================================================================================
+		// function numberScore(id)
+		// - enter player score and move on	
+		//=================================================================================
+		function numberScore(id) {
+			scorefromid = id.replace("score","")
+			if ((scorefromid == 1 || scorefromid == 2) && holdingscoreinput == 0){
+			    holdingscoreinput = scorefromid
+				if (sselected == "front9") {
+	                document.getElementById("fscore1").innerText = holdingscoreinput + "0"
+				}
+				if (sselected == "back9") {
+	                document.getElementById("fscore2").innerText = holdingscoreinput + "0"
+				}
+				if (sselected == "total") {
+	                document.getElementById("fscore3").innerText = holdingscoreinput + "0"
+				}
+			//}
+				setTimeout(function(){
+			                 document.getElementById("fscore3").innerText = 
+					parseInt(document.getElementById("fscore1").innerText) +
+					parseInt(document.getElementById("fscore2").innerText)
+				},200)
+			} else {
+				    if (holdingscoreinput == "0") {
+					    holdingscoreinput = "";
+				    }
+				    if (sselected == "front9") {
+	                    document.getElementById("fscore1").innerText = holdingscoreinput + scorefromid
+				    }
+				    if (sselected == "back9") {
+	                    document.getElementById("fscore2").innerText = holdingscoreinput + scorefromid
+				    }
+				    if (sselected == "total") {
+	                    document.getElementById("fscore3").innerText = holdingscoreinput + scorefromid
+				    }
+					// update total
+					setTimeout(function(){
+			                 document.getElementById("fscore3").innerText = 
+					parseInt(document.getElementById("fscore1").innerText) +
+					parseInt(document.getElementById("fscore2").innerText)
+					},200)
+					
+				    holdingscoreinput = 0
+			} 
+			
+			
+	
+		}
+		//=============================================================
+		// function resethole(id)
+		// - allow restart of score entry from a point
+		//=============================================================  
+        function  resethole(id) {
+            // reset hole current selection
+            for(var i = 1; i <= 18; i++) {
+                document.getElementById("strokes" + i).style.color = "cyan" 
+                document.getElementById("strokes" + i).style.background = "black"  
+            }  
+            currenthole = id.replace("hole","");
+            document.getElementById("strokes" + currenthole).style.color = "black"
+            document.getElementById("strokes" + currenthole).style.background = "lime";
+            currenthole--;
+            // recalc totals
+            totalScores();
+        }
+        //=============================================================
+		// function totalScores()
+		// - calc totals
+		//=============================================================  
+        function totalScores() {
+            totalstrokesfront9 = 0;
+            totalstrokesback9 = 0;
+             totalpointsfront9 = 0;
+            totalpointsback9 = 0;
+            
+            
+            
+            checkdigits = "0123456789";
+            
+            for(var i = 1; i <= 9; i++) {
+                checkhole = document.getElementById("strokes" + i).innerText
+                if (checkdigits.indexOf(checkhole)  >  -1) { 
+				    totalstrokesfront9 += parseInt(checkhole)
+			   }
+            }
+           
+           for(var i = 10; i <=18; i++) {
+                checkhole = document.getElementById("strokes" + i).innerText
+                if (checkdigits.indexOf(checkhole)  >  -1) { 
+				    totalstrokesback9 += parseInt(checkhole)
+			   }
+            }
+// do points
+           for(var i = 1; i <= 9; i++) {
+                checkhole = document.getElementById("points" + i).innerText
+                if (checkdigits.indexOf(checkhole)  >  -1) { 
+				    totalpointsfront9 += parseInt(checkhole)
+			   }
+            }
+           
+           for(var i = 10; i <=18; i++) {
+                checkhole = document.getElementById("points" + i).innerText
+                if (checkdigits.indexOf(checkhole)  >  -1) { 
+				    totalpointsback9 += parseInt(checkhole)
+			   }
+            }
+
+            document.getElementById("front9strokes").innerText = totalstrokesfront9
+            document.getElementById("back9strokes").innerText = totalstrokesback9
+            
+            document.getElementById("front9points").innerText = totalpointsfront9
+            document.getElementById("back9points").innerText = totalpointsback9
+            
+            
+        }
+        
+	
+	
+
+        //=============================================================
+		// function arrDeepCopy(aObject)
+		// - helper function to deep copy array
+		//=============================================================  
+		// helper function to deep copy array
+		function arrDeepCopy(aObject) {
+			// deep copy array
+			// Prevent undefined objects
+			// if (!aObject) return aObject;
+			var bObject = Array.isArray(aObject) ? [] : {};
+			var value;
+			for(const key in aObject) {
+				// Prevent self-references to parent object
+				// if (Object.is(aObject[key], aObject)) continue;
+				value = aObject[key];
+				bObject[key] = (typeof value === "object") ? arrDeepCopy(value) : value;
+			}
+			return bObject;
+		}
+
+	
+        //=============================================================
+		// function pointsCalc(xhcp, xpar, xsi, xscore)
+		// - convert scores to stableford points
+		//=============================================================  
+		function pointsCalc(xhcp, xpar, xsi, xscore) {
+	//console.log(xhcp +","+ xpar+","+xsi+","+xscore+" = ")	
+			hcp = parseInt(xhcp)
+			hcp = hcp.toFixed()
+			par = parseInt(xpar)
+			si = parseInt(xsi)
+			score = parseInt(xscore)
+			
+			allowance = 0;
+			if(score == 0) {
+				return 0;
+			} else {
+				// cope with minus hcp
+				if(hcp < 0) {
+					// 18 plus a minus hcp
+					if((18 + parseInt(hcp)) < si) {
+						allowance = -1;
+					}
+				}
+				// allowance   
+				if(hcp >= si) {
+					allowance = 1;
+				}
+				if(hcp >= (18 + si)) {
+					allowance = 2;
+				}
+				if(hcp >= (36 + si)) {
+					allowance = 3;
+				}
+				// points
+				var points = (par + allowance + 2) - score;
+				// remove negative numbers
+				if(points < 0) {
+					points = 0;
+				}
+		//console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
+				return points;
+			}
+
+		}
+
+
+/*
+
+https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhjabhjg1JvCQg/viewform?usp=pp_url
+&entry.1433824128=p
+&entry.1064629217=h
+&entry.1119360478=d&entry.83976721=p&entry.717166862=9&entry.1175424116=6&entry.849660193=3&entry.1919564852=1&entry.1724692121=1&entry.1342174744=2&entry.758799387=3&entry.2062182607=4&entry.1930917032=5&entry.1329253100=6&entry.737258175=7&entry.1107474420=8&entry.801125525=9&entry.481613746=0&entry.375771739=11&entry.515491474=12&entry.153870929=13&entry.534588764=14&entry.1709130776=15&entry.1199544885=16&entry.1903245588=17&entry.1737150484=18&entry.1766971895=1&entry.1446347715=2&entry.1043639386=3&entry.1058489368=4&entry.984229340=5&entry.888962172=6&entry.662079754=7&entry.857756573=8&entry.213108632=9&entry.965823425=10&entry.1721064168=11&entry.343171143=12&entry.32888434=13&entry.1203648652=14&entry.1811069542=15&entry.410870339=16&entry.488847840=17&entry.2086486082=17
+
+
+
+*/
+
+
+
+
+
+
+		//=============================================================
+		// function submitForm()
+		// - send info from HTML form to google form
+		//=============================================================  
+		function submitForm() {
+			// get the relevant info into a form
+			// dont allow submit for an incorrect day
+			//compday = localStorage.wwcompday;
+
+				// make sure everything is updated
+				//finalWrite();
+				console.log(player1name)
+				if(player1name !== "player 1") {
+					// player1 score entry
+console.log(player1name)
+
+					//comp = localStorage.wwtodayscomp
+					document.getElementById('mx1433824128').value = player1name;
+					
+					document.getElementById('mx1064629217').value = player1hcp;
+
+					document.getElementById('mx1119360478').value = fullday;
+					
+         			
+// shots for each hole					
+document.getElementById('mx1724692121').value = 0 
+document.getElementById('mx1342174744').value = 0  
+document.getElementById('mx758799387').value = 0; 
+document.getElementById('mx2062182607').value = 0;  
+document.getElementById('mx1930917032').value = 0; 
+document.getElementById('mx1329253100').value = 0; 
+document.getElementById('mx737258175').value = 0; 
+document.getElementById('mx1107474420').value = 0; 
+document.getElementById('mx801125525').value = 0; 
+document.getElementById('mx481613746').value = 0; 
+document.getElementById('mx375771739').value = 0; 
+document.getElementById('mx515491474').value = 0; 
+document.getElementById('mx153870929').value = 0; 
+document.getElementById('mx534588764').value = 0; 
+document.getElementById('mx1709130776').value = 0; 
+document.getElementById('mx1199544885').value = 0; 
+document.getElementById('mx1903245588').value = 0; 
+document.getElementById('mx1737150484').value = 0; 
+						
+						
+// points for each hole						
+// pointsCalc(hcp, par, si, score)					
+
+    document.getElementById('mx1766971895').value = 0; 
+    document.getElementById('mx1446347715').value = 0; 
+    document.getElementById('mx1043639386').value = 0;
+    document.getElementById('mx1058489368').value = 0; 
+    document.getElementById('mx984229340').value = 0;
+    document.getElementById('mx888962172').value = 0;
+    document.getElementById('mx662079754').value = 0; 
+    document.getElementById('mx857756573').value = 0; 
+    document.getElementById('mx213108632').value = 0;
+    document.getElementById('mx965823425').value = 0;
+    document.getElementById('mx1721064168').value = 0;
+    document.getElementById('mx343171143').value = 0;
+    document.getElementById('mx32888434').value = 0;
+    document.getElementById('mx1203648652').value = 0;
+    document.getElementById('mx1811069542').value = 0;
+    document.getElementById('mx410870339').value = 0;
+    document.getElementById('mx488847840').value = 0;
+    document.getElementById('mx2086486082').value = 0;
+
+
+			
+/* countbacks */
+// only back 9
+document.getElementById('mx717166862').value = document.getElementById("fscore2").innerText;
+ 
+document.getElementById('mx1175424116').value = 0; 
+document.getElementById('mx849660193').value = 0; 
+document.getElementById('mx1919564852').value = 0	
+	
+	
+/* total score */	
+document.getElementById('mx83976721').value = document.getElementById("fscore3").innerText	
+
+
+
+
+					//===== submit data ==========
+					//============================
+					document.forms[0].submit();
+                    
+                    
+// vibrate if android phone or "pop" for anything else 
+   const canVibrate = window.navigator.vibrate
+   if (canVibrate) {
+      window.navigator.vibrate(50)
+   } else {
+      var audio = new Audio('golf.wav');
+      audio.play();   
+   }   
+
+//document.getElementById("score5").style.background = "lime"
+//setTimeout(function() {
+//    document.getElementById("score5").style.background = ""
+//}, 200)
+
+//clearForm()
+
+}
+
+
+
+
+        
+        }
+
+
+	
+		//=============================================================
+		// function compareSecondColumn()
+		// - sort function to sort by second array item in 2D array
+		//=============================================================  
+		function compareSecondColumn(a, b) {
+			if(a[1] === b[1]) {
+				return 0;
+			} else {
+				return(a[1] > b[1]) ? -1 : 1;
+			}
+		}
+	
+
+function calcAllHoles() {
+ var teststring = "0123456789";    
+ for(var i = 1; i <= 18; i++) {
+     temp = document.getElementById("strokes" + i).innerText
+     if (teststring.indexOf(temp) > -1) {
+         document.getElementById("points" + i).innerText = pointsCalc(player1hcp, 
+                                                           arrCourse[i][1],
+                                                           arrCourse[i][2],
+                                                           document.getElementById("strokes" + i).innerText
+                                                           );	
+     }
+ }
+     
+ totalScores();
+}
+
+function resetInput() {
+    
+  location.reload();  
+   
+    
+    
+}
+
+
+function acceptButton() {
+    document.getElementById("acceptpanel").style.display = "none";
+    submitForm()
+}
+
+function rejectButton() {
+    document.getElementById("acceptpanel").style.display = "none";
+}
+
+function clearForm() {
+    // reset each hole
+    for(var i = 1; i <= 18; i++) {
+        document.getElementById("strokes" + i).innerText = "0"; 
+        document.getElementById("points" + i).innerText  = "0";  
+    } 
+    
+    document.getElementById("front9strokes").innerText = "0";
+    document.getElementById("back9strokes").innerText  = "0";
+    document.getElementById("front9points").innerText  = "0";
+    document.getElementById("back9points").innerText   = "0";
+
+    currenthole = 1;
+    document.getElementById("hole18").style.background = "black";
+    document.getElementById("hole18").style.color = "cyan";
+    
+    
+    
+    document.getElementById("strokes" + currenthole).style.color = "white"
+    document.getElementById("strokes" + currenthole).style.background = "black";
+            
+    currenthole--;
+    // recalc totals
+    totalScores();
+
+}
+
+
+function high(id) {
+	if (id == "front9") {
+		document.getElementById("front9").style.color = "yellow"
+        document.getElementById("front9").style.background = "dodgerBlue";
+	    document.getElementById("back9").style.color = "white"
+        document.getElementById("back9").style.background = "black";
+		
+		document.getElementById("fscore1td").style.color = "yellow"
+        document.getElementById("fscore1td").style.background = "dodgerBlue";
+	    document.getElementById("fscore2td").style.color = "white"
+        document.getElementById("fscore2td").style.background = "black";
+		
+		sselected = "front9"
+	}
+	if (id == "back9") {
+		document.getElementById("front9").style.color = "white"
+        document.getElementById("front9").style.background = "black";
+	    document.getElementById("back9").style.color = "yellow"
+        document.getElementById("back9").style.background = "dodgerBlue";
+		
+		document.getElementById("fscore1td").style.color = "white"
+        document.getElementById("fscore1td").style.background = "black";
+	    document.getElementById("fscore2td").style.color = "yellow"
+        document.getElementById("fscore2td").style.background = "dodgerBlue";
+		
+		sselected = "back9"
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</script>
+</body>
+
+</html>
