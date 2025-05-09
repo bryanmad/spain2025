@@ -392,75 +392,75 @@ Accept to save or Reject to re-edit.
 		</tr>
 		<tr>
 			<td id="hole1" onclick="resethole(this.id)">1</td>
-			<td id="strokes1">&nbsp;</td>
-			<td id="points1">&nbsp;</td>
+			<td id="strokes1">0</td>
+			<td id="points1">0</td>
             <td id="hole10" onclick="resethole(this.id)">10</td>
-			<td id="strokes10">&nbsp;</td>
-			<td id="points10">&nbsp;</td>
+			<td id="strokes10">0</td>
+			<td id="points10">0</td>
 		</tr>
 		<tr>
 			<td id="hole2" onclick="resethole(this.id)">2</td>
-			<td id="strokes2">&nbsp;</td>
-			<td id="points2">&nbsp;</td>
+			<td id="strokes2">0</td>
+			<td id="points2">0</td>
             <td id="hole11" onclick="resethole(this.id)">11</td>
-			<td id="strokes11">&nbsp;</td>
-			<td id="points11">&nbsp;</td>
+			<td id="strokes11">0</td>
+			<td id="points11">0</td>
 		</tr>
 		<tr>
 			<td id="hole3" onclick="resethole(this.id)">3</td>
-			<td id="strokes3">&nbsp;</td>
-			<td id="points3">&nbsp;</td>
+			<td id="strokes3">0</td>
+			<td id="points3">0</td>
             <td id="hole12" onclick="resethole(this.id)">12</td>
-		<td id="strokes12">&nbsp;</td>
-			<td id="points12">&nbsp;</td>
+		<td id="strokes12">0</td>
+			<td id="points12">0</td>
 		</tr>
 		<tr>
 			<td id="hole4" onclick="resethole(this.id)">4</td>
-			<td id="strokes4">&nbsp;</td>
-			<td id="points4">&nbsp;</td>
+			<td id="strokes4">0</td>
+			<td id="points4">0</td>
             <td id="hole13" onclick="resethole(this.id)">13</td>
-		<td id="strokes13">&nbsp;</td>
-			<td id="points13">&nbsp;</td>
+		<td id="strokes13">0</td>
+			<td id="points13">0</td>
 		</tr>
 		<tr>
 			<td id="hole5" onclick="resethole(this.id)">5</td>
-		<td id="strokes5">&nbsp;</td>
-			<td id="points5">&nbsp;</td>
+		<td id="strokes5">0</td>
+			<td id="points5">0</td>
             <td id="hole14" onclick="resethole(this.id)">14</td>
-		<td id="strokes14">&nbsp;</td>
-			<td id="points14">&nbsp;</td>
+		<td id="strokes14">0</td>
+			<td id="points14">0</td>
 		</tr>
 		<tr>
 			<td id="hole6" onclick="resethole(this.id)">6</td>
-			<td id="strokes6">&nbsp;</td>
-			<td id="points6">&nbsp;</td>
+			<td id="strokes6">0</td>
+			<td id="points6">0</td>
             <td id="hole15" onclick="resethole(this.id)">15</td>
-		<td id="strokes15">&nbsp;</td>
-			<td id="points15">&nbsp;</td>
+		<td id="strokes15">0</td>
+			<td id="points15">0</td>
 		</tr>
 		<tr>
 			<td id="hole7" onclick="resethole(this.id)">7</td>
-			<td id="strokes7">&nbsp;</td>
-			<td id="points7">&nbsp;</td>
+			<td id="strokes7">0</td>
+			<td id="points7">0</td>
             <td id="hole16" onclick="resethole(this.id)">16</td>
-		<td id="strokes16">&nbsp;</td>
-			<td id="points16">&nbsp;</td>
+		<td id="strokes16">0</td>
+			<td id="points16">0</td>
 		</tr>
 		<tr>
 			<td id="hole8" onclick="resethole(this.id)">8</td>
-		<td id="strokes8">&nbsp;</td>
-			<td id="points8">&nbsp;</td>
+		<td id="strokes8">0</td>
+			<td id="points8">0</td>
             <td id="hole17" onclick="resethole(this.id)">17</td>
-		<td id="strokes17">&nbsp;</td>
-			<td id="points17">&nbsp;</td>
+		<td id="strokes17">0</td>
+			<td id="points17">0</td>
 		</tr>
 		<tr>
 			<td id="hole9" onclick="resethole(this.id)">9</td>
-			<td id="strokes9">&nbsp;</td>
-			<td id="points9">&nbsp;</td>
+			<td id="strokes9">0</td>
+			<td id="points9">0</td>
             <td id="hole18" onclick="resethole(this.id)">18</td>
-		<td id="strokes18">&nbsp;</td>
-			<td id="points18">&nbsp;</td>
+		<td id="strokes18">0</td>
+			<td id="points18">0</td>
 		</tr>
 		<tr>
 			<td>total</td>
@@ -568,14 +568,14 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 		// this runs on startup or reload
 		// 
 		//=================================================================================
+		// prevent default img menu of options
+      document.addEventListener('contextmenu', event => {
+      event.preventDefault()
+      })
+
 		// declare global variables
+
 	    var currenthole = 0;
-
-
-
-
-
-
 
 
 		var selectedplayer = 1;
