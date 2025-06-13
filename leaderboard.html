@@ -25,6 +25,10 @@ body {
      padding-right: 5px;
 }
  
+ #leaderlist {
+     
+     width: 95vw;
+ }
     .grid-container {
       display: grid;
       grid-template-columns: 15vw 50vw 15vw 15vw;
@@ -209,13 +213,13 @@ async function getData() {
 
 
 
-	// see if it is todays comp
-//	if (resultsarray[0].comp.indexOf(dateToday) > -1) {
+// see if it is todays comp
+	if (resultsarray[0].comp.indexOf(dateToday) > -1) {
        // see  if there is any results
        if(resultsarray[0].points > 0) {
            dataFound = "yes";
        }
-//    }
+    }
 
 if (dataFound == "yes") {
 	
