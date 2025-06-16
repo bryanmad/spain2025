@@ -612,10 +612,16 @@
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
-	transition: opacity .5s ease;
+	
+	opacity: 0;
+	
 }
  
- 
+ .animate {
+         -webkit-transition: 2s;
+         transition: 2s;
+         opacity: 1;
+      }
  
     </style>
 
@@ -725,7 +731,7 @@
 		
 		
 		document.body.classList.add("photo");
-	
+	document.body.classList.add("animate");
 		
 		
 		
