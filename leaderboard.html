@@ -201,25 +201,13 @@ async function getData() {
            "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // see if it is todays comp
-	if (resultsarray[0].comp.indexOf(dateToday) > -1) {
+	//if (resultsarray[0].comp.indexOf(dateToday) > -1) {
        // see  if there is any results
        if(resultsarray[0].points > 0) {
            dataFound = "yes";
        }
-    }
+    //}
 
 if (dataFound == "yes") {
 	
