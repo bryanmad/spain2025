@@ -628,7 +628,7 @@
     }
  
  .photo {
-    background-image:    url(lc.png);
+    background-image:    url(lc.webp);
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: right bottom; /*center center;*/
@@ -641,7 +641,7 @@ transition: background 10s linear;
  
     </style>
 
-  <body oncontextmenu="return false;">
+  <body oncontextmenu="return false;" onload="showPhoto();">
     <!-- remove when not required 100% is about 40 characters 
     
     <div class="marquee"><p>Note: some stroke indexes have changed on the Old Course.</p></div>
@@ -700,6 +700,16 @@ transition: background 10s linear;
       }
     }, false);
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
    
     // global variables
      var grayedout = "yes";
@@ -746,7 +756,7 @@ transition: background 10s linear;
 		
 		
 		
-		document.body.classList.add("photo");
+		//document.body.classList.add("photo");
 
 		
 		
@@ -1180,6 +1190,13 @@ document.querySelector('body').classList.remove('photo');
     document.addEventListener('contextmenu', event => {
       event.preventDefault()
     })
+
+
+
+function showPhoto() {
+document.body.classList.add("photo");
+}
+
 
     </script>
   </body>
