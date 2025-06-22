@@ -26,20 +26,8 @@
       overflow: hidden;
       height: 100vh;
       /* linear-gradient syntax */
-      background: indigo;
+      background: black; /*indigo;*/
       
-     
-      /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to left top, dodgerBlue 0%, MidnightBlue 100%);
-      
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      background: -webkit-linear-gradient(to left top, dodgerBlue 0%, MidnightBlue 100%);
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
     }
 
     ::-webkit-scrollbar {
@@ -67,7 +55,6 @@
       transform: translate(-50%, -50%);
       background-color: transparent;
       z-index: 99;
-  
     }
 
     .square_menu_icon:focus {
@@ -151,9 +138,6 @@
       z-index: 4;
       border: 5px solid white;
       box-shadow: 10px 10px 25px black;
-      
-      border-radius: 50%;
-      
     }
 
     .bubble_menu {
@@ -168,11 +152,6 @@
       cursor: pointer;
       border-radius: 5px;
       border: 5px solid white;
-      
-      
-      border-radius: 50%;
-      
-      
     }
 
     #one,
@@ -195,12 +174,6 @@
       border: 5px solid white;
       cursor: pointer;
       opacity: 0.0;
-      
-      
-      border-radius: 50%;
-      
-      
-      
     }
 
     #one {
@@ -261,6 +234,7 @@
       position: absolute;
     }
 
+
     .startxxx {
       top: 0;
       left: 0;
@@ -280,6 +254,25 @@
       font-weight: bold;
       margin-top: 20vh;
       height: 13vh;
+	  
+	  
+	  
+            //text-align: center;
+            //padding: 150px 20px;
+            //font-size: 72px;
+            font-weight: 900;
+            //color: blue;
+            text-shadow:
+                -2px -2px 0 gray,
+                2px -2px 0 gray,
+                -2px 2px 0 gray,
+                2px 2px 0 gray,
+                -3px 0px 0 gray,
+                3px 0px 0 gray,
+                0px -3px 0 gray,
+                0px 3px 0 gray;
+        
+	  
     }
 
 
@@ -386,7 +379,7 @@
     .dates {
       font-family: 'Kalam';
       color: cyan; //white; //darkGray;
-      font-size: 18px;
+      font-size: 20px; /*18px;*/
     }
 
     .pretitle {
@@ -416,10 +409,9 @@
     #img.half {
       background: white;
       padding: 3px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
+      border-radius: 5px;
       box-shadow: 10px 10px 10px black;
-      transform: scale(6) translateX(-25%) translateY(-80%);
+      transform: scale(6) translateX(-45%) translateY(-110%);
       content: url(spain2025.png);
     }
 
@@ -462,7 +454,7 @@
     }
 
     #xdcomp1 {
-      font-size: 3vh;
+      font-size: 6.8vw; /*3.3vh;*/
     }
 
     @keyframes fadeIn {
@@ -623,9 +615,21 @@
       color:  white;
     }
  
+ .photo {
+    background-image:    url(lc.webp);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: right bottom;
+	
+transition: background 10s linear;
+	
+}
+ 
+
+ 
     </style>
 
-  <body oncontextmenu="return false;">
+  <body oncontextmenu="return false;" onload="showPhoto();">
     <!-- remove when not required 100% is about 40 characters 
     
     <div class="marquee"><p>Note: some stroke indexes have changed on the Old Course.</p></div>
@@ -654,7 +658,7 @@
     <section class="start">
       <div class="content">
         <div class="title">
-          <div class="pretitle">Liv golf society</div>
+          <div class="pretitle">LIV golf society</div>
           <div class="spacer1"></div>
           <div>Spain 2025</div>
         </div>
@@ -664,7 +668,7 @@
           <br>
           <br> <a class="dates" id="xdcomp1">searching for competitions ...</a> </div>
         <br>
-        <div class="flagicon" id="flagicon"> <img id="img" onclick="enlarge(this.id);" style="padding-right: 20px; float: right; border: 0; height: 40px; width: 40px; " src="spain2025.png" alt="x"></div>
+        <div class="flagicon" id="flagicon"> <img id="img" onclick="enlarge(this.id);" style="float: right; border: 0; height: 40px; width: 40px; " src="spain2025.png" alt="x"></div>
       </div>
     </section>
 
@@ -684,6 +688,16 @@
       }
     }, false);
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
    
     // global variables
      var grayedout = "yes";
@@ -723,6 +737,24 @@
 
 
     function showBubbles() {
+		
+		
+		
+		
+		
+		
+		
+		//document.body.classList.add("photo");
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
       //
       one.css('opacity', '0.0');
       two.css('opacity', '0.0');
@@ -960,6 +992,14 @@
       menuIsOpen = false;
       isTop = true;
       //one.addClass('blob');
+	  
+	  
+	  
+	 // document.querySelector('body').classList.remove('photo');
+	  
+	  
+	  
+	  
     }
     $('.bubble').click(function() {
       menuIcon.removeClass('is-active');
@@ -978,7 +1018,7 @@
     function doOne() {
       // put menu back then move to hcp page
       setTimeout(function() {
-        window.location.assign("monday.html");
+        window.location.assign("mondayx.html");
       }, 800);
     }
 
@@ -1047,7 +1087,7 @@
     function doEight() {
       // put menu back then move to results page
       setTimeout(function() {
-        window.location.assign("leaderboard.html");
+        window.location.assign("leaderboardloader.html");
       }, 800);
     }
     
@@ -1081,7 +1121,9 @@
       var dd1 = new Date("2025-10-12"); // start date
       var dd2 = new Date("2025-10-18"); // end date
 
-      if (dd > dd1 && dd < dd2) {
+// for testing stop if statement
+  
+//    if (dd > dd1 && dd < dd2) {
       
           if (dd.getDay() == 1) {
               dlist1 = '<a id="cyantxt">Today - La Cala America</a>'
@@ -1103,7 +1145,20 @@
               dlist5 = '<a id="cyantxt">Today - La Cala Asia</a>'
           }
 
-      }
+//      }
+
+
+
+
+
+document.querySelector('body').classList.remove('photo');
+
+
+
+
+
+
+
 
       dlist = dlist1 + "<br>" + dlist2 + "<br>" + dlist3 + "<br>" + dlist4 + "<br>" + dlist5 + "<br>" 
 
@@ -1123,6 +1178,13 @@
     document.addEventListener('contextmenu', event => {
       event.preventDefault()
     })
+
+
+
+function showPhoto() {
+document.body.classList.add("photo");
+}
+
 
     </script>
   </body>
