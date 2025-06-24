@@ -624,7 +624,25 @@
 transition: background 10s linear;
 	
 }
- 
+
+#countdown {
+	position: fixed;
+	top:2vh;
+	right: 5vw;
+	width: 50vw;
+	height: 5vh;
+	line-height: 5vh;
+	background: white;
+	color: blue;
+	border-radius: 20px;
+	font-size: 6vw;
+    font-family: 'Kalam';
+	box-shadow: 10px 10px 25px black;
+	text-align: center;
+	opacity: 0.6;
+	z-index:99;
+	display:none
+} 
 
  
     </style>
@@ -671,7 +689,7 @@ transition: background 10s linear;
         <div class="flagicon" id="flagicon"> <img id="img" onclick="enlarge(this.id);" style="float: right; border: 0; height: 40px; width: 40px; " src="spain2025.png" alt="x"></div>
       </div>
     </section>
-
+<div id="countdown"></div>
     <script>
    
 
@@ -691,6 +709,16 @@ transition: background 10s linear;
 	
 	
 	
+	
+	// countdown
+	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    var firstDate = new Date(2025, 10, 12);
+    var secondDate = new Date();
+    var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+	if (firstDate > secondDate) {
+		document.getElementById("countdown").innerText = diffDays + " days to go"
+		document.getElementById("countdown").style.display = "block"
+	}
 	
 	
 	
