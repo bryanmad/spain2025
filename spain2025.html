@@ -629,7 +629,7 @@ transition: background 10s linear;
 	position: fixed;
 	top:2vh;
 	right: 5vw;
-	width: 50vw;
+	width: 60vw;
 	height: 7vh;
 	line-height: 7.5vh;
 	background: white;
@@ -643,9 +643,12 @@ transition: background 10s linear;
 	opacity: 0.6;
 	z-index:99;
 	display:none
+	padding-left: 7vh;
 } 
 
- 
+#imgx {
+	z-index: 999;
+}
     </style>
 
   <body oncontextmenu="return false;" onload="showPhoto();">
@@ -690,7 +693,7 @@ transition: background 10s linear;
         <div class="flagicon" id="flagicon"> <img id="img" onclick="enlarge(this.id);" style="float: right; border: 0; height: 40px; width: 40px; " src="spain2025.png" alt="x"></div>
       </div>
     </section>
-<div id="countdown" onclick="nocountdown()"></div>
+<div id="countdown" onclick="nocountdown()"><img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;"></div>
     <script>
    
 
@@ -725,9 +728,9 @@ transition: background 10s linear;
                clearInterval(x);
 		    }
 			if (i == 1) {
-			    document.getElementById("countdown").innerText = i + " day to go"
+			    document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " day to go"
             } else {	
-		        document.getElementById("countdown").innerText = i + " days to go"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go"
 		    }
 		},20)
 	}
