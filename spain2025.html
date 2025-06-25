@@ -716,9 +716,17 @@ transition: background 10s linear;
     var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
-		document.getElementById("countdown").innerText = diffDays + " days to go"
 		document.getElementById("countdown").style.display = "block"
+		i = 0;
+		var x = setInterval(function() {
+		    i++
+			if (i >= diffDays) {
+               clearInterval(x);
+		    }
+		    document.getElementById("countdown").innerText = i + " days to go"
+		},20)
 	}
+		
 	
 	
 	
