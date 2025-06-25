@@ -690,7 +690,7 @@ transition: background 10s linear;
         <div class="flagicon" id="flagicon"> <img id="img" onclick="enlarge(this.id);" style="float: right; border: 0; height: 40px; width: 40px; " src="spain2025.png" alt="x"></div>
       </div>
     </section>
-<div id="countdown"></div>
+<div id="countdown" onclick="nocountdown()"></div>
     <script>
    
 
@@ -732,7 +732,9 @@ transition: background 10s linear;
 		},20)
 	}
 		
-	
+	function nocountdown() {
+		document.getElementById("countdown").style.display = "none";
+	}
 	
 	
 	
