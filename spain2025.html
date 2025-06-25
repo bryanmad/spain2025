@@ -724,7 +724,11 @@ transition: background 10s linear;
 			if (i >= diffDays) {
                clearInterval(x);
 		    }
-		    document.getElementById("countdown").innerText = i + " days to go"
+			if (i == 1) {
+			    document.getElementById("countdown").innerText = i + " day to go"
+            } else {	
+		        document.getElementById("countdown").innerText = i + " days to go"
+		    }
 		},20)
 	}
 		
