@@ -640,7 +640,7 @@ transition: background 10s linear;
 	font-weight: bold;
 	box-shadow: 10px 10px 25px black;
 	text-align: center;
-	opacity: 0.6;
+	opacity: 0.4;
 	z-index:99;
 	display:none
 	//padding-left: 7vh;
@@ -716,7 +716,8 @@ transition: background 10s linear;
 	
 	// countdown
 	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    var firstDate = new Date(2025, 9, 12);
+    //var firstDate = new Date(2025, 9, 12);
+	var firstDate = new Date('10/12/2025 00:1 AM')
     var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
