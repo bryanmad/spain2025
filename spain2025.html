@@ -715,7 +715,15 @@
 	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     //var firstDate = new Date(2025, 9, 12);
 	var firstDate = new Date('10/12/2025 00:1 AM')
-    var secondDate = new Date();
+    var tempDate = new Date();
+	var y = tempDate.getFullYear().toString();
+	var xm = tempDate.getMonth();
+	var d = tempDate.getDate();
+	xm++
+	m = xm.toString();
+	var dstring = m + "/" + d + "/" + y + " 00:1 AM"
+    var secondDate = new Date(dstring)
+	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
 		document.getElementById("countdown").style.display = "block"
@@ -732,7 +740,11 @@
 		    }
 		},20)
 	}
-		
+		console.log("firstDate = " + firstDate)
+        console.log("secondDate = " + secondDate)
+        console.log("diffDays = " + diffDays)
+
+ 
 	function nocountdown() {
 		document.getElementById("countdown").style.display = "none";
 	}
