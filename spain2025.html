@@ -646,6 +646,11 @@
 #imgx {
 	z-index: 999;
 }
+
+.emoji {
+	font-size: 7vh;
+	//line-height: 8vh;
+}
     </style>
 
   <body oncontextmenu="return false;" onload="showPhoto();">
@@ -735,32 +740,32 @@
 		    }
             if (i > 0 && i <= 20) {  	
 				console.log("i = " + i)
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 😁"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + ' days to go <a class="emoji">😁</a>'
 		    }
 			if (i > 20 && i <= 40) {  	
 				console.log("i = " + i)
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 🙂"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + ' days to go <a class="emoji">🙂</a>'
 		    }
 			if (i > 40 && i <= 60) {  	
 				console.log("i = " + i)
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 😐"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + ' days to go <a class="emoji">😐</a>'
 		    }
 			if (i > 60 && i <= 80) {  	
 				console.log("i = " + i)
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 🙁"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + ' days to go <a class="emoji">🙁</a>'
 		    }
 			if (i > 80 && i <= 100) {  	
 				console.log("i = " + i)
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 🙁"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + ' days to go <a class="emoji">🙁</a>'
 		    }
 			if (i > 100) {  	
 				console.log("i = " + i)
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go ☹️"
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + ' days to go <a class="emoji">☹️</a>'
 		    }
 		},20)
 	}
 	
-	//😁🙂😐🙁☹️😕🙁☹️
+	// 😁🙂😐🙁☹️😕🙁☹️
 	
 	
 	
