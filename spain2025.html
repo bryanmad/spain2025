@@ -627,7 +627,7 @@
 	position: fixed;
 	top:2vh;
 	right: 5vw;
-	width: 60vw;
+	width: 65vw; //60vw;
 	height: 7vh;
 	line-height: 7.5vh;
 	background: white;
@@ -733,13 +733,37 @@
 			if (i >= diffDays) {
                clearInterval(x);
 		    }
-			if (i == 1) {
-			    document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " day to go"
-            } else {	
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go"
+            if (i > 0 && i <= 20) {  	
+				console.log("i = " + i)
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 😁"
+		    }
+			if (i > 20 && i <= 40) {  	
+				console.log("i = " + i)
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 🙂"
+		    }
+			if (i > 40 && i <= 60) {  	
+				console.log("i = " + i)
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 😐"
+		    }
+			if (i > 60 && i <= 80) {  	
+				console.log("i = " + i)
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 🙁"
+		    }
+			if (i > 80 && i <= 100) {  	
+				console.log("i = " + i)
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go 🙁"
+		    }
+			if (i > 100) {  	
+				console.log("i = " + i)
+		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go ☹️"
 		    }
 		},20)
 	}
+	
+	//😁🙂😐🙁☹️😕🙁☹️
+	
+	
+	
 		console.log("firstDate = " + firstDate)
         console.log("secondDate = " + secondDate)
         console.log("diffDays = " + diffDays)
