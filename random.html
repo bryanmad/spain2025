@@ -117,9 +117,15 @@ while (arrDone.length < 12) {
 // display results
 var list = "";
 for (let i = 0; i < arrDone.length; i++) { 
+	
+	setTimeout(function() {
      list += arr[i+1] + " has " + arrDone[i] + " as winner<br>"
+     document.getElementById("list").innerHTML = list
+	},200)
+
 }
-document.getElementById("list").innerHTML = list
+	
+
 
 
 </script>
