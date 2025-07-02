@@ -22,17 +22,68 @@
 	font-family: 'Kalam';
       font-size: 5.5vw;
 }
+
+#listing {
+	display: none;
+	 -webkit-animation-duration: 1.5s;
+				animation-duration: 1.5s;
+                -webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+				//animation-delay: 2s;
+}
+
+#juggler {
+
+                display: block;
+                -webkit-animation-duration: 2s;
+				animation-duration: 2s;
+                -webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+
+}
+
+@keyframes fadeOut {
+                0% {opacity: 1;}
+                100% {opacity: 0;}
+             }
+.fadeOut {
+                -webkit-animation-name: fadeOut;
+                animation-name: fadeOut;
+             }
+img {
+	height: 100vh;
+	width: 100vw;
+}
+@keyframes fadeIn {
+                0% {opacity: 0;}
+                100% {opacity: 1;}
+             }
+.fadeIn {
+                -webkit-animation-name: fadeIn;
+                animation-name: fadeIn;
+             }
+
+
+
 </style>
 </head>
 <body>
+<div id="juggler" class="animated fadeOut">
+<img src="juggler.gif" alt="x">
+</div>
 
-
-
+<div id="listing" class="animated fadeIn">
 <p id="txt">Blindgolfer</p>
 
 <div id="list"></div>
-
+</div>
 <script>
+setTimeout(function() {
+document.getElementById("juggler").style.display ="none"
+document.getElementById("listing").style.display ="block"
+},2000)
+
+
 var arr = ["dummy","Bryan","Dale","Dean","Eddie","Graham","Jamie","John","Peter","Richard","Robert","StephenA","StephenW"]
 var arrDone = [];
 var min=1
