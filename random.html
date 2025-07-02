@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<style>
+#txt {
+		font-family: 'Arial';
+      font-size: 4vh;
+}
+
+#list {
+	font-family: 'Arial';
+      font-size: 4vh;
+}
+</style>
+<body>
+
+
+
+<p id="txt">selects random blindgolfers</p>
+<br>
+<div id="list"></div>
+
+<script>
+var arr = ["dummy","Bryan","Dale","Dean","Eddie","Graham","Jamie","John","Peter","Richard","Robert","StephenA","StephenW"]
+var arrDone = [];
+var min=1
+var max=12
+
+while (arrDone.length < 12) {
+       x = arr[Math.floor(Math.random() * (max - min + 1) ) + min];
+       if (arrDone.indexOf(x) == -1) {
+           arrDone.push(x);
+       }
+}
+
+// display results
+var list = "";
+for (let i = 0; i < arrDone.length; i++) { 
+     list += arr[i+1] + " has " + arrDone[i] + " as winner<br><br>"
+}
+document.getElementById("list").innerHTML = list
+
+
+</script>
+
+</body>
+</html>
