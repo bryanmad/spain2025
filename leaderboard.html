@@ -112,7 +112,14 @@ var arrPlayer = []
 var arrPoints = []
 var arrPlayerOld = [];
 var comp = "";
+var compcheck = "";
 var dd = new Date();
+
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var ddday = weekday[dd.getDay()];
+
+
+
 var dddate = dd.getDate();
 var ddmonth = dd.getMonth();
 
@@ -162,6 +169,7 @@ d1 = dd.getDate();
       var dateToday = d1 + " " + m;
 
 
+
 function start() {
 
 document.getElementById("notyet").innerHTML = "<br>Leaderboard ... <a style='color:blue;'>updating</a><br><br>"
@@ -203,12 +211,28 @@ async function getData() {
     }
 
 // see if it is todays comp
-	//if (resultsarray[0].comp.indexOf(dateToday) > -1) {
+if (ddday = "Monday") {
+    compcheck = "America";
+}
+if (ddday = "Tuesday") {
+    compcheck = "Cabapino";
+}
+if (ddday = "Wednesday") {
+    compcheck = "Asia";
+}
+if (ddday = "Thursday") {
+    compcheck = "Lagos";
+}
+if (ddday = "Friday") {
+    compcheck = "Europa";
+}
+
+	if (resultsarray[0].comp.indexOf(compcheck) > -1) {
        // see  if there is any results
        if(resultsarray[0].points > 0) {
            dataFound = "yes";
        }
-    //}
+    }
 
 if (dataFound == "yes") {
 	
@@ -484,7 +508,6 @@ function createDisplay(num) {
 </script>
 </body>
 </html>
-
 
 
 
