@@ -108,27 +108,63 @@ var arr = ["dummy","Bryan","Dale","Dean","Eddie","Graham","Jamie","John","Peter"
 var arrDone = [];
 var min=1
 var max=12
+var nomatch = true;
+var repeatx = true;
 
-while (arrDone.length < 12) {
-       x = arr[Math.floor(Math.random() * (max - min + 1) ) + min];
-       if (arrDone.indexOf(x) == -1) {
-           arrDone.push(x);
-       }
+doAgain();
+
+function doAgain() {
+	// reset variables
+	arrDone = [];
+    min=1
+    max=12
+    nomatch = true;
+    while (arrDone.length < 12) {
+	      // pick a name
+          x = arr[Math.floor(Math.random() * (max - min + 1) ) + min];
+          // if not already used ...
+	      if (arrDone.indexOf(x) == -1) {
+              arrDone.push(x);
+          }
+   }
+
+   for (let j = 0; j < arrDone.length; j++) { 
+
+      if (arr[j+1] == arrDone[j]) {
+          nomatch = false;
+      }
+
+   }
+
+} // end of function
+
+
+
+while (repeatx) {
+      if (nomatch) {
+          repeatx = false;  
+          showlist()
+      } else {
+          doAgain();
+      }
 }
 
-// display results
-var list = "";
-for (let i = 0; i < arrDone.length; i++) { 
-	if (i == 0) {
-		ii = 5000;
-	} else {
-		ii = 5000 + (i*300);
-	}
-	setTimeout(function() {
-     list += arr[i+1] + " has " + arrDone[i] + " as winner<br>"
-     document.getElementById("list").innerHTML = list
-	},ii)
 
+
+function showlist() {
+   // display results
+   var list = "";
+   for (let i = 0; i < arrDone.length; i++) { 
+	    if (i == 0) {
+		    ii = 5000;
+	    } else {
+		    ii = 5000 + (i*300);
+	    }
+	    setTimeout(function() {
+           list += arr[i+1] + " has " + arrDone[i] + " as winner<br>"
+           document.getElementById("list").innerHTML = list
+        },ii)
+   }
 }
 	
 
