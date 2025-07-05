@@ -92,418 +92,238 @@ width: 55vw;
 padding-left: 10px;
 padding-right: 10px;
 }
+
+.table_component {
+    overflow: auto;
+    width: 100%;
+}
+
+.table_component table {
+    border: 1px solid #dededf;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: left;
+}
+
+.table_component caption {
+    caption-side: top;
+    text-align: center; //left;
+	background: lightGray;
+	color: blue;
+	font-size: 6vw;
+}
+
+.table_component th {
+    //border: 1px solid #dededf;
+    background-color: lightGray;
+    color: #000000;
+    padding: 5px;
+	//text-align: center;
+		font-weight: normal;
+}
+
+.table_component td {
+    //border: 1px solid #dededf;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px;
+}
+
+.centered {
+	text-align: center;
+}
+
+#centered {
+	text-align: center;
+}
+.left {
+	text-align: left;
+
+}
+#topspacer {
+	height: 10vh;
+}
+#updating {
+	color: blue;
+	font-style:italic;
+	padding-top: 2vh;
+}
 </style>
+</head>
 <body>
-<div id="notyet"></div>
+<div id="updating"></div>
+<div id="notyet">
+<div id="topspacer">&nbsp;</div>
+<div class="table_component" role="region" tabindex="0">
+<table>
+    <caption id="course"></caption>
+    <thead>
+        <tr>
+            <th class="centered">Position</th>
+            <th class="left">Player</th>
+            <th class="centered">Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="pos1" class="centered"></td>
+            <td id="player1"></td>
+            <td id="points1" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos2" class="centered"></td>
+            <td id="player2"></td>
+            <td id="points2" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos3" class="centered"></td>
+            <td id="player3"></td>
+            <td id="points3" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos4" class="centered"></td>
+            <td id="player4"></td>
+            <td id="points4" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos5" class="centered"></td>
+            <td id="player5"></td>
+            <td id="points5" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos6" class="centered"></td>
+            <td id="player6"></td>
+            <td id="points6" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos7" class="centered"></td>
+            <td id="player7"></td>
+            <td id="points7" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos8" class="centered"></td>
+            <td id="player8"></td>
+            <td id="points8" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos9" class="centered"></td>
+            <td id="player9"></td>
+            <td id="points9" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos10" class="centered"></td>
+            <td id="player10"></td>
+            <td id="points10" class="centered"></td>
+        </tr>
+        <tr>
+            <td id="pos11" class="centered"></td>
+            <td id="player11"></td>
+            <td id="points11" class="centered"></td>
+        </tr>
+		<tr>
+            <td id="pos12" class="centered"></td>
+            <td id="player12"></td>
+            <td id="points12" class="centered"></td>
+        </tr>
+		
+    </tbody>
+</table>
 
- <div id="leaderlist">
+</div>
 
- <!-- created by script --> 
-     
- </div>
+
+
+
+</div>
+
 
 </body>
 <script>
 
+function start() {
 
-document.getElementById("notyet").innerHTML = "Leaderboard refreshing ...<br>";
+document.getElementById("updating").innerText = "Leaderboard ... updating"
 var arrPos = []
 var arrPlayer = []
 var arrPoints = []
 var arrPlayerOld = [];
 var comp = "";
-var compcheck = "";
-var datafound = "no";
-var dd = new Date();
-
-const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-var ddday = weekday[dd.getDay()];
-
-
-
-var dddate = dd.getDate();
-var ddmonth = dd.getMonth();
-
-// get date number and format it
-d1 = dd.getDate();
-      if (d1 < 10) {
-        d1 = "0" + d1;
-      }
-      // get month and format it
-      d2 = dd.getMonth();
-      if (d2 == 0) {
-        m = "January";
-      }
-      if (d2 == 1) {
-        m = "February";
-      }
-      if (d2 == 2) {
-        m = "March";
-      }
-      if (d2 == 3) {
-        m = "April";
-      }
-      if (d2 == 4) {
-        m = "May";
-      }
-      if (d2 == 5) {
-        m = "June";
-      }
-      if (d2 == 6) {
-        m = "July";
-      }
-      if (d2 == 7) {
-        m = "August";
-      }
-      if (d2 == 8) {
-        m = "September";
-      }
-      if (d2 == 9) {
-        m = "October";
-      }
-      if (d2 == 10) {
-        m = "November";
-      }
-      if (d2 == 11) {
-        m = "December";
-      }
-      var dateToday = d1 + " " + m;
-
-
-
-function start() {
-
-document.getElementById("notyet").innerHTML = "<br>Leaderboard ... <a style='color:blue;'>updating</a><br><br>"
-arrPos = []
-arrPlayer = []
-arrPoints = []
-arrPlayerOld = [];
-comp = "";
-
-if (!("lbdatecheck" in localStorage)) {
-    localStorage.lbdatecheck = "0";
-}
-
-if (localStorage.lbdatecheck != dddate + "-" + ddmonth) {
-    localStorage.lbdatecheck = dddate + "-" + ddmonth;
-    localStorage.removeItem("lbarray");
-}
+var resultsarray = "";
+var newi=0;
+var intervalID;
+var dd;
+var ddhours;
+var ddminutes;
+var ddseconds;
 
 getData();
+
 }
+
+
 
 // run code ...
 start();
 
 // time for update
-setInterval(start, 60000);
+intervalset = setInterval(start, 60000);
+
+
+
 
 async function getData() {
 	var dataStream = await fetch("https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard"
 )
+	resultsarray = await dataStream.json();
 	
-	var resultsarray = await dataStream.json();
-	console.log(resultsarray)
-	dataFound = "no"
-
-    if (resultsarray[0].points == "") {
+    if (resultsarray[0].points == " ") {
         document.getElementById("notyet").innerHTML = 
            "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
-    }
-
-// see if it is todays comp
-if (ddday == "Monday") {
-    compcheck = "America";
-}
-if (ddday == "Tuesday") {
-    compcheck = "Cabapino";
-}
-if (ddday == "Wednesday") {
-    compcheck = "Europa";
-}
-if (ddday == "Thursday") {
-    compcheck = "Lagos";
-}
-if (ddday == "Friday") {
-    compcheck = "Asia";
-}
-
-	if (resultsarray[0].comp.indexOf(compcheck) > -1) {
-       // see  if there is any results
-       if(resultsarray[0].points > 0) {
-           dataFound = "yes";
-       }
-    }
-
-if (dataFound == "yes") {
-	
-	// get rid of blanks in array by creating new arrays
-	for(var i = 0; i < resultsarray.length; i++) {
-		if(resultsarray[i].player.length > 2) {
-			arrPos.push(resultsarray[i].pos);
-			arrPlayer.push(resultsarray[i].player);
-			arrPoints.push(resultsarray[i].points);
-			
-			
-			comp = resultsarray[0].comp;
-			
-		}
-		arrPlayerOld.push("searching ...")
-
+    } else {
+		
+		document.getElementById("course").innerText = resultsarray[0].comp;
+	    newi=0
+		dd = new Date();
+		
+		ddhours = dd.getHours();
+	    ddminutes = (dd.getMinutes() + 1);
+	    if(ddminutes < 10) {
+		   ddminutes = "0" + ddminutes
+	    }
+	    ddseconds = dd.getSeconds();
+	    if(ddseconds < 10) {
+		   ddseconds = "0" + ddseconds
+	    }
+        intervalID = setInterval(myCallback, 500);
 	}
-
-} else {
-
-   arrPos.push("&nbsp;");
-   arrPlayer.push("no results");
-   arrPoints.push("&nbsp;");
-
-
-   arrPlayerOld.push("searching ...")
-
 }
 
-	// retrieve previous data
-	if ("lbarray" in localStorage) {
-	    arrPlayerOld = JSON.parse(localStorage.lbarray);
+
+
+function myCallback() {
+	// increment newi
+	newi++
+    document.getElementById("pos" + newi).innerText = resultsarray[newi - 1].pos;
+	document.getElementById("player" + newi).innerText = resultsarray[newi - 1].player;
+	document.getElementById("points" + newi).innerText = resultsarray[newi - 1].points;
+	if (newi%2 == 1) {
+	document.getElementById("pos" + newi).style.background = "whiteSmoke"
+	document.getElementById("player" + newi).style.background = "whiteSmoke"
+	document.getElementById("points" + newi).style.background = "whiteSmoke"
 	}
-	// overwrite saved data
-	//localStorage.lbarray = JSON.stringify(arrPlayer);
-	localStorage.setItem("lbarray",JSON.stringify(arrPlayer));
+	if (newi >= 12) {
+		clearInterval(intervalID)
 
-		//if (arrPlayer.length == arrPlayerOld.length) { // no change
-		//console.log("same")
-		//} else { // change
-	//var numberofresults = resultsarray.length;
-	var displaypos
-	var displayplayer
-	var displaypoints
-
-
-		// if not a comp day show message and return to menu
-
-	var ddhours = dd.getHours();
-	var ddminutes = dd.getMinutes();
-	if(ddminutes < 10) {
-		ddminutes = "0" + ddminutes
+		document.getElementById("updating").innerText = "Leaderboard for today, next update at " + ddhours + ":" + ddminutes + ":" + ddseconds;
+		//document.getElementById("footer").innerHTML = "Updated every 60 seconds.<br>There is a delay before this information is available in the results"
+		
+		
+		
+		
 	}
-	var ddseconds = dd.getSeconds();
-	if(ddseconds < 10) {
-		ddseconds = "0" + ddseconds
-	}
-	arrMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-		// create HTML
-	        createDisplay(arrPlayer.length)
-		// comp day
-		document.getElementById("top1").innerHTML = "<br>" + comp + "<br><br>"
-		
-		i = 0;
-
-                // gray out current list	
-                
-                for(var ii = 0; ii < arrPlayer.length; ii++) {                   
-                    var bbg = '<p style="background:#F8F8FF;color:gray;">'
-                    displaypos    = bbg + arrPos[ii]    + "</p>";
-                    displayplayer = bbg + arrPlayerOld[ii] + "</p>";
-                    displaypoints = bbg + arrPoints[ii] + "</p>";
-                   
-				
-                    document.getElementById("pos"    + ii).innerHTML = displaypos
-                    document.getElementById("player" + ii).innerHTML = displayplayer
-                    document.getElementById("points" + ii).innerHTML = displaypoints
-                 
-                    
-                    // add class
-		    document.getElementById("leaderlist").classList.add("grid-container");
-  /*                  
-                    document.getElementById("notyet").innerHTML = "<br>Leaderboard for today at " + ddhours + ":" + ddminutes + '<a id="secs">' + ":" + ddseconds + "</a><br><br>";
-		document.getElementById("footer").innerHTML = "Updated every 60 seconds.<br>There is a delay before this information is available in the results"
-*/
-               }	
-               
-             
-	// set player width
-	//document.getElementById("player0").style.width = "55vw";
-	       // step through each entry and rewrite	
-
-  
-  let myPromise = () => new Promise((resolve, reject) => {
-      setTimeout(function(){
-        resolve('Count')
-      }, 300)
-    })
- 
-   
-    for (let index = 0; index < arrPlayer.length; index++) {
-      let count = await myPromise()
-
-
-
-// code goes here
-  
-  
-  
-    		
-			// old player 
-			if(arrPlayerOld.indexOf(arrPlayer[i]) > -1) {
-			   // odd number 
-                           if (i % 2 !== 0) {
-		               // light background
-		               bg = '<p style="background:#F8F8FF;color:black;">'
-		           } else {
-		               bg = '<p style="background:#ECEFEF;color:black;">'
-		           } 
-				displaypos    = bg + arrPos[i]    + "&nbsp;</p>";
-				displayplayer = bg + arrPlayer[i] + "&nbsp;</p>";
-				displaypoints = bg + arrPoints[i] + "&nbsp;</p>";
-			    displaytwos = bg + " " + "&nbsp;</p>";
-				
-				// add class
-				document.getElementById("leaderlist").classList.add("grid-container");
-				
-				document.getElementById("pos"    + i).innerHTML = displaypos
-				document.getElementById("player" + i).innerHTML = displayplayer
-				document.getElementById("points" + i).innerHTML = displaypoints
-			    document.getElementById("twos" + i).innerHTML = displaytwos
-
-			} else {
-				// new player
-				if (i % 2 !== 0) {
-		                    // light background
-		                    bg = '<p style="background:#F8F8FF; color:blue;">'
-		                } else {
-		                    bg = '<p style="background:#ECEFEF; color: blue;">'
-		                } 
-				displaypos    = bg + arrPos[i]    + "&nbsp;</p>";
-				displayplayer = bg + arrPlayer[i] + "&nbsp;</p>";
-				displaypoints = bg + arrPoints[i] + "&nbsp;</p>";
-				displaytwos = bg + " " + "&nbsp;</p>";
-		
-                // add class
-				document.getElementById("leaderlist").classList.add("grid-container");
-				
-				document.getElementById("pos"    + i).innerHTML = displaypos
-				document.getElementById("player" + i).innerHTML = displayplayer
-				document.getElementById("points" + i).innerHTML = displaypoints
-			    document.getElementById("twos" + i).innerHTML = displaytwos
-                
-			}
-			
-			
-			i++
-			
-} //end of delay			
-			
-			
-			
-			
-			
-
-		document.getElementById("notyet").innerHTML = "<br>Leaderboard for today at " + ddhours + ":" + ddminutes + '<a id="secs">' + ":" + ddseconds + "</a><br><br>";
-		document.getElementById("footer").innerHTML = "Updated every 60 seconds.<br>There is a delay before this information is available in the results"
-		
-		
-		
-		
-		
-	
-}
-
-function createSmallDisplay() {
-	// create HTML to hold results
-	var select = document.getElementById("leaderlist");
-	select.classList.remove("grid-container")
-	select.innerHTML = "";
-	var el = document.createElement("div");
-	el.id = "nocomp";
-	select.appendChild(el);
-
-	
-
-}
-
-function createDisplay(num) {
-	// create HTML to hold results
-	var select = document.getElementById("leaderlist");
-	// empty names
-	select.innerHTML = "";
-	// create comp holder
-	var el = document.createElement("div");
-	el.id = "comp";
-	el.setAttribute("class", "grid-item-top");
-	select.appendChild(el);
-	
-	
-	var el = document.createElement("div");
-	el.id = "top1";
-	el.setAttribute("class", "grid-item-top");
-	select.appendChild(el);
-	document.getElementById("top1").style.textAlign = "center";
-	document.getElementById("top1").innerHTML = "<br>" + comp + "<br><br>"
-	document.getElementById("top1").style.background = "lightGray";
-	document.getElementById("top1").style.color = "blue";
-	
-	var el = document.createElement("div");
-	el.id = "top2";
-	el.setAttribute("class", "grid-item-top");
-	select.appendChild(el);
-	document.getElementById("top2").innerHTML = "&nbsp;"
-	document.getElementById("top2").style.background = "#F8F8FF";
-	document.getElementById("top2").style.color = "cyan";
-	
-	// create the right number of holders
-	for(var i = 0; i < num; i++) {
-
-		var el = document.createElement("div");
-		el.id = "pos" + i;
-		el.setAttribute("class", "grid-item-pos");
-		select.appendChild(el);
-		var el = document.createElement("div");
-		el.id = "player" + i;
-		el.setAttribute("class", "grid-item");
-		select.appendChild(el);
-		var el = document.createElement("div");
-		el.id = "points" + i;
-		el.setAttribute("class", "grid-item");
-		select.appendChild(el);
-		var el = document.createElement("div");
-		el.id = "twos" + i;
-		el.setAttribute("class", "grid-item");
-		select.appendChild(el);
-
-	}
-	// create footer 
-	
-	
-	
-	if (arrPlayer.length % 2 !== 0) {
-	var el = document.createElement("div");
-	el.id = "bottom1";
-	el.setAttribute("class", "grid-item-top");
-	select.appendChild(el);
-	document.getElementById("bottom1").innerHTML = "&nbsp;"
-	document.getElementById("bottom1").style.background = "#F8F8FF";
-	document.getElementById("bottom1").style.color = "cyan";
-	}
-	
-	var el = document.createElement("div");
-	el.id = "bottom2";
-	el.setAttribute("class", "grid-item-top");
-	select.appendChild(el);
-	document.getElementById("bottom2").innerHTML = "&nbsp;"
-	document.getElementById("bottom2").style.background = "#ECEFEF";
-	document.getElementById("bottom2").style.color = "cyan";
-	
-	
-	var el = document.createElement("div");
-	el.id = "footer";
-	el.setAttribute("class", "grid-item-top");
-	select.appendChild(el);
-	document.getElementById("footer").innerHTML = "&nbsp;"
-	document.getElementById("footer").style.background = "#F8F8FF";
-	document.getElementById("footer").style.color = "darkSlateGray";
-	document.getElementById("footer").style.fontStyle = "italic";
-	
 }
 
 </script>
