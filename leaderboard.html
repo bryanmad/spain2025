@@ -240,23 +240,28 @@ async function getData() {
 
 
 function myCallback() {
+
+	
+	
+	
+	
+	
 	// increment newi
 	newi++
-    document.getElementById("pos" + newi).innerText = resultsarray[newi - 1].pos;
-	document.getElementById("player" + newi).innerText = resultsarray[newi - 1].player;
-	document.getElementById("points" + newi).innerText = resultsarray[newi - 1].points;
-	if (newi%2 == 1) {
-	document.getElementById("pos" + newi).style.background = "whiteSmoke"
-	document.getElementById("player" + newi).style.background = "whiteSmoke"
-	document.getElementById("points" + newi).style.background = "whiteSmoke"
+	if (resultsarray[newi - 1].pos > 0) {
+        document.getElementById("pos" + newi).innerText = resultsarray[newi - 1].pos;
+   	    document.getElementById("player" + newi).innerText = resultsarray[newi - 1].player;
+	    document.getElementById("points" + newi).innerText = resultsarray[newi - 1].points;
+	    if (newi%2 == 1) {
+	        document.getElementById("pos" + newi).style.background = "whiteSmoke"
+	        document.getElementById("player" + newi).style.background = "whiteSmoke"
+	        document.getElementById("points" + newi).style.background = "whiteSmoke"
+	    }
 	}
 	if (newi >= 12) {
 		clearInterval(intervalID)
 
 		document.getElementById("updating").innerText = "... next update at " + ddhours + ":" + ddminutes + ":" + ddseconds;
-		//document.getElementById("footer").innerHTML = "Updated every 60 seconds.<br>There is a delay before this information is available in the results"
-		
-		
 		
 		
 	}
