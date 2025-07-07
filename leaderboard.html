@@ -219,7 +219,7 @@ async function getData() {
 )
 	resultsarray = await dataStream.json();
 	
-    if (resultsarray[0].points == " ") {
+    if (resultsarray[0].points == " " || typeof resultsarray.points == 'undefined') {
         document.getElementById("notyet").innerHTML = 
            "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
     } else {
