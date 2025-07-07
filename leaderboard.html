@@ -18,14 +18,13 @@
     padding: 0;  
 }
 body {
-       color: white;
+      color: white;
       background-color: white; //darkSlateGray;
       font-family: Arial, Helvetica, sans-serif;
-     // overflow-y: hidden; 
-     padding-left: 5px;
-     padding-right: 5px;
-	 font-family: Arial;
-	 font-size: 6vw;
+      padding-left: 5px;
+      padding-right: 5px;
+	  font-family: Arial;
+	  font-size: 6vw;
 }
  
 
@@ -33,6 +32,7 @@ body {
 .table_component {
     overflow: auto;
     width: 100%;
+	display: none;
 }
 
 .table_component table {
@@ -47,23 +47,20 @@ body {
 
 .table_component caption {
     caption-side: top;
-    text-align: center; //left;
+    text-align: center;
 	background: lightGray;
 	color: blue;
 	font-size: 6vw;
 }
 
 .table_component th {
-    //border: 1px solid #dededf;
     background-color: lightGray;
     color: #000000;
     padding: 5px;
-	//text-align: center;
-		font-weight: normal;
+	font-weight: normal;
 }
 
 .table_component td {
-    //border: 1px solid #dededf;
     background-color: #ffffff;
     color: #000000;
     padding: 5px;
@@ -97,7 +94,7 @@ body {
 <div id="updating"></div>
 <div id="notyet">
 <div id="topspacer">&nbsp;</div>
-<div class="table_component" role="region" tabindex="0">
+<div class="table_component" id="table_component" role="region" tabindex="0">
 <table>
     <caption id="course"></caption>
     <thead>
@@ -218,12 +215,11 @@ async function getData() {
 	var dataStream = await fetch("https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard"
 )
 	resultsarray = await dataStream.json();
-	
-    if (resultsarray[0].points == " " || typeof resultsarray.points == 'undefined') {
+	if (typeof resultsarray[0].points == 'undefined') {
         document.getElementById("notyet").innerHTML = 
            "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
     } else {
-		
+		document.getElementById("table_component").style.display = "block"; 
 		document.getElementById("course").innerText = resultsarray[0].comp;
 	    newi=0
 		dd = new Date();
