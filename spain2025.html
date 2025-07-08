@@ -30,8 +30,6 @@
       //background: black;
   animation-name: grow;
   animation-duration: 2s;
- 
-  //animation-delay: 5s;
 
   transform-origin: left top;
 }
@@ -40,23 +38,6 @@
     0% { transform: scale(.1); }
   100% { transform: scale(1); }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     ::-webkit-scrollbar {
       display: none;
@@ -687,7 +668,7 @@
 <!--
   <body>
   --> 
-  <body oncontextmenu="return false;">
+  <body oncontextmenu="return false;" onload="showPhoto();">
   
  <!-- remove when not required 100% is about 40 characters 
     
@@ -1271,7 +1252,7 @@ document.querySelector('body').classList.remove('photo');
 function showPhoto() {
 document.body.classList.add("photo");
 }
-showPhoto();
+//showPhoto();
 
     </script>
   </body>
