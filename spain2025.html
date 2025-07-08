@@ -19,23 +19,20 @@
     }
 
     html {
+		background: black;
       height: 100vh;
     }
 
     body {
       overflow: hidden;
       height: 100vh;
-      /* linear-gradient syntax */
+
       background: black;
-    }
+  animation-name: grow;
+  animation-duration: 4s;
+ 
+  //animation-delay: 5s;
 
-
-
-
-
-body {
-  animation-delay: 0.5s;
-  animation: grow 1s;
   transform-origin: left top;
 }
 
@@ -659,6 +656,7 @@ body {
     background-repeat:   no-repeat;
     background-position: right bottom;
 	transition: background 10s linear;
+	
 }
 
 #countdown {
@@ -686,8 +684,12 @@ body {
 }
     </style>
 </head>
+<!--
+  <body>
+  --> 
   <body oncontextmenu="return false;" onload="showPhoto();">
-    <!-- remove when not required 100% is about 40 characters 
+  
+ <!-- remove when not required 100% is about 40 characters 
     
     <div class="marquee"><p>Note: some stroke indexes have changed on the Old Course.</p></div>
     
