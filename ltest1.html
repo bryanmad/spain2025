@@ -24,21 +24,21 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 2vh;
     background-color: #f1f2f296;
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
-    width: 500px;
-    height: 500px;
+    width: 100vw;
+    height: 100vh;
     position: relative;
 }
 
 :root {
-    --team-height: 60px;
-    --team-spacing: 10px;
+    --team-height: 6.5vh;
+    --team-spacing: 0.5vh;
 }
 
 .team {
@@ -102,7 +102,7 @@ width: var(--team-height);
 </head>
 <body>
 
-<h2>Leaderboard, updates every 60 seconds</h2>
+
     <div class="container">
      
     </div>
@@ -119,26 +119,18 @@ width: var(--team-height);
 
 // globals
 var box;
-var data = [];
+var data;
 
 
 
 
 
-body()
+getData()
 var j=0
 // data is available here
-/*
-data.forEach((el) => {
-	
-	j++
-	setTimeout(function() {
-	bodyUpdate(el.name,Math.floor(Math.random() * 10));
-	console.log("j = " + j)
-   },j*2000);
-   
-})
-*/
+
+
+
 
 box=document.getElementById("box")
 //simulateClick("box")
@@ -146,10 +138,35 @@ box=document.getElementById("box")
 
 
 async function getData() {
-	var dataStream = await fetch("https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard"
-)
-	data = await dataStream.json();
-	if (typeof resultsarray[0].points == 'undefined') {
+	
+	const url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard";
+  try {
+    const dataStream = await fetch(url);
+    if (!dataStream.ok) {
+      throw new Error(`Response status: ${dataStream.status}`);
+    }
+
+    data = await dataStream.json();
+    console.log("first data started")
+	console.log(data);
+	console.log("first score = " + data[0].score);
+	console.log("first data finished")
+	
+  } catch (error) {
+    console.error(error.message);
+  }
+	
+	
+	
+	
+	//var dataStream = await fetch("https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard"
+//)
+	//data = await dataStream.json();
+	
+	//console.log(dataStream.json())
+	
+	console.log(data)
+	if (typeof data[0].score == 'undefined') {
         //document.getElementById("notyet").innerHTML = 
            "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
     } else {
@@ -167,8 +184,12 @@ async function getData() {
 	    if(ddseconds < 10) {
 		   ddseconds = "0" + ddseconds
 	    }
-        intervalID = setInterval(myCallback, 500);
+        //intervalID = setInterval(myCallback, 500);
+		
 	}
+	
+	body();
+	
 }
 
 
@@ -187,8 +208,12 @@ data = [
 ];
 */
 
-getData()
+console.log("first score in body = " + data[0].score);
 
+
+console.log("in body")
+
+console.log(data)
 
 
 let container = document.querySelector(".container");
@@ -211,7 +236,7 @@ data.forEach((el, i) => {
   let name = document.createElement("span");
   name.id = "name" + i
   name.className = "name";
-  name.innerHTML = el.name;
+  //name.innerHTML = el.name;
   
   let score = document.createElement("span");
   score.id = "score" + i
@@ -221,7 +246,7 @@ data.forEach((el, i) => {
   icon.id = "icon" + i
   icon.className = "icon";
   icon.innerHTML = el.icon;
-  score.innerHTML = el.score;
+  //score.innerHTML = el.score;
   box.appendChild(icon);
   box.appendChild(name);
   box.appendChild(score);
@@ -229,11 +254,61 @@ data.forEach((el, i) => {
   container.appendChild(box);
 
 
+
+
+
 })
 
+console.log(data)
+j=0
+// enter blank data
+
+
+//var xx = data.toSorted();
+
+// Using an arrow function to sort books by their title
+let xx = data.toSorted((a, b) =>
+  a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+);
+
+
+
+console.log("first score after data.tosorted() = " + data[0].score); 
+console.log("xx = " + xx[0].score)
+console.log(xx)
+console.log("data = " + data[0].score)
+console.log(data)
+
+xx.forEach((elstartx,j) => {
+	elstartx.icon = "0";
+	//elstartx.score = "0";
+	initialBodyUpdate(elstartx.name,j);
+})
+console.log("first score after xx.forEach = " + data[0].score); 
+console.log(data)
+
+//xx.forEach((elstart,j) => {
+//document.getElementById("name" + i + 1) = elstart.name
+	
+//initialBodyUpdate(elstart.name,j);
+
+console.log(data)
+//})
+
+
+
+k=0;
+data.forEach((el) => {
+	
+	k++
+	setTimeout(function() {
+	bodyUpdate(el.name,el.score);
+   },k*1000);
+   console.log("k = " + k)
+})
+
+
 }
-
-
 
 
  // box.addEventListener("click", () => {
@@ -243,7 +318,7 @@ function bodyUpdate(nom,scr) {
     box = document.getElementById(nom) 
     let elName = nom; //box.querySelector(".name").innerHTML;
     data.find((team) => team.name === elName);
-    data.find((team) => team.name === elName).score = scr;
+    //data.find((team) => team.name === elName).score = scr;
 	
     data
       .sort((a, b) => {
@@ -253,25 +328,10 @@ function bodyUpdate(nom,scr) {
         return b.score - a.score; // Sort by score in descending order
       })
       //make the position the same as rank
-	  .forEach((e, i) => (e.rank = i));
+	 // .forEach((e, i) => (e.rank = i));
 	  // now sort out positions for same scores
 	  var held=1;
 	  var heldscore = 0
-/*	  data.forEach((e, ind, a) => (function (xsort){
-		  console.log("index = " + ind)
-		  e.icon = -1
-		  if (e.score == heldscore) {
-		      a[ind].icon = held
-		  } else {
-		      a[ind].icon = ind;
-		  }
-		  held = e.icon;
-		  heldscore = e.score;
-	  }));
-	*/ 
-//data.forEach((e, i) => (e.icon = i));
-	  
-	  
 	 data.forEach((elem, ind) => {
           if (elem.score == heldscore) {
 		      elem.icon = held
@@ -282,31 +342,7 @@ function bodyUpdate(nom,scr) {
 		  heldscore = elem.score;
 }); 
 	  
-	  
-/*
-foodArray.forEach((food, index) => {
-  if (index % 2 === 0) {
-  console.log(`${food}`); 
-  }
-});
-
-
-*/	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+  
 	  
     let AllTeams = Array.from(document.querySelectorAll(".team"));
     var k=0
@@ -320,7 +356,8 @@ foodArray.forEach((food, index) => {
       if (elementName.innerHTML == elName) {
         elementScore.innerHTML = scr;
 		//elementPos.innerHTML = k;
-      }
+      //}
+	  
       let newRank = data.find(
         (team) => team.name === elementName.innerHTML
       ).rank;
@@ -329,35 +366,34 @@ foodArray.forEach((food, index) => {
 	  //console.log("test2 = " + data.find((team) => team.name === elementName.innerHTML).score);
 	  let elementPos = element.querySelector(".icon");
 	  elementPos.innerText = data.find((team) => team.name === elementName.innerHTML).icon
-	  
-	  //let newPos = data.find(
-      //  (team) => team.name === elementName.innerHTML
-      //).icon;
-	  
-	 
-	  
-	  //elementPos.style.innerHTML = newPos;	  
-//	  newPos = data.find((team) => team.name === elName).icon;
-//	   console.log("newPos = " + newPos)
+	  }
+
     });
 	
-	
-	// do positions
-	//let AllTeams = Array.from(document.querySelectorAll(".team"));
-    
-	//console.clear();
-    //AllTeams.forEach((element) => {
-	
-		//document.getElementById("icon"+k).innerHTML = data.find((team) => team.name === elName).icon;
-		
-	
-	//})
-	
-	
- 
- 
+
 	
 }	
+
+
+
+
+
+
+
+
+	  
+function initialBodyUpdate(nom,pos) {	
+console.log("first score in initialBodyUpdate() = " + data[0].score); 
+	console.log("initialBodyUpdate(nom,pos) = " + nom + " " + pos)
+		
+    document.getElementById("name" + pos).innerText = nom;
+	document.getElementById("icon" + pos).innerText = "";
+	
+}	
+
+
+
+
 
 
 
