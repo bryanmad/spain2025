@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>spain2025</title>
+    <meta content="Bryan M" name="author" />
+    <meta name="theme-color" content="indigo">
+    <meta name="robots" content="noindex">
+    <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+    <style>
+	* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    background-color: #f1f2f296;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+:root {
+    --team-height: 60px;
+    --team-spacing: 10px;
+}
+
+.team {
+    position: absolute;
+    width: 90%;
+    height: var(--team-height);
+    background: var(--color);
+    box-shadow: 0 3px 5px #0000001f;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(var(--i) * (var(--team-height) + var(--team-spacing)));
+    display: flex;
+
+    align-items: center;
+    transition-property: top;
+    transition-duration: 1500ms;
+    border-radius: 10px;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+}
+
+.name {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.score {
+    width: var(--team-height);
+    margin: 20px 0;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.icon {
+width: var(--team-height);
+    margin: 10px 0;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 600;	
+	text-align: center;
+}
+
+.team i {
+    width: 80px;
+    height: var(--team-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.8rem;
+}
+</style>
+</head>
+<body>
+
+<a>Leaderboard, updates every 60 seconds</a>
+    <div class="container">
+     
+    </div>
+
+
+<script>
+// forEach order of params
+//item
+//index
+//array
+
+
+
+
+// globals
+var box;
+var data;
+
+
+
+
+
+getData()
+var j=0
+// data is available here
+
+
+
+
+box=document.getElementById("box")
+//simulateClick("box")
+
+
+
+async function getData() {
+	
+	const url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard";
+  try {
+    const dataStream = await fetch(url);
+    if (!dataStream.ok) {
+      throw new Error(`Response status: ${dataStream.status}`);
+    }
+
+    data = await dataStream.json();
+    console.log("first data started")
+	console.log(data);
+	console.log("first score = " + data[0].score);
+	console.log("first data finished")
+	
+  } catch (error) {
+    console.error(error.message);
+  }
+	
+	
+	
+	
+	//var dataStream = await fetch("https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard"
+//)
+	//data = await dataStream.json();
+	
+	//console.log(dataStream.json())
+	
+	console.log(data)
+	if (typeof data[0].score == 'undefined') {
+        //document.getElementById("notyet").innerHTML = 
+           "<br>Leaderboard ... <a style='color:blue;'>no results available</a><br><br>"
+    } else {
+		//document.getElementById("table_component").style.display = "block"; 
+		//document.getElementById("course").innerText = resultsarray[0].comp;
+	    newi=0
+		dd = new Date();
+		
+		ddhours = dd.getHours();
+	    ddminutes = (dd.getMinutes() + 1);
+	    if(ddminutes < 10) {
+		   ddminutes = "0" + ddminutes
+	    }
+	    ddseconds = dd.getSeconds();
+	    if(ddseconds < 10) {
+		   ddseconds = "0" + ddseconds
+	    }
+        //intervalID = setInterval(myCallback, 500);
+		
+	}
+	
+	body();
+	
+}
+
+
+
+
+
+function body() {
+/*
+data = [
+  { rank: 0, name: "dog", score: 0, color: "#66bb6a", icon:0 },
+  { rank: 0, name: "horse", score: 0, color: "#a1887f", icon:0 },
+  { rank: 0, name: "dove", score: 0, color: "#42a5f5", icon:0 },
+  { rank: 0, name: "cat", score: 0, color: "#ffa726", icon:0 },
+  { rank: 0, name: "spider", score: 0, color: "#ef5350", icon:0 },
+  { rank: 0, name: "fish", score: 0, color: "#5c6bc0", icon:0 },
+];
+*/
+
+console.log("first score in body = " + data[0].score);
+
+
+console.log("in body")
+
+console.log(data)
+
+
+let container = document.querySelector(".container");
+
+data
+  .sort((a, b) => {
+    if (b.score === a.score) {
+      return a.name.localeCompare(b.name); // Sort by name if scores are equal
+    }
+    return b.score - a.score; // Sort by score in descending order
+  })
+  .forEach((e, i) => (e.rank = i));
+
+data.forEach((el, i) => {
+  let box = document.createElement("div");
+  box.id= "box" + i;
+  box.className = "team";
+  box.style.setProperty("--i", i);
+  
+  let name = document.createElement("span");
+  name.id = "name" + i
+  name.className = "name";
+  //name.innerHTML = el.name;
+  
+  let score = document.createElement("span");
+  score.id = "score" + i
+  score.className = "score";
+  
+  let icon = document.createElement("span");
+  icon.id = "icon" + i
+  icon.className = "icon";
+  icon.innerHTML = el.icon;
+  //score.innerHTML = el.score;
+  box.appendChild(icon);
+  box.appendChild(name);
+  box.appendChild(score);
+  box.style.setProperty("--color", el.color);
+  container.appendChild(box);
+
+
+
+
+
+})
+
+console.log(data)
+j=0
+// enter blank data
+
+
+//var xx = data.toSorted();
+
+// Using an arrow function to sort books by their title
+let xx = data.toSorted((a, b) =>
+  a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+);
+
+
+
+console.log("first score after data.tosorted() = " + data[0].score); 
+console.log("xx = " + xx[0].score)
+console.log(xx)
+console.log("data = " + data[0].score)
+console.log(data)
+
+xx.forEach((elstartx,j) => {
+	elstartx.icon = "0";
+	//elstartx.score = "0";
+	initialBodyUpdate(elstartx.name,j);
+})
+console.log("first score after xx.forEach = " + data[0].score); 
+console.log(data)
+
+//xx.forEach((elstart,j) => {
+//document.getElementById("name" + i + 1) = elstart.name
+	
+//initialBodyUpdate(elstart.name,j);
+
+console.log(data)
+//})
+
+
+
+k=0;
+data.forEach((el) => {
+	
+	k++
+	setTimeout(function() {
+	bodyUpdate(el.name,el.score);
+   },k*1000);
+   console.log("k = " + k)
+})
+
+
+}
+
+
+ // box.addEventListener("click", () => {
+	  
+function bodyUpdate(nom,scr) {	 
+	console.log(nom,scr)
+    box = document.getElementById(nom) 
+    let elName = nom; //box.querySelector(".name").innerHTML;
+    data.find((team) => team.name === elName);
+    //data.find((team) => team.name === elName).score = scr;
+	
+    data
+      .sort((a, b) => {
+        if (b.score === a.score) {
+          return a.name.localeCompare(b.name); // Sort by name if scores are equal
+        }
+        return b.score - a.score; // Sort by score in descending order
+      })
+      //make the position the same as rank
+	 // .forEach((e, i) => (e.rank = i));
+	  // now sort out positions for same scores
+	  var held=1;
+	  var heldscore = 0
+	 data.forEach((elem, ind) => {
+          if (elem.score == heldscore) {
+		      elem.icon = held
+		  } else {
+		      elem.icon = ind + 1;
+		  }
+		  held = elem.icon;
+		  heldscore = elem.score;
+}); 
+	  
+  
+	  
+    let AllTeams = Array.from(document.querySelectorAll(".team"));
+    var k=0
+	//console.clear();
+    AllTeams.forEach((element) => {
+		//k++
+		
+      let elementName = element.querySelector(".name");
+      let elementScore = element.querySelector(".score");
+	  //let elementPos = element.querySelector(".icon");
+      if (elementName.innerHTML == elName) {
+        elementScore.innerHTML = scr;
+		//elementPos.innerHTML = k;
+      //}
+	  
+      let newRank = data.find(
+        (team) => team.name === elementName.innerHTML
+      ).rank;
+      element.style.setProperty("--i", newRank);
+      //console.log("test1 = " + data.find((team) => team.name === elementName.innerHTML).icon);
+	  //console.log("test2 = " + data.find((team) => team.name === elementName.innerHTML).score);
+	  let elementPos = element.querySelector(".icon");
+	  elementPos.innerText = data.find((team) => team.name === elementName.innerHTML).icon
+	  }
+
+    });
+	
+
+	
+}	
+
+
+
+
+
+
+
+
+	  
+function initialBodyUpdate(nom,pos) {	
+console.log("first score in initialBodyUpdate() = " + data[0].score); 
+	console.log("initialBodyUpdate(nom,pos) = " + nom + " " + pos)
+		
+    document.getElementById("name" + pos).innerText = nom;
+	document.getElementById("icon" + pos).innerText = "";
+	
+}	
+
+
+
+
+
+
+
+ // }); // eventlistener
+
+
+//} // end of body()
+
+function simulateClick(ele) {
+		  var event = new MouseEvent('click', {
+			view: window,
+			bubbles: true,
+			cancelable: true
+		  });
+		  cb = document.getElementById(ele);
+		  cb.dispatchEvent(event);
+}
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
