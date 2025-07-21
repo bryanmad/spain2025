@@ -173,10 +173,9 @@ async function getData() {
   } catch (error) {
     console.error(error.message);
   }
-	if (1 == 1) {
-	//if (typeof data[0].score == 'undefined' || data[0].score == " " || data[0].score == "") {
+	if (typeof data[0].score == 'undefined' || data[0].score == " " || data[0].score == "") {
         document.getElementById("container").innerHTML = 
-           "<br><a style='color:cyan;'>&nbsp;&nbsp;Leaderboard ...no results available</a><br><br>"
+           "<br><a style='color:cyan;'>&nbsp;&nbsp;&nbsp;&nbsp;Leaderboard ... no results available</a><br><br>"
     } else {
 	    newi=0
 		dd = new Date();		
