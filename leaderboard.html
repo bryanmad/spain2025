@@ -175,8 +175,16 @@ async function getData() {
   }
   console.log(data[0])
 	if (typeof data[0] == 'undefined') {
+		dd = new Date();		
+		ddhours = dd.getHours();
+		if (ddhours < 14) {
         document.getElementById("container").innerHTML = 
-           "<br><a style='color:cyan;'>&nbsp;&nbsp;&nbsp;&nbsp;Leaderboard ... no results available</a><br><br>"
+           "<br><a style='color:cyan;'>&nbsp;&nbsp;&nbsp;&nbsp;Leaderboard is not available until any results are recorded</a><br><br>"
+		} else {
+		document.getElementById("container").innerHTML = 
+           "<br><a style='color:cyan;'>&nbsp;&nbsp;&nbsp;&nbsp;Leaderboard is closed and final results are recorded</a><br><br>"	
+		}   
+		}
     } else {
 	    newi=0
 		dd = new Date();		
