@@ -183,16 +183,25 @@ async function getData() {
   }
   console.log(data[0])
 	if (typeof data[0] == 'undefined') {
-		dd = new Date();		
+		dd = new Date();
 		ddhours = dd.getHours();
-		if (ddhours < 14) {
-        document.getElementById("container").innerHTML = 
+		var dd1 = new Date("2025-10-12"); // start date
+        var dd2 = new Date("2025-10-18"); // end date
+  
+        if (dd > dd1 && dd < dd2) {
+            if (ddhours < 14) {
+                document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard is not available until any results are recorded</div><br><br>"
-		} else {
-		document.getElementById("container").innerHTML = 
+		    } else {
+		       document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard is now closed and final results for the day are available</div><br><br>"	
-		}   
-    } else {
+		    }   
+		} else {
+		   document.getElementById("container").innerHTML = 
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results are available</div><br><br>"	
+		}
+	
+	} else {
 	    newi=0
 		dd = new Date();		
 		ddhours = dd.getHours();
