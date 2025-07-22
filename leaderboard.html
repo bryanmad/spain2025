@@ -141,6 +141,12 @@ img {
 	width: 40vw;
 	height: 48vw;
 }
+
+#msgx {
+	padding-left: 5vw;
+	padding-right: 5vw;
+}
+
 </style>
 </head>
 <body>
@@ -179,12 +185,11 @@ async function getData() {
 		ddhours = dd.getHours();
 		if (ddhours < 14) {
         document.getElementById("container").innerHTML = 
-           "<br><a style='color:cyan;'>&nbsp;&nbsp;&nbsp;&nbsp;Leaderboard is not available until any results are recorded</a><br><br>"
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard is not available until any results are recorded</div><br><br>"
 		} else {
 		document.getElementById("container").innerHTML = 
-           "<br><a style='color:cyan;'>&nbsp;&nbsp;&nbsp;&nbsp;Leaderboard is closed and final results are recorded</a><br><br>"	
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard is now closed and final results are available</div><br><br>"	
 		}   
-		}
     } else {
 	    newi=0
 		dd = new Date();		
