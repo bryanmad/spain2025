@@ -171,49 +171,35 @@ getData()
 // data is available here
 
 async function getData() {
-	const url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard";
-  try {
-    const dataStream = await fetch(url);
-    if (!dataStream.ok) {
-      throw new Error(`Response status: ${dataStream.status}`);
-    }
-    data = await dataStream.json();
-  } catch (error) {
-    console.error(error.message);
-  }
-  console.log(data[0])
-	if (typeof data[0] == 'undefined') {
-		dd = new Date();
-		ddhours = dd.getHours();
-		var dd1 = new Date("2025-10-12"); // start date
-        var dd2 = new Date("2025-10-18"); // end date
-  
-        if (dd > dd1 && dd < dd2) {
-            if (ddhours < 14) {
+	dd = new Date();
+	ddhours = dd.getHours();
+	var dd1 = new Date("2025-10-12"); // start date
+    var dd2 = new Date("2025-10-18"); // end date
+	if (dd > dd1 && dd < dd2) {	
+	    const url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard";
+        try {
+        const dataStream = await fetch(url);
+        if (!dataStream.ok) {
+            throw new Error(`Response status: ${dataStream.status}`);
+        }
+        data = await dataStream.json();
+        } catch (error) {
+           console.error(error.message);
+        }
+     	if (typeof data[0] == 'undefined') {
+		    if (ddhours < 14) {
                 document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard is not available until any results are recorded</div><br><br>"
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard is not available until results are recorded</div><br><br>"
 		    } else {
 		       document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard is now closed and final results for the day are available</div><br><br>"	
 		    }   
-		} else {
+	    } else {
+		    body();
+	    }
+	} else {
 		   document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results are available</div><br><br>"	
-		}
-	
-	} else {
-	    newi=0
-		dd = new Date();		
-		ddhours = dd.getHours();
-	    ddminutes = (dd.getMinutes() + 1);
-	    if(ddminutes < 10) {
-		   ddminutes = "0" + ddminutes
-	    }
-	    ddseconds = dd.getSeconds();
-	    if(ddseconds < 10) {
-		   ddseconds = "0" + ddseconds
-	    }		
-		body();
 	}
 }
 
