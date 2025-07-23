@@ -189,10 +189,10 @@ async function getData() {
      	if (typeof data[0] == 'undefined') {
 		    if (ddhours < 14) {
                 document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard is not available until results are recorded</div><br><br>"
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results recorded</div><br><br>"
 		    } else {
 		       document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard is now closed and final results for the day are available</div><br><br>"	
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - now closed, final results for the day are available</div><br><br>"	
 		    }   
 	    } else {
 		    body();
