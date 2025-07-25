@@ -175,7 +175,8 @@ async function getData() {
 	ddhours = dd.getHours();
 	var dd1 = new Date("2025-10-12"); // start date
     var dd2 = new Date("2025-10-18"); // end date
-	if (dd > dd1 && dd < dd2) {	
+if (1==1){
+//	if (dd > dd1 && dd < dd2) {	
 	    const url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard";
         try {
         const dataStream = await fetch(url);
@@ -213,7 +214,7 @@ data
     return b.score - a.score; // Sort by score in descending order
   })
   .forEach((e, i) => (e.rank = i));
-
+// build screen
 data.forEach((el, i) => {
   let box = document.createElement("div");
   box.id= "box" + i;
@@ -234,6 +235,13 @@ data.forEach((el, i) => {
   box.appendChild(score);
   box.style.setProperty("--color", el.color);
   container.appendChild(box);
+  
+  
+  
+  
+  box.style.opacity = 0.3;
+  
+  
 })
 j=0
 // Using an arrow function to sort players by their name
@@ -288,7 +296,11 @@ data
         let newRank = data.find(
         (team) => team.name === elementName.innerHTML
       ).rank;
+	  // move player position
+	  // setProperty(propertyName, value)
+element.style.opacity = 0.3;
       element.style.setProperty("--i", newRank);
+setTimeout(function() {element.style.opacity = 1},1500);
 	  let elementPos = element.querySelector(".position");
 	  elementPos.innerText = data.find((team) => team.name === elementName.innerHTML).position
 	  }
