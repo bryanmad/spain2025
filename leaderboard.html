@@ -189,13 +189,8 @@ async function getData() {
            console.error(error.message);
         }
      	if (typeof data[0] == 'undefined') {
-		    if (ddhours < 14) {
-                document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results recorded</div><br><br>"
-		    } else {
-		       document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard - now closed, final results for the day are available</div><br><br>"	
-		    }   
+		    document.getElementById("container").innerHTML = 
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results are available</div><br><br>"
 	    } else {
 		    body();
 	    }
