@@ -190,13 +190,13 @@ async function getData() {
         }
      	if (typeof data[0] == 'undefined' || ddhours > 17) {
 		    document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results are available</div><br><br>"
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no current leaderboard results are available</div><br><br>"
 	    } else {
 		    body();
 	    }
 	} else {
 		   document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results are available</div><br><br>"	
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no current leaderboard results are available</div><br><br>"	
 	}
 }
 
