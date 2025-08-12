@@ -188,7 +188,7 @@ async function getData() {
         } catch (error) {
            console.error(error.message);
         }
-     	if (typeof data[0] == 'undefined') {
+     	if (typeof data[0] == 'undefined' || ddhours > 17) {
 		    document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard - no results are available</div><br><br>"
 	    } else {
