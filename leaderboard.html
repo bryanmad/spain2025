@@ -188,15 +188,23 @@ async function getData() {
         } catch (error) {
            console.error(error.message);
         }
-     	if (typeof data[0] == 'undefined' || ddhours > 17) {
+		// after comp
+     	if (typeof data[0] == 'undefined' && ddhours > 17) {
 		    document.getElementById("container").innerHTML = 
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard - leaderboard closed, results are available</div><br><br>"
+		// before comp   
+		}
+        else if (typeof data[0] == 'undefined' && ddhours <= 17) {
+            document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard - no current leaderboard results are available</div><br><br>"
-	    } else {
+	    }
+        else {
 		    body();
 	    }
 	} else {
-		   document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard - no current leaderboard results are available</div><br><br>"	
+		// not a comp day
+		document.getElementById("container").innerHTML = 
+        "<br><div id='msgx' style='color:cyan;'>Leaderboard - no leaderboard results are available</div><br><br>"	
 	}
 }
 
