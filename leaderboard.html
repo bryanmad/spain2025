@@ -190,7 +190,7 @@ async function getData() {
         }
 		// after comp
      	//if (typeof data[0] == 'undefined' && ddhours > 17) {
-		if (ddhours > 19) {
+		if (ddhours > 19 && typeof data[11] !== 'undefined') {
 		    document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard - leaderboard is closed, results are available</div><br><br>"
 		// before comp   
