@@ -176,8 +176,7 @@ async function getData() {
 	var dd1 = new Date("2025-10-12"); // start date
     var dd2 = new Date("2025-10-18"); // end date
 	
-	if (1 == 1) {
-	//if (dd > dd1 && dd < dd2) {	
+	if (dd > dd1 && dd < dd2) {	
 	    const url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/Leaderboard";
         try {
         const dataStream = await fetch(url);
@@ -189,7 +188,6 @@ async function getData() {
            console.error(error.message);
         }
 		// after comp
-     	//if (typeof data[0] == 'undefined' && ddhours > 17) {
 		if (ddhours > 19 && typeof data[11] !== 'undefined') {
 		    document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard is closed, results are available</div><br><br>"
