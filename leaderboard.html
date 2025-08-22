@@ -213,9 +213,9 @@ async function getData() {
 		if (ddhours > 19 && typeof data[11] !== 'undefined') {
 		    document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>Leaderboard closed, todays results are now in</div><br><br><img src='available.png' alt='ok' id='center'> available</div><br><br>"
-		// before comp with no results entered  
 		}
-        else if (ddhours <= 17 && typeof data[0] == 'undefined') {
+		// before comp with no results entered 
+        else if (typeof data[0] == 'undefined') {
             document.getElementById("container").innerHTML = 
            "<br><div id='msgx' style='color:cyan;'>There are no leaderboard results available just yet</div><br><br><img src='var.png' alt='ok' id='center'>"
 	    }
