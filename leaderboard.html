@@ -212,7 +212,7 @@ async function getData() {
 		// after comp and results completed
 		if (ddhours > 19 && typeof data[11] !== 'undefined') {
 		    document.getElementById("container").innerHTML = 
-           "<br><div id='msgx' style='color:cyan;'>Leaderboard closed, todays results are now completed</div><br><br><img src='available.png' alt='ok' id='center'> available</div><br><br>"
+           "<br><div id='msgx' style='color:cyan;'>Leaderboard closed, todays results are now completed and available</div><br><br><img src='available.png' alt='ok' id='center'> available</div><br><br>"
 		}
 		// before comp with no results entered 
         else if (typeof data[0] == 'undefined') {
@@ -225,7 +225,7 @@ async function getData() {
 	} else {
 		// not a comp day
 		document.getElementById("container").innerHTML = 
-        "<br><div id='msgx' style='color:cyan;'>No leaderboard results are available</div><br><br><img src='unavailable.png' alt='ok' id='center'>"	
+        "<br><div id='msgx' style='color:cyan;'>No leaderboard results are available for today</div><br><br><img src='unavailable.png' alt='ok' id='center'>"	
 	}
 }
 
