@@ -9,6 +9,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <style>
   
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}  
+
 body {
 	height: 96vh;
 }  
@@ -42,13 +46,31 @@ button {
   margin-top: 8px;
 }
 
-#front9 {
+#front {
 	color: blue;
+	background: pink;
+	height: 5vh;
 }
+
+#back {
+	color: blue;
+	background: yellow;
+	height: 5vh;
+}
+
+#total {
+	color: blue;
+	background: cyan;
+	height: 5vh;
+}
+
+
+
   </style>
 </head>
 <body>
 <div class="wrapper">
+  <div class="inner" id="score0" onclick="clicked(this.id)">0</div>
   <div class="inner" id="score1" onclick="clicked(this.id)">1</div>
   <div class="inner" id="score2" onclick="clicked(this.id)">2</div>
   <div class="inner" id="score3" onclick="clicked(this.id)">3</div>
@@ -76,85 +98,46 @@ button {
   <div class="inner" id="score25" onclick="clicked(this.id)">25</div>
 </div>
 
-<div id="front9"></div>
-
-
-
+front
+<div id="front" onclick="selected(this.id)"></div>
+back
+<div id="back" onclick="selected(this.id)"></div>
+total
+<div id="total" onclick="selected(this.id)"></div>
 <script>
 
 var i = 0;
-
-
- var sliderElement 					= document.querySelector('.wrapper'),
-    sliderSlides 						= sliderElement.querySelectorAll('.inner').length,
-    currentSliderScrollPos 	= 0,
-		slideWidth							= 200,
-    slideMaxWidth 					= sliderSlides * slideWidth;
+var sliderElement 			= document.querySelector('.wrapper');
+var sliderSlides 			= sliderElement.querySelectorAll('.inner').length;
+var currentSliderScrollPos 	= 0;
+var slideWidth				= 200;
+var xselected = "";
    
-/**
- * Scroll to previous slide within the slider
- */
-function xsliderPrev() {
-
-  // Calculate the new scroll position for the slider
-	var newSliderScrollPos = currentSliderScrollPos - slideWidth;
-  
-  // If the new calculated scroll position exceedes the sliders maximum range ...
-  if (newSliderScrollPos < 0) {
-  
-  	// ... do nothing
-  	return;
-    
-  }
-  
-  // Update the current slider scroll position
-  currentSliderScrollPos = newSliderScrollPos;
-  
-  // Scroll to the previous slide
-	sliderElement.scrollTo(0, newSliderScrollPos);
-  
-  
- 
-  
-}
-
-/**
- * Scroll to next slide within the slider
- */
-function xsliderNext() {
-
-	// Calculate the new scroll position for the slider
-	var newSliderScrollPos = currentSliderScrollPos + slideWidth;
-  
-  // If the new calculated scroll position exceedes the sliders maximum range ...
-  if (newSliderScrollPos >= slideMaxWidth) {
-  
-  	// ... do nothing
-  	return;
-    
-  }
-  
-  // Update the current slider scroll position
-  currentSliderScrollPos = newSliderScrollPos;
-  
-  // Scroll to the next slide
-	sliderElement.scrollTo(0, newSliderScrollPos);
-  
-  
-  
-
-  
-  
-}
-
+positionSliderForStart()
+   
 function clicked(id) {
-	i++
-	console.log("id = " + id)
-	  // update scores
-  document.getElementById("front9").innerText = "run " + i + " = " + id.replace("score",""); 
-	
+	// update scores
+    xselected.innerText = id.replace("score","");
+    // update total
+	f = parseInt(document.getElementById("front").innerText)
+    b = parseInt(document.getElementById("back").innerText)
+    if (isNaN(f)) {
+		f = 0;
+	}
+	if (isNaN(b)) {
+		b = 0;
+	}
+	document.getElementById("total").innerText = f + b 
 }
 
+function positionSliderForStart() {
+	// Calculate the new scroll position for the slider
+	var newSliderScrollPos = slideWidth * 20;
+    // Scroll to the new slide position
+	sliderElement.scrollTo(0, newSliderScrollPos);
+}
 
-
+function selected(id) {
+	xselected = document.getElementById(id); 
+}
 </script>
