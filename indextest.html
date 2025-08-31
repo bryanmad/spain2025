@@ -36,19 +36,23 @@
 button {
   margin-top: 8px;
 }
+
+#front9 {
+	color: blue;
+}
   </style>
 </head>
 <body>
 <div class="wrapper">
-  <div class="inner">1</div>
-  <div class="inner">2</div>
-  <div class="inner">3</div>
-  <div class="inner">4</div>
-  <div class="inner">5</div>
-  <div class="inner">6</div>
-  <div class="inner">7</div>
-  <div class="inner">8</div>
-  <div class="inner">9</div>
+  <div class="inner" id="score1" onclick="clicked(this.id)">1</div>
+  <div class="inner" id="score2" onclick="clicked(this.id)">2</div>
+  <div class="inner" id="score3" onclick="clicked(this.id)">3</div>
+  <div class="inner" id="score4" onclick="clicked(this.id)">4</div>
+  <div class="inner" id="score5" onclick="clicked(this.id)">5</div>
+  <div class="inner" id="score6" onclick="clicked(this.id)">6</div>
+  <div class="inner" id="score7" onclick="clicked(this.id)">7</div>
+  <div class="inner" id="score8" onclick="clicked(this.id)">8</div>
+  <div class="inner" id="score9" onclick="clicked(this.id)">9</div>
   
   
   
@@ -57,7 +61,16 @@ button {
 <button onclick="sliderPrev();">Prev</button>
 <button onclick="sliderNext();">Next</button>
 
+
+<div id="front9"></div>
+
+
+
 <script>
+
+var i = 0;
+
+
  var sliderElement 					= document.querySelector('.wrapper'),
     sliderSlides 						= sliderElement.querySelectorAll('.inner').length,
     currentSliderScrollPos 	= 0,
@@ -86,6 +99,9 @@ function sliderPrev() {
   // Scroll to the previous slide
 	sliderElement.scrollTo(0, newSliderScrollPos);
   
+  
+ 
+  
 }
 
 /**
@@ -110,6 +126,21 @@ function sliderNext() {
   // Scroll to the next slide
 	sliderElement.scrollTo(0, newSliderScrollPos);
   
+  
+  
+
+  
+  
 }
+
+function clicked(id) {
+	i++
+	console.log("id = " + id)
+	  // update scores
+  document.getElementById("front9").innerText = "run " + i + " = " + id.replace("score",""); 
+	
+}
+
+
 
 </script>
