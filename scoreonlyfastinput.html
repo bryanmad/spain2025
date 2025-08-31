@@ -10,17 +10,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
 
-	/* icon color #bef081 */
+
 	
 	* {
-		margin: 0;
-		padding: 0;
+		//margin: 0;
+		//padding: 0;
 		box-sizing: border-box;
+		margin: 1vw;
+		//padding: 1vw;
 	}
 	
 	html {
 		//height: 100vh;
-		width: 100vw; 
+		width: 98vw; 
 	}
 	
 	body {
@@ -35,12 +37,13 @@
 	
 	#dropbtn {
 		color: white;
-		background: black;
-		height: 100%;
+		background: dodgerBlue;
+		height: 10vh;
+		width: 90vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border: 1px solid Gray;
+		border-radius: 10px;
 	}
 	
 	.dropdown {
@@ -74,248 +77,39 @@
 	.show {
 		display: block;
 	}
-	/* end of dropdown */
-	
-	
-	/* highlights selected player */
-	
-	.highlight {
-		color: white;
-		background: dodgerBlue;
-	}
-	
-	.scorelow {
-		font-size: 4vh;
-		color: lime;
-		display: inline-block;
-		border: 1px solid Gray;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 5px;
-	}
-	/* highlights keyboard score pressed */
-	
-	.scorehigh {
-		font-size: 4vh;
-		color: white;
-		display: inline-block;
-		border: 5px solid Gray;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 5px;
-		background: dodgerBlue;
-	}
-	
-	#info {
-		display: none;
-		overflow: auto;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		color: white;
-		background-color: black;
-		padding-left: 1px;
-		padding-right: 1px;
-		padding-bottom: 1px;
 
-	}
 	
-	#popuppanel {
-		background-color: #ddd;
-		font-size: 3vh;
-		display: inline-block;
-		border-radius: 3px;
-		border: 1px solid #aaa;
-		padding: 10px;
-		margin: 5vw;
-		text-align: center;
-		width: 80vw;
-
-		cursor: pointer;
-	}
-	/* hide forms */
+	
 	
 	#my-response-iframe,
 	#my-form {
 		display: none;
 	}
-	/* */
-	
-	.child-one {
-		height: 7vh;
-		font-size: 3vh;
-		border: 2px solid Gray;
-		border-radius: 5px;
-	}
-	
 
-	/* player names */
-	
-	#p1name {
-		font-size: 3vh;
-		display: inline-block;
-		width: calc(100% / 3 * 2);
-		height: 8vh;
-		line-height: 8vh;
-		border: 1px solid Gray;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 5px;
-	}
-	/* player scores */
-	
-	#p1score {
-		font-size: 4vh;
-		display: inline-block;
-		width: calc(100% / 3);
-		height: 8vh; //calc(100% / 9);
-		line-height: 8vh;
-		padding-left: 5%;
-		padding-right: 5%;
-		border: 1px solid Gray;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 5px;
-	}
-	/* default "keyboard" */
-	
-	.small {
-		font-size: 4vh;
-		display: inline-block;
-		height: 7vh;
-		line-height: 7vh;
-		padding-left: 20%;
-		padding-right: 20%;
-		border: 1px solid Gray;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 5px;
-	}
-	/* banner hole details */
-	
-	#holedetails {
-		color: white;
-		background: black;
-		font-size: 3vh;
-		display: inline-block;
-		width: 100%;
-		height: 5vh;
-		line-height: 5vh;
-		padding-left: 5%;
-		padding-right: 5%;
-		border: 1px solid Gray;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 5px;
-	}
-	
-	
-	
-	#player4ballplayer {
-		width: 30%;
-		padding: 1vw;
 
-	}
 	
-	#player4ballname {
-		width: 55%;
-		padding: 1vw;
-
-	}
 	
-	#player4ballhcp {
-		width: 15%;
-		padding: 1vw;
 	
-	}
-	
-	.submit {
-		font-size: 100%;
+	.xsubmit {
+		font-size: 10vw;
 		color: white;
 		//background: dodgerBlue;
 		height: 100%;
 		line-height: 10vh;
 		text-align: center;
+		width: 90vw;
 	}
 	
 		
 	
-	
-	#sending {
-		position: relative;
-		background: black;
-	}
-	
-	
-	
-    #front9, #back9, #total {
-      color:  white;  
-      //height:  100vh;
-    }
-    
-    tr {
-        text-align: center;
-    }
-    td {
-        width: calc(100vw/6);
-    }
-    .head {
-        font-size: 2vh;
-    }
-    
-    #hole1
-  {
-        color: cyan;
-		
-		
-		
-		height: 10vh;
-		
-		
-    }
-    
-    #front9points ,
-    #back9points {
-        border: 1px solid cyan;
-    }
-    
-    
-    #score1 {
-        margin: 3vh;
-    }
-    
-    #page {
-        
-    }
-    
-   #acceptpanel {
-       display: none;
-       position: fixed;
-       //top: 20vh;
-       
-       bottom: 5vh;
-       //left: 2vw;
-       //right: 20vw;
 
-     border: 1px silver solid;
-       background: black;
-       color: white;
-       font-size: 4vw;
-       padding: 5vw;
-       border-radius: 5px;
-       text-align: center;
-       
-       margin-left: 14vw;
-       //margin-right: 5vw;
-       //margin: auto;
-       //width: 80vw;
-       //height: 40vh;
-       
-       //opacity: 1;
-       
-   }
+	
+	
+   
+    
+  
+   
+  
     
 .button1 {
     width: 25vw;
@@ -328,98 +122,151 @@
     background: silver;
 }
     
-	
-.scoreheight {
-	height: 10vh;
-}	
-	
-.buttonheight {
-	height: 15vh;
-}	
-	
-#fscore1, #fscore2, #fscore3 {
-	color: white;
-}	
-
-#fscore1td, #fscore2td, #fscore3 {
-	color: white;
-}
-	
 #submit {
 	color: yellow;
 	background: dodgerBlue;
+	border-radius: 10px;
+	height: 10vh;
+	width: 90vw;
+	font-size: 10vw;
+	text-align: center;
+	line-height: 10vh;
 }	
+
+.wrapper {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  width: 45vw;
+  height: 20vh;
+}
+
+.wrapper .inner {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  //width: 100%; //50vw;
+  height: 20vh;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  background: blue;
+  color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+}
+
+button {
+  margin-top: 8px;
+}
+
+#front {
+	color: blue;
+	background: dodgerBlue;
+	//height: 5vh;
+	//width: 50%;
+	//padding: 1vw;
+	//text-align: center;
+}
+
+#back {
+	color: blue;
+	background: dodgerBlue;
+	//height: 5vh;
+	//width: 50%;
+	//padding: 1vw;
+	//text-align: center;
+}
+
+#total {
+	color: white;
+	background: dodgerBlue;
+	//height: 5vh;
+	//width: 50%;
+	//padding: 1vw;
+	//text-align: center;
+}
+
+.level {
+	max-width: 45%;
+    min-width:45%;
+    background:grey;
+    display:inline-block;
+	height: 10vh;
+	line-height: 10vh;
+	text-align: center;
+	font-size: 5vh;
+    margin: 1vw;
+    border-radius: 10px;
+}
 	
+.spacer {
+	height: 1vh;
+}
 	</style>
 </head>
 
 <body>
 
 <div id="page">
-<div class="child-one">
+
 			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
 			<div id="playersDropdown" class="dropdown-content"></div>
+<div class="spacer"></div>
+
+<div class="wrapper">
+  <div class="inner" id="score0" onclick="clicked(this.id)">0</div>
+  <div class="inner" id="score1" onclick="clicked(this.id)">1</div>
+  <div class="inner" id="score2" onclick="clicked(this.id)">2</div>
+  <div class="inner" id="score3" onclick="clicked(this.id)">3</div>
+  <div class="inner" id="score4" onclick="clicked(this.id)">4</div>
+  <div class="inner" id="score5" onclick="clicked(this.id)">5</div>
+  <div class="inner" id="score6" onclick="clicked(this.id)">6</div>
+  <div class="inner" id="score7" onclick="clicked(this.id)">7</div>
+  <div class="inner" id="score8" onclick="clicked(this.id)">8</div>
+  <div class="inner" id="score9" onclick="clicked(this.id)">9</div>
+  <div class="inner" id="score10" onclick="clicked(this.id)">10</div>
+  <div class="inner" id="score11" onclick="clicked(this.id)">11</div>
+  <div class="inner" id="score12" onclick="clicked(this.id)">12</div>
+  <div class="inner" id="score13" onclick="clicked(this.id)">13</div>
+  <div class="inner" id="score14" onclick="clicked(this.id)">14</div>
+  <div class="inner" id="score15" onclick="clicked(this.id)">15</div>
+  <div class="inner" id="score16" onclick="clicked(this.id)">16</div>
+  <div class="inner" id="score17" onclick="clicked(this.id)">17</div>
+  <div class="inner" id="score18" onclick="clicked(this.id)">18</div>
+  <div class="inner" id="score19" onclick="clicked(this.id)">19</div>
+  <div class="inner" id="score20" onclick="clicked(this.id)">20</div>
+  <div class="inner" id="score21" onclick="clicked(this.id)">21</div>
+  <div class="inner" id="score22" onclick="clicked(this.id)">22</div>
+  <div class="inner" id="score23" onclick="clicked(this.id)">23</div>
+  <div class="inner" id="score24" onclick="clicked(this.id)">24</div>
+  <div class="inner" id="score25" onclick="clicked(this.id)">25</div>
+</div>
+<div class="spacer"></div>
+
+
+<div class="level">front</div>
+<div id="front" class="level" onclick="selected(this.id)">0</div>
+<div class="spacer"></div>
+<div class="level">back</div>
+<div id="back" class="level" onclick="selected(this.id)">0</div>
+<div class="spacer"></div>
+<div class="level">total</div>
+<div id="total" class="level" onclick="selected(this.id)">0</div>
+
+<div class="spacer"></div>
+<div id="submit" onclick="submitForm()">
+Submit
 </div>
 
 
 
 
-<div id="acceptpanel">
-<span id="playerx"></span>
-<br><br>
-
-Accept to save or Reject to re-edit.
-<br><br>
-<button class="button1" onclick="rejectButton()">Reject</button>
-<button class="button1" onclick="acceptButton()">Accept</button>
-</div>
 
 
 
-
-
-
-
-
-
-
-<div id="xfront9">
-<table align="left" border="1" cellpadding="1" cellspacing="1" style="height: 85%; width: 100%;">
-	<tbody>
-        <tr class="scoreheight">
-			<td colspan="2" class="head" id="front9" onclick="high(this.id)">Front 9</td>
-			<td colspan="2" class="head" id="back9" onclick="high(this.id)">Back 9</td>
-			<td colspan="2" class="head" id="total">Total</td>
-		</tr>
-		<tr class="scoreheight">
-			<td colspan="2" id="fscore1td"><div class="xsmall xscorelow" id="fscore1">0</div></td>
-			<td colspan="2" id="fscore2td"><div class="xsmall xscorelow" id="fscore2">0</div></td>
-			<td colspan="2"><div class="xsmall xscorelow" id="fscore3">0</div></td>
-		</tr>
-        <tr class="buttonheight">
-			<td colspan="2"><div class="small scorelow" id="score1" onclick="numberScore(this.id)">1</div></td>
-			<td colspan="2"><div class="small scorelow" id="score2" onclick="numberScore(this.id)">2</div></td>
-			<td colspan="2"><div class="small scorelow" id="score3" onclick="numberScore(this.id)">3</div></td>
-		</tr>
-        <tr class="buttonheight">
-			<td colspan="2"><div class="small scorelow" id="score4" onclick="numberScore(this.id)">4</div></td>
-			<td colspan="2"><div class="small scorelow" id="score5" onclick="numberScore(this.id)">5</div></td>
-			<td colspan="2"><div class="small scorelow" id="score6" onclick="numberScore(this.id)">6</div></td>
-		</tr>
-        <tr class="buttonheight">
-			<td colspan="2"><div class="small scorelow" id="score7" onclick="numberScore(this.id)">7</div></td>
-			<td colspan="2"><div class="small scorelow" id="score8" onclick="numberScore(this.id)">8</div></td>
-			<td colspan="2"><div class="small scorelow" id="score9" onclick="numberScore(this.id)">9</div></td>
-		</tr>
-		
-		<tr class="buttonheight">
-		<td  colspan="6" id="submit" onclick="submitForm()">
-		Submit
-		</td>
-		</tr>
-	</tbody>
-</table>
-</div>
 
 
 <!--
@@ -502,13 +349,6 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 		//=================================================================================
 		// declare global variables
 	    var currenthole = 0;
-
-
-
-
-
-
-
 
 		var selectedplayer = 1;
 		// highlight first player entry
@@ -989,7 +829,7 @@ arrCourse = [
 			}
 
 
-high("front9")
+
 
 
 
@@ -1280,7 +1120,7 @@ document.getElementById('mx1737150484').value = 0;
 			
 /* countbacks */
 // only back 9
-document.getElementById('mx717166862').value = document.getElementById("fscore2").innerText;
+document.getElementById('mx717166862').value = document.getElementById("back").innerText;
  
 document.getElementById('mx1175424116').value = 0; 
 document.getElementById('mx849660193').value = 0; 
@@ -1288,7 +1128,7 @@ document.getElementById('mx1919564852').value = 0
 	
 	
 /* total score */	
-document.getElementById('mx83976721').value = document.getElementById("fscore3").innerText	
+document.getElementById('mx83976721').value = document.getElementById("total").innerText	
 
 
 
@@ -1399,51 +1239,57 @@ function clearForm() {
 }
 
 
-function high(id) {
-	if (id == "front9") {
-		document.getElementById("front9").style.color = "yellow"
-        document.getElementById("front9").style.background = "dodgerBlue";
-	    document.getElementById("back9").style.color = "white"
-        document.getElementById("back9").style.background = "black";
+		</script>
 		
-		document.getElementById("fscore1td").style.color = "yellow"
-        document.getElementById("fscore1td").style.background = "dodgerBlue";
-	    document.getElementById("fscore2td").style.color = "white"
-        document.getElementById("fscore2td").style.background = "black";
 		
-		sselected = "front9"
+		
+		
+		
+		
+		
+		
+		<script>
+
+var i = 0;
+var sliderElement 			= document.querySelector('.wrapper');
+var sliderSlides 			= sliderElement.querySelectorAll('.inner').length;
+var currentSliderScrollPos 	= 0;
+var slideWidth				= 200;
+var xselected = "";
+   
+positionSliderForStart()
+   
+function clicked(id) {
+	// update scores
+    xselected.innerText = id.replace("score","");
+    // update total
+	f = parseInt(document.getElementById("front").innerText)
+    b = parseInt(document.getElementById("back").innerText)
+    if (isNaN(f)) {
+		f = 0;
 	}
-	if (id == "back9") {
-		document.getElementById("front9").style.color = "white"
-        document.getElementById("front9").style.background = "black";
-	    document.getElementById("back9").style.color = "yellow"
-        document.getElementById("back9").style.background = "dodgerBlue";
-		
-		document.getElementById("fscore1td").style.color = "white"
-        document.getElementById("fscore1td").style.background = "black";
-	    document.getElementById("fscore2td").style.color = "yellow"
-        document.getElementById("fscore2td").style.background = "dodgerBlue";
-		
-		sselected = "back9"
+	if (isNaN(b)) {
+		b = 0;
 	}
+	document.getElementById("total").innerText = f + b 
 }
 
+function positionSliderForStart() {
+	// Calculate the new scroll position for the slider
+	var newSliderScrollPos = slideWidth * 20;
+    // Scroll to the new slide position
+	sliderElement.scrollTo(0, newSliderScrollPos);
+}
 
+function selected(id) {
+	document.getElementById("front").style.background = "dodgerBlue";
+    document.getElementById("back").style.background = "dodgerBlue";
+	xselected = document.getElementById(id); 
+	xselected.style.background = "gray";
+	
+}
+</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		</script>
 </body>
 
 </html>
