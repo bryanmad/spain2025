@@ -190,9 +190,23 @@ button {
 }
 
 .level {
-	max-width: 25%;
-    min-width:20%;
+	max-width: 10%;
+    min-width:10%;
     background:grey;
+    display:inline-grid; //inline-block;
+	height: 3.7vh;
+	line-height: 3.7vh;
+	text-align: center;
+	font-size: 2vh;
+    margin: 1vw;
+    border-radius: 10px;
+}
+	
+.xlevel {
+	max-width: 15%;
+    min-width:15%;
+    background:black;
+	color: cyan;
     display:inline-grid; //inline-block;
 	height: 3.7vh;
 	line-height: 3.7vh;
@@ -205,6 +219,15 @@ button {
 .spacer {
 	height: 0.1vh;
 }
+
+
+#xwrapper {
+	width: 30%;
+	height: 30%;
+	background: gray;
+	float:right;
+	color: yellow;
+}
 	</style>
 </head>
 
@@ -215,6 +238,8 @@ button {
 			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
 			<div id="playersDropdown" class="dropdown-content"></div>
 <div class="spacer"></div>
+
+
 
 <div class="wrapper">
   <div class="inner" id="score0" onclick="clicked(this.id)">0</div>
@@ -227,70 +252,75 @@ button {
   <div class="inner" id="score7" onclick="clicked(this.id)">7</div>
   <div class="inner" id="score8" onclick="clicked(this.id)">8</div>
   <div class="inner" id="score9" onclick="clicked(this.id)">9</div>
-  <div class="inner" id="score10" onclick="clicked(this.id)">10</div>
-  <div class="inner" id="score11" onclick="clicked(this.id)">11</div>
-  <div class="inner" id="score12" onclick="clicked(this.id)">12</div>
-  <div class="inner" id="score13" onclick="clicked(this.id)">13</div>
-  <div class="inner" id="score14" onclick="clicked(this.id)">14</div>
-  <div class="inner" id="score15" onclick="clicked(this.id)">15</div>
-  <div class="inner" id="score16" onclick="clicked(this.id)">16</div>
-  <div class="inner" id="score17" onclick="clicked(this.id)">17</div>
-  <div class="inner" id="score18" onclick="clicked(this.id)">18</div>
-  <div class="inner" id="score19" onclick="clicked(this.id)">19</div>
-  <div class="inner" id="score20" onclick="clicked(this.id)">20</div>
-  <div class="inner" id="score21" onclick="clicked(this.id)">21</div>
-  <div class="inner" id="score22" onclick="clicked(this.id)">22</div>
-  <div class="inner" id="score23" onclick="clicked(this.id)">23</div>
-  <div class="inner" id="score24" onclick="clicked(this.id)">24</div>
-  <div class="inner" id="score25" onclick="clicked(this.id)">25</div>
 </div>
+
+
+
 
 <div class="spacer"></div>
 
-<div class="level">hole 1</div>
+<div class="xlevel">hole 1</div>
 <div id="h1" class="level" onclick="selected(this.id)">0</div>
-<div class="level">hole 10</div>
+<div id="p1" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 10</div>
 <div id="h10" class="level" onclick="selected(this.id)">0</div>
+<div id="p10" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 2</div>
+<div class="xlevel">hole 2</div>
 <div id="h2" class="level" onclick="selected(this.id)">0</div>
-<div class="level">hole 11</div>
+<div id="p2" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 11</div>
 <div id="h11" class="level" onclick="selected(this.id)">0</div>
+<div id="p11" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 3</div>
+<div class="xlevel">hole 3</div>
 <div id="h3" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p3" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 12</div>
 <div id="h12" class="level" onclick="selected(this.id)">0</div>
+<div id="p12" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 4</div>
+<div class="xlevel">hole 4</div>
 <div id="h4" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p4" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 13</div>
 <div id="h13" class="level" onclick="selected(this.id)">0</div>
+<div id="p13" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 5</div>
+<div class="xlevel">hole 5</div>
 <div id="h5" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p5" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 14</div>
 <div id="h14" class="level" onclick="selected(this.id)">0</div>
+<div id="p14" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 6</div>
+<div class="xlevel">hole 6</div>
 <div id="h6" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p6" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 15</div>
 <div id="h15" class="level" onclick="selected(this.id)">0</div>
+<div id="p15" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 7</div>
+<div class="xlevel">hole 7</div>
 <div id="h7" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p7" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 16</div>
 <div id="h16" class="level" onclick="selected(this.id)">0</div>
+<div id="p16" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 8</div>
+<div class="xlevel">hole 8</div>
 <div id="h8" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p8" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 17</div>
 <div id="h17" class="level" onclick="selected(this.id)">0</div>
+<div id="p17" class="level" onclick="selected(this.id)">0</div>
 
-<div class="level">hole 9</div>
+<div class="xlevel">hole 9</div>
 <div id="h9" class="level" onclick="selected(this.id)">0</div>
-<div class="level">front</div>
+<div id="p9" class="level" onclick="selected(this.id)">0</div>
+<div class="xlevel">hole 18</div>
 <div id="h18" class="level" onclick="selected(this.id)">0</div>
+<div id="p18" class="level" onclick="selected(this.id)">0</div>
 
 <div class="spacer"></div>
 <div id="submit" onclick="submitForm()">
@@ -1279,7 +1309,36 @@ function clearForm() {
 		
 		
 		
-		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 		
 		
 		
@@ -1291,13 +1350,26 @@ var sliderElement 			= document.querySelector('.wrapper');
 var sliderSlides 			= sliderElement.querySelectorAll('.inner').length;
 var currentSliderScrollPos 	= 0;
 var slideWidth				= 200;
-var xselected = "";
-   
-positionSliderForStart()
+var xselected = document.getElementById("h1");
+var currenthole = 1;
+ 
+positionSliderForStart();
    
 function clicked(id) {
 	// update scores
+	// xselected is global
+	// put score in correct hole
     xselected.innerText = id.replace("score","");
+	// record next hole
+	currenthole = parseInt(xselected.id.replace("h",""));
+	console.log("currenthole = " + currenthole);
+    var newhole = parseInt(currenthole)
+    newhole++
+    // move xselected to next score
+    xselected = document.getElementById("h" + newhole);
+    console.log("newhole = " + newhole);
+
+/*
     // update total
 	f = parseInt(document.getElementById("front").innerText)
     b = parseInt(document.getElementById("back").innerText)
@@ -1308,6 +1380,9 @@ function clicked(id) {
 		b = 0;
 	}
 	document.getElementById("total").innerText = f + b 
+
+
+*/
 }
 
 function positionSliderForStart() {
@@ -1318,12 +1393,33 @@ function positionSliderForStart() {
 }
 
 function selected(id) {
-	document.getElementById("front").style.background = "dodgerBlue";
-    document.getElementById("back").style.background = "dodgerBlue";
+	//document.getElementById("p1").style.background = "dodgerBlue";
+    //document.getElementById("h1").style.background = "dodgerBlue";
 	xselected = document.getElementById(id); 
 	xselected.style.background = "gray";
+	// record next hole
+	currenthole = parseInt(xselected.id.replace("h",""));
+	console.log(currenthole);
+}
+
+
+function submitButtonTxt() {
+	var j = 0;
+	var k = 0;
+	var i = 0;
+	for(i = 1; i <= 9; i++) {
+        j += parseInt(document.getElementById("hole" + i).innerText); 
+    } 
+	i = 0
+	for(i = 10; i <= 18; i++) {
+        k += parseInt(document.getElementById("hole" + i).innerText); 
+    } 
+	document.getElementById("submit").innerText = Submit + " " + j + " + " + k + " = " + parseInt(j + k);
 	
 }
+
+
+
 </script>
 
 </body>
