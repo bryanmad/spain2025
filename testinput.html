@@ -438,9 +438,9 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
 		var hcplist = "";
 		var msglist = "";
 		var msglistcount = 0;
-		var player1name = "player 1";
+		var playerName = "player 1";
 		
-		var player1hcp = "?";
+		var playerhcp = "?";
 		var fullday = "";
 		
 		var player1teecolor = "yellow";
@@ -839,31 +839,31 @@ arrCourse = [
 		location.reload();
 		}
 		//=============================================================
-		// function dropSelected(playerName)
+		// function dropSelected(selectedPlayerName)
 		// - selects player
 		//=============================================================  
 		// name selected, do stuff
-		function dropSelected(playerName) {
-		   //console.log(playerName)
-			if(playerName == "reset input") {
+		function dropSelected(selectedPlayerName) {
+		   //console.log(selectedPlayerName)
+			if(selectedPlayerName == "reset input") {
 		           resetInput();
 	      } else {
 				// retrieve dropdown info
 			for(var k = 0; k < arrPlayers.length; k++) {
-				if(arrPlayers[k] == playerName) {
+				if(arrPlayers[k] == selectedPlayerName) {
 					//found = true;
 					//pos = k;
 					hcp = arrHcps[k]
-					player1hcp = Math.round(hcp);
-                    player1name = playerName;
+					playerhcp = Math.round(hcp);
+                    playerName = selectedPlayerName;
                     // change "select player to course
-                   document.getElementById("dropbtn").innerText = player1name + " " + player1hcp + ":  " + course ;
+                   document.getElementById("dropbtn").innerText = playerName + " " + playerhcp + ":  " + course ;
 
 				}
 			}
 			// find player in options list
 			for(var k = 0; k < arrOptions.length; k++) {
-				if(arrOptions[k][0] == playerName) {
+				if(arrOptions[k][0] == selectedPlayerName) {
 					temppos = k;
 				}
 			}
@@ -879,9 +879,9 @@ arrCourse = [
 			}
 			// update player choice
 			player = document.getElementById("myLink" + temppos.toString()).innerText;
-			//document.getElementById("p1name").innerText = player + " " + player1hcp;
+			//document.getElementById("p1name").innerText = player + " " + playerhcp;
 			// global player
-			player = playerName;
+			player = selectedPlayerName;
 
 			// close dropdown
 			var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -1092,7 +1092,7 @@ arrCourse = [
 				if(points < 0) {
 					points = 0;
 				}
-		//console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
+		console.log(hcp +","+ par+","+ si+","+ score+" = " +points)
 				return points;
 			}
 
@@ -1126,15 +1126,15 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
 
 				// make sure everything is updated
 				//finalWrite();
-				console.log(player1name)
-				if(player1name !== "player 1") {
+				console.log(playerName)
+				if(playerName !== "player 1") {
 					// player1 score entry
-console.log(player1name)
+console.log(playerName)
 
 					//comp = localStorage.wwtodayscomp
-					document.getElementById('mx1433824128').value = player1name;
+					document.getElementById('mx1433824128').value = playerName;
 					
-					document.getElementById('mx1064629217').value = player1hcp;
+					document.getElementById('mx1064629217').value = playerhcp;
 
 					document.getElementById('mx1119360478').value = fullday;
 					
@@ -1248,7 +1248,7 @@ function calcAllHoles() {
  for(var i = 1; i <= 18; i++) {
      temp = document.getElementById("strokes" + i).innerText
      if (teststring.indexOf(temp) > -1) {
-         document.getElementById("points" + i).innerText = pointsCalc(player1hcp, 
+         document.getElementById("points" + i).innerText = pointsCalc(playerhcp, 
                                                            arrCourse[i][1],
                                                            arrCourse[i][2],
                                                            document.getElementById("strokes" + i).innerText
@@ -1369,6 +1369,30 @@ function clicked(id) {
     xselected = document.getElementById("h" + newhole);
     console.log("newhole = " + newhole);
 
+    // calc points
+	console.log(player + " " + playerhcp + " " + arrCourse[currenthole][1] + " " + arrCourse[currenthole][2] + " " + id.replace("score",""));
+	// function pointsCalc(xhcp, xpar, xsi, xscore)
+    temppoints = pointsCalc(playerhcp,arrCourse[currenthole][1], arrCourse[currenthole][2],id.replace("score",""));
+	document.getElementById("p" + currenthole).innerText = temppoints;
+
+    
+
+
+
+	console.log(player + " " + playerhcp + " " + temppoints);
+	
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     // update total
 	f = parseInt(document.getElementById("front").innerText)
@@ -1387,7 +1411,7 @@ function clicked(id) {
 
 function positionSliderForStart() {
 	// Calculate the new scroll position for the slider
-	var newSliderScrollPos = slideWidth * 16;
+	var newSliderScrollPos = slideWidth * 5;
     // Scroll to the new slide position
 	sliderElement.scrollTo(0, newSliderScrollPos);
 }
@@ -1400,6 +1424,10 @@ function selected(id) {
 	// record next hole
 	currenthole = parseInt(xselected.id.replace("h",""));
 	console.log(currenthole);
+	
+	
+	
+	
 }
 
 
