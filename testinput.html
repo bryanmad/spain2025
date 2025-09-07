@@ -323,7 +323,11 @@ button {
 <div id="p18" class="level" onclick="selected(this.id)">0</div>
 
 <div class="spacer"></div>
+<!--
 <div id="submit" onclick="submitForm()">
+-->
+<div id="submit">
+
 Submit
 </div>
 
@@ -1383,7 +1387,7 @@ function clicked(id) {
 	
 
 
-
+submitButtonTxt()
 
 
 
@@ -1432,18 +1436,19 @@ function selected(id) {
 
 
 function submitButtonTxt() {
+	var i = 0;	
 	var j = 0;
 	var k = 0;
-	var i = 0;
+    // total front 9
 	for(i = 1; i <= 9; i++) {
-        j += parseInt(document.getElementById("hole" + i).innerText); 
+        j += parseInt(document.getElementById("p" + i).innerText); 
     } 
-	i = 0
+	// total back 9
+	// i = 0
 	for(i = 10; i <= 18; i++) {
-        k += parseInt(document.getElementById("hole" + i).innerText); 
+        k += parseInt(document.getElementById("p" + i).innerText); 
     } 
-	document.getElementById("submit").innerText = Submit + " " + j + " + " + k + " = " + parseInt(j + k);
-	
+	document.getElementById("submit").innerText = "Submit " + j + " + " + k + " = " + parseInt(j + k);
 }
 
 
