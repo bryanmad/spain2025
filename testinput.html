@@ -128,7 +128,7 @@
 	border-radius: 10px;
 	height: 10vh;
 	width: 90vw;
-	font-size: 10vw;
+	font-size: 8vw;
 	text-align: center;
 	line-height: 10vh;
 }	
@@ -228,6 +228,9 @@ button {
 	float:right;
 	color: yellow;
 }
+
+
+
 	</style>
 </head>
 
@@ -1448,6 +1451,11 @@ function submitButtonTxt() {
 	for(i = 10; i <= 18; i++) {
         k += parseInt(document.getElementById("p" + i).innerText); 
     } 
+	
+	
+	console.log(document.getElementById("submit").innerText)
+	
+	
 	document.getElementById("submit").innerText = "Submit " + j + " + " + k + " = " + parseInt(j + k);
 }
 
