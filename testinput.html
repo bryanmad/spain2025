@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="ie=edge" http-equiv="X-UA-Compatible">
-	<title>scoreonlyfastinput</title>
+	<title>testinput</title>
 	<link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
@@ -229,20 +229,23 @@ button {
 	color: yellow;
 }
 
-
+#page {
+	//display: none;
+	opacity: 0.2;
+}
 
 	</style>
 </head>
 
 <body>
 
-<div id="page">
 
-			<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
-			<div id="playersDropdown" class="dropdown-content"></div>
+
+<div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">select player</div>
+<div id="playersDropdown" class="dropdown-content"></div>
 <div class="spacer"></div>
 
-
+<div id="page">
 
 <div class="wrapper">
   <div class="inner" id="score0" onclick="clicked(this.id)">0</div>
@@ -329,7 +332,7 @@ button {
 <!--
 <div id="submit" onclick="submitForm()">
 -->
-<div id="submit">
+<div id="submit" onclick="submitForm()">
 
 Submit
 </div>
@@ -405,15 +408,8 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
         src="https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/viewform?embedded=true" width="600">
         </iframe>
 
-</div>
+</div> <!-- page -->
 
-<!--
-	
-			<div class="submit" onclick="submitForm()">
-				<div id="submit">submit</div>
-			</div>
-	
--->
 
 		<script>
       //=================================================================================
@@ -801,7 +797,7 @@ arrCourse = [
 						openDropdown.classList.remove('show');
 					}
 				}
-			}
+			}	
 		};
 		
 		
@@ -903,7 +899,8 @@ arrCourse = [
 
 
 
-
+// show score input screen
+document.getElementById("page").style.opacity = 1.0; 
 
 
 	        // recalc in case a player name has changed
@@ -923,7 +920,7 @@ arrCourse = [
 		// function numberScore(id)
 		// - enter player score and move on	
 		//=================================================================================
-		function numberScore(id) {
+		function xnumberScore(id) {
 			scorefromid = id.replace("score","")
 			if ((scorefromid == 1 || scorefromid == 2) && holdingscoreinput == 0){
 			    holdingscoreinput = scorefromid
@@ -972,7 +969,7 @@ arrCourse = [
 		// function resethole(id)
 		// - allow restart of score entry from a point
 		//=============================================================  
-        function  resethole(id) {
+        function  xresethole(id) {
             // reset hole current selection
             for(var i = 1; i <= 18; i++) {
                 document.getElementById("strokes" + i).style.color = "cyan" 
@@ -989,7 +986,7 @@ arrCourse = [
 		// function totalScores()
 		// - calc totals
 		//=============================================================  
-        function totalScores() {
+        function xtotalScores() {
             totalstrokesfront9 = 0;
             totalstrokesback9 = 0;
              totalpointsfront9 = 0;
@@ -1147,53 +1144,65 @@ console.log(playerName)
 					
          			
 // shots for each hole					
-document.getElementById('mx1724692121').value = 0 
-document.getElementById('mx1342174744').value = 0  
-document.getElementById('mx758799387').value = 0; 
-document.getElementById('mx2062182607').value = 0;  
-document.getElementById('mx1930917032').value = 0; 
-document.getElementById('mx1329253100').value = 0; 
-document.getElementById('mx737258175').value = 0; 
-document.getElementById('mx1107474420').value = 0; 
-document.getElementById('mx801125525').value = 0; 
-document.getElementById('mx481613746').value = 0; 
-document.getElementById('mx375771739').value = 0; 
-document.getElementById('mx515491474').value = 0; 
-document.getElementById('mx153870929').value = 0; 
-document.getElementById('mx534588764').value = 0; 
-document.getElementById('mx1709130776').value = 0; 
-document.getElementById('mx1199544885').value = 0; 
-document.getElementById('mx1903245588').value = 0; 
-document.getElementById('mx1737150484').value = 0; 
+document.getElementById('mx1724692121').value = document.getElementById("h1").innerText; 
+document.getElementById('mx1342174744').value = document.getElementById("h2").innerText;  
+document.getElementById('mx758799387').value = document.getElementById("h3").innerText; 
+document.getElementById('mx2062182607').value = document.getElementById("h4").innerText;  
+document.getElementById('mx1930917032').value = document.getElementById("h5").innerText; 
+document.getElementById('mx1329253100').value = document.getElementById("h6").innerText; 
+document.getElementById('mx737258175').value = document.getElementById("h7").innerText; 
+document.getElementById('mx1107474420').value = document.getElementById("h8").innerText; 
+document.getElementById('mx801125525').value = document.getElementById("h9").innerText; 
+document.getElementById('mx481613746').value = document.getElementById("h10").innerText; 
+document.getElementById('mx375771739').value = document.getElementById("h11").innerText; 
+document.getElementById('mx515491474').value = document.getElementById("h12").innerText; 
+document.getElementById('mx153870929').value = document.getElementById("h13").innerText; 
+document.getElementById('mx534588764').value = document.getElementById("h14").innerText; 
+document.getElementById('mx1709130776').value = document.getElementById("h15").innerText; 
+document.getElementById('mx1199544885').value = document.getElementById("h16").innerText; 
+document.getElementById('mx1903245588').value = document.getElementById("h17").innerText; 
+document.getElementById('mx1737150484').value = document.getElementById("h18").innerText; 
 						
 						
 // points for each hole						
 // pointsCalc(hcp, par, si, score)					
 
-    document.getElementById('mx1766971895').value = 0; 
-    document.getElementById('mx1446347715').value = 0; 
-    document.getElementById('mx1043639386').value = 0;
-    document.getElementById('mx1058489368').value = 0; 
-    document.getElementById('mx984229340').value = 0;
-    document.getElementById('mx888962172').value = 0;
-    document.getElementById('mx662079754').value = 0; 
-    document.getElementById('mx857756573').value = 0; 
-    document.getElementById('mx213108632').value = 0;
-    document.getElementById('mx965823425').value = 0;
-    document.getElementById('mx1721064168').value = 0;
-    document.getElementById('mx343171143').value = 0;
-    document.getElementById('mx32888434').value = 0;
-    document.getElementById('mx1203648652').value = 0;
-    document.getElementById('mx1811069542').value = 0;
-    document.getElementById('mx410870339').value = 0;
-    document.getElementById('mx488847840').value = 0;
-    document.getElementById('mx2086486082').value = 0;
+    document.getElementById('mx1766971895').value = document.getElementById("p1").innerText; 
+    document.getElementById('mx1446347715').value = document.getElementById("p2").innerText; 
+    document.getElementById('mx1043639386').value = document.getElementById("p3").innerText;
+    document.getElementById('mx1058489368').value = document.getElementById("p4").innerText; 
+    document.getElementById('mx984229340').value = document.getElementById("p5").innerText;
+    document.getElementById('mx888962172').value = document.getElementById("p6").innerText;
+    document.getElementById('mx662079754').value = document.getElementById("p7").innerText;
+    document.getElementById('mx857756573').value = document.getElementById("p8").innerText; 
+    document.getElementById('mx213108632').value = document.getElementById("p9").innerText;
+    document.getElementById('mx965823425').value = document.getElementById("p10").innerText;
+    document.getElementById('mx1721064168').value = document.getElementById("p11").innerText;
+    document.getElementById('mx343171143').value = document.getElementById("p12").innerText;
+    document.getElementById('mx32888434').value = document.getElementById("p13").innerText;
+    document.getElementById('mx1203648652').value = document.getElementById("p14").innerText;
+    document.getElementById('mx1811069542').value = document.getElementById("p15").innerText;
+    document.getElementById('mx410870339').value = document.getElementById("p16").innerText;
+    document.getElementById('mx488847840').value = document.getElementById("p17").innerText;
+    document.getElementById('mx2086486082').value = document.getElementById("p18").innerText;
 
-
+    // get totals
+    var i = 0;	
+	var j = 0;
+	var k = 0;
+    // total front 9
+	for(i = 1; i <= 9; i++) {
+        j += parseInt(document.getElementById("p" + i).innerText); 
+    } 
+	// total back 9
+	// i = 0
+	for(i = 10; i <= 18; i++) {
+        k += parseInt(document.getElementById("p" + i).innerText); 
+    } 
 			
 /* countbacks */
 // only back 9
-document.getElementById('mx717166862').value = document.getElementById("back").innerText;
+document.getElementById('mx717166862').value = k;
  
 document.getElementById('mx1175424116').value = 0; 
 document.getElementById('mx849660193').value = 0; 
@@ -1201,7 +1210,7 @@ document.getElementById('mx1919564852').value = 0
 	
 	
 /* total score */	
-document.getElementById('mx83976721').value = document.getElementById("total").innerText	
+document.getElementById('mx83976721').value = j + k;	
 
 
 
@@ -1219,6 +1228,9 @@ document.getElementById('mx83976721').value = document.getElementById("total").i
       var audio = new Audio('golf.wav');
       audio.play();   
    }   
+
+
+setTimeout(location.reload(),2000);
 
 //document.getElementById("score5").style.background = "lime"
 //setTimeout(function() {
@@ -1250,7 +1262,7 @@ document.getElementById('mx83976721').value = document.getElementById("total").i
 		}
 	
 
-function calcAllHoles() {
+function xcalcAllHoles() {
  var teststring = "0123456789";    
  for(var i = 1; i <= 18; i++) {
      temp = document.getElementById("strokes" + i).innerText
@@ -1275,16 +1287,16 @@ function resetInput() {
 }
 
 
-function acceptButton() {
+function xacceptButton() {
     document.getElementById("acceptpanel").style.display = "none";
     submitForm()
 }
 
-function rejectButton() {
+function xrejectButton() {
     document.getElementById("acceptpanel").style.display = "none";
 }
 
-function clearForm() {
+function xclearForm() {
     // reset each hole
     for(var i = 1; i <= 18; i++) {
         document.getElementById("strokes" + i).innerText = "0"; 
