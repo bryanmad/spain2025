@@ -258,27 +258,13 @@
 
     .title {
       color: white;
-      font-family: 'Kalam';body {
-  animation: grow 1s;
-}
-
-@keyframes grow {
-    0% { transform: scale(.2); }
-  100% { transform: scale(1); }
-}
+      font-family: 'Kalam';
       font-size: 7vh;
       font-weight: bold;
       margin-top: 20vh;
       height: 13vh;
-	  
-	  
-	  
-            //text-align: center;
-            //padding: 150px 20px;
-            //font-size: 72px;
-            font-weight: 900;
-            //color: blue;
-            text-shadow:
+      font-weight: 900;
+      text-shadow:
                 -2px -2px 0 gray,
                 2px -2px 0 gray,
                 -2px 2px 0 gray,
@@ -287,9 +273,19 @@
                 3px 0px 0 gray,
                 0px -3px 0 gray,
                 0px 3px 0 gray;
-        
 	  
     }
+
+	  
+	  body {
+		  animation: grow 1s;
+	       }
+
+@keyframes grow {
+    0% { transform: scale(.2); }
+  100% { transform: scale(1); }
+}
+      
 
 
     /*salmon;*/
@@ -698,7 +694,7 @@
     <section class="start">
       <div class="content">
         <div class="title">
-          <div class="pretitle">LIV golf society</div>
+          <div class="pretitle">LIV Tour golf society</div>
           <div class="spacer1"></div>
           <div>Spain 2025</div>
         </div>
@@ -759,7 +755,7 @@
             } else {	
 		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go"
 		    }
-		},diffDays/3)
+		},3000/diffDays)
 	}
 	
 	function nocountdown() {
