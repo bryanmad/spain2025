@@ -823,10 +823,13 @@
 	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
-		if (diffDays < 8) {
+		if (diffDays < 228) {
+			// show dancing man for last 7 days
 			document.getElementById("overlay").style.display = "block";
+			var audio = new Audio('yay.mp3');
+            audio.play(); 
 		}
-		document.getElementById("countdown").style.display = "block"
+		document.getElementById("countdown").style.display = "block";
 		i = 0;
 		var x = setInterval(function() {
 		    i++
