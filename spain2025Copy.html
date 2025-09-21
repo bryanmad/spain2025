@@ -802,34 +802,7 @@
         document.getElementById("warning").style.display = "block";
       }
     }, false);
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	document.getElementById("overlay").style.display = "block";
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+ 
 	
 	
 	
@@ -850,6 +823,9 @@
 	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
+		if (diffDays < 8) {
+			document.getElementById("overlay").style.display = "block";
+		}
 		document.getElementById("countdown").style.display = "block"
 		i = 0;
 		var x = setInterval(function() {
@@ -867,6 +843,7 @@
 	
 	function nocountdown() {
 		document.getElementById("countdown").style.display = "none";
+		document.getElementById("overlay").style.display = "none";
 	}
 	
 	   
