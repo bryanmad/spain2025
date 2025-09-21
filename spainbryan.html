@@ -161,9 +161,38 @@
       font-size: 6vh;
 }
 
+#overlay {
+	display: none;
+	position: absolute;
+	inset-inline-start: 0px;
+inset-block-start: 0px;
+	
+	
+	//left: 0;
+	//top: 0;
+	//height: 90vh;
+	//width: 99vw;
+	//z-index: 9;
+}
+
+#imagewrapper {
+  position: relative;
+}
 </style>
 </head>
 <body>
+
+ 
+  <div id="imagewrapper">
+  <div id="overlay"><img src="dance.gif" alt="x"  width="300" height="300"></div>
+  </div>
+  
+
+
+
+
+
+
   <div id="warning">Not available in landscape orientation</div>
 
   <div id="container" class="container">
@@ -181,6 +210,7 @@
 	<div id="menu6" onclick="activateMenu(this.id)"></div>
 	
   </div>
+ 
 <script>
 // Detect whether device supports orientationchange event, otherwise fall back to
 // the resize event.
@@ -196,6 +226,31 @@
     }, false);
     
 //------------------------------------------------------------------------------
+	
+	
+	
+	setTimeout(function() {document.getElementById("overlay").style.display = "block"},5000);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 var data;
 var dayCount = 6;
@@ -263,16 +318,16 @@ async function getData(menuNum) {
 	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultstuesday";
         }
 		if (menuNum == 3) {
-	        url = "https://opensheet.elk.sh/177jxMJFqFd6ZDtLf4sLvBkaeIS8MU9drvNXmC_zKP-E/resultswednesday";
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultswednesday";
         }
 		if (menuNum == 4) {
-	        url = "https://opensheet.elk.sh/177jxMJFqFd6ZDtLf4sLvBkaeIS8MU9drvNXmC_zKP-E/resultsthursday";
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultsthursday";
         }
 		if (menuNum == 5) {
-	        url = "https://opensheet.elk.sh/177jxMJFqFd6ZDtLf4sLvBkaeIS8MU9drvNXmC_zKP-E/resultsfriday";
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultsfriday";
         }
 		if (menuNum == 6) {
-	        url = "https://opensheet.elk.sh/177jxMJFqFd6ZDtLf4sLvBkaeIS8MU9drvNXmC_zKP-E/resultsfinal";
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultsfinal";
         }
 		try {
         const dataStream = await fetch(url);
