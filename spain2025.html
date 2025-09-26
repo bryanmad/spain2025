@@ -19,7 +19,7 @@
     }
 
     html {
-		//background: black;
+	  background: black;
       height: 100vh;
     }
 
@@ -659,12 +659,91 @@
 #imgx {
 	z-index: 999;
 }
+
+
+#overlay {
+	display: none;
+	position: absolute;
+	inset-inline-start: -20vw;
+//inset-block-start: 0px;
+	
+	
+	left: -10vw;
+	top: 1vw;
+	//height: 90vh;
+	//width: 99vw;
+	//z-index: 9;
+}
+
+#imagewrapper {
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 <!--
   <body>
   --> 
+  
+  
+  
+  
+  
+  
+  
+  
   <body oncontextmenu="return false;" onload="showPhoto();">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  <div id="imagewrapper">
+  <div id="overlay"><img src="dance.gif" alt="x"  width="400" height="400"></div>
+  </div>
+  
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
  <!-- remove when not required 100% is about 40 characters 
     
@@ -723,7 +802,8 @@
         document.getElementById("warning").style.display = "block";
       }
     }, false);
-    
+ 
+	
 	
 	
 	
@@ -743,7 +823,11 @@
 	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
-		document.getElementById("countdown").style.display = "block"
+		if (diffDays < 8) {
+			// show dancing man for last 7 days
+			document.getElementById("overlay").style.display = "block";
+		}
+		document.getElementById("countdown").style.display = "block";
 		i = 0;
 		var x = setInterval(function() {
 		    i++
@@ -760,6 +844,7 @@
 	
 	function nocountdown() {
 		document.getElementById("countdown").style.display = "none";
+		document.getElementById("overlay").style.display = "none";
 	}
 	
 	   
