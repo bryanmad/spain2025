@@ -674,13 +674,32 @@
 	//width: 99vw;
 	//z-index: 9;
 	
-	animation: fadein 6s;
+	animation: fadein 10s;
 }
 
-@keyframes fadein {
+@keyframes xfadein {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+
+
+@keyframes fadein {
+0% {
+    opacity: 0;
+  }
+50% {
+    opacity: 1;
+  }
+100% {
+    opacity: 0;
+  }
+}
+
+
+
+
+
 
 
 #imagewrapper {
@@ -834,6 +853,9 @@
 		if (diffDays < 8) {
 			// show dancing man for last 7 days
 			document.getElementById("overlay").style.display = "block";
+			setTimeout( function () {
+				document.getElementById("overlay").style.display = "none";
+			}, 9000)
 		}
 		document.getElementById("countdown").style.display = "block";
 		i = 0;
