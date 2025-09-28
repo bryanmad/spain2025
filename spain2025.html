@@ -479,24 +479,25 @@
       }
     }
 
-    /* marquee CSS */
+   /* marquee CSS */
 
     .marquee {
+		display: none;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
+      font-size: 25px;
       font-style: italic;
       height: 40px;
       overflow: hidden;
       position: relative;
-      background: darkSlateGray;
+      background: transparent;
       color: white;
     }
 
     .marquee p {
-      color: yellow;
+	  background: transparent;
+      color: blue;
       font-weight: 400;
-      position: absolute;
-      width: 150%;
+      width: 120%;
       height: 100%;
       margin: 0;
       line-height: 40px;
@@ -504,46 +505,48 @@
       -moz-transform: translateX(100%);
       -webkit-transform: translateX(100%);
       transform: translateX(100%);
-      -moz-animation: scroll-left 15s linear 1;
-      -webkit-animation: scroll-left 15s linear 1;
-      animation: scroll-left 15s linear 1;
+      -moz-animation: scroll-right 10s linear;
+      -webkit-animation: scroll-right 10s linear;
+      animation: scroll-right 10s linear;
+	  animation-iteration-count: infinite;
     }
 
-    @-moz-keyframes scroll-left {
+    @-moz-keyframes scroll-right {
       0% {
-        -moz-transform: translateX(100%);
-      }
-
-      100% {
         -moz-transform: translateX(-100%);
       }
-    }
-
-    @-webkit-keyframes scroll-left {
-      0% {
-        -webkit-transform: translateX(100%);
-      }
 
       100% {
+        -moz-transform: translateX(100%);
+      }
+    }
+
+    @-webkit-keyframes scroll-right {
+      0% {
         -webkit-transform: translateX(-100%);
       }
-    }
-
-    @keyframes scroll-left {
-      0% {
-        -moz-transform: translateX(100%);
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-      }
 
       100% {
+        -webkit-transform: translateX(100%);
+      }
+    }
+
+    @keyframes scroll-right {
+      0% {
         -moz-transform: translateX(-100%);
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
       }
+
+      100% {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+      }
     }
 
     /* end of marque CSS */
+
 
 
 
@@ -751,6 +754,7 @@
  
   <div id="imagewrapper">
   <div id="overlay"><img src="dance.gif" alt="x"  width="400" height="400"></div>
+  <div class="marquee" id="marquee"><p id="marqueemsg"></p></div>
   </div>
   
 
@@ -846,18 +850,23 @@
 	xm++
 	m = xm.toString();
 	var dstring = m + "/" + d + "/" + y + " 00:1 AM"
-    var secondDate = new Date(dstring)
+    // get first day of trip
+	var secondDate = new Date(dstring)
 	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
-		if (diffDays < 8) {
-			// show dancing man for last 7 days
+		if (diffDays < 14) {
+			// show marquee for last 14 days
+			document.getElementById("marquee").style.display = "block";
+			setTimeout( function () {
+				document.getElementById("marquee").style.display = "none";
+			}, 9000)
+			// show dancing man for last 14 days
 			document.getElementById("overlay").style.display = "block";
 			setTimeout( function () {
 				document.getElementById("overlay").style.display = "none";
 			}, 9000)
 		}
-		document.getElementById("countdown").style.display = "block";
 		i = 0;
 		var x = setInterval(function() {
 		    i++
@@ -865,9 +874,10 @@
                clearInterval(x);
 		    }
 			if (i == 1) {
-			    document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " day to go"
+			    document.getElementById("marqueemsg").innerHTML = '<img id="imgx" src="buggy4.png" alt="x" style="float: right; height: 5vh;">' +i + " day to go ";
             } else {	
-		        document.getElementById("countdown").innerHTML = '<img id="imgx" src="close.png" alt="x" style="float: left; height: 7vh;">' + i + " days to go"
+				document.getElementById("marqueemsg").innerHTML = '<img id="imgx" src="buggy4.png" alt="x" style="float: right; height: 5vh;">' +i + " days to go ";
+				
 		    }
 		},2500/diffDays)
 	}
