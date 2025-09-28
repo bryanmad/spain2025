@@ -855,7 +855,7 @@
 	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
-		if (diffDays < 14) {
+		if (diffDays <= 14) {
 			// show marquee for last 14 days
 			document.getElementById("marquee").style.display = "block";
 			setTimeout( function () {
