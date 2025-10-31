@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>spain2026countdown</title>
+    <meta content="Bryan M" name="author" />
+    <meta name="theme-color" content="indigo">
+    <meta name="robots" content="noindex">
+    <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+	  background: black;
+      height: 100vh;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+
+      //background: black;
+  animation-name: grow;
+  animation-duration: 2s;
+
+  transform-origin: left top;
+}
+
+@keyframes grow {
+    0% { transform: scale(.1); }
+  100% { transform: scale(1); }
+}
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+  
+
+
+
+#marqueemsg {
+	padding: 5vw;
+	font-family: 'arial';
+font-size: 10vw;
+color: white;	
+}
+
+
+
+    </style>
+</head>
+
+  <body oncontextmenu="return false;" onload="showPhoto();">
+  
+  
+  
+  <div id="marqueemsg"></div>
+  
+  
+    
+    <div id="warning">Not available in landscape orientation</div>
+
+
+ 
+    <script>
+   
+
+    // Detect whether device supports orientationchange event, otherwise fall back to
+    // the resize event.
+    var supportsOrientationChange = "onorientationchange" in window,
+      orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+    window.addEventListener(orientationEvent, function() {
+      if (window.orientation == 0) {
+        document.getElementById("warning").style.display = "none";
+      } else if (window.orientation == 90 || window.orientation == -90) {
+        document.getElementById("warning").style.display = "block";
+      }
+    }, false);
+ 
+	
+	
+	
+	
+	
+	// countdown
+	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    //var firstDate = new Date(2025, 9, 12);
+	var firstDate = new Date('10/11/2026 00:1 AM')
+    var tempDate = new Date();
+	var y = tempDate.getFullYear().toString();
+	var xm = tempDate.getMonth();
+	var d = tempDate.getDate();
+	xm++
+	m = xm.toString();
+	var dstring = m + "/" + d + "/" + y + " 00:1 AM"
+    // get first day of trip
+	var secondDate = new Date(dstring)
+	//var secondDate = new Date();
+    var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+	if (firstDate > secondDate) {
+		i = 0;
+		var x = setInterval(function() {
+		    i++
+			if (i >= diffDays) {
+               clearInterval(x);
+		    }
+			if (i == 1) {
+			    document.getElementById("marqueemsg").innerText = i + " day to go ";
+            } else {	
+				document.getElementById("marqueemsg").innerText = i + " days to go ";
+				
+		    }
+		},2500/diffDays)
+	}
+	
+
+
+   
+  
+
+
+function showPhoto() {
+document.body.classList.add("photo");
+}
+//showPhoto();
+
+    </script>
+  </body>
+
+</html>
