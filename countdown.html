@@ -47,10 +47,10 @@
 
 
 
-#marqueemsg {
+#marqueemsg1, #marqueemsg2 {
 	padding: 5vw;
 	font-family: 'arial';
-font-size: 10vw;
+font-size: 7vw;
 color: white;	
 }
 
@@ -63,9 +63,9 @@ color: white;
   
   
   
-  <div id="marqueemsg"></div>
-  
-  
+  <div id="marqueemsg1"></div>
+  <br><br><br>
+  <div id="marqueemsg2"></div>
     
     <div id="warning">Not available in landscape orientation</div>
 
@@ -91,7 +91,7 @@ color: white;
 	
 	
 	
-	
+function countdown1(){
 	// countdown
 	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     //var firstDate = new Date(2025, 9, 12);
@@ -108,22 +108,69 @@ color: white;
 	//var secondDate = new Date();
     var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 	if (firstDate > secondDate) {
-		i = 0;
+		var i = 0;
+		var x = setInterval(function() {
+		    i++
+			if (i >= diffDays) {
+			   countdown2();
+               clearInterval(x);
+		    }
+			if (i == 1) {
+			    document.getElementById("marqueemsg1").innerText = "Spain: " + i + " day to go ";
+            } else {	
+				document.getElementById("marqueemsg1").innerText = "Spain: " + i + " days to go ";
+				
+		    }
+		},2500/diffDays)
+	}
+	
+	}
+	
+countdown1();
+
+
+	
+	
+	
+function countdown2(){
+	// countdown
+	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    //var firstDate = new Date(2025, 9, 12);
+	var firstDate = new Date('03/20/2026 00:1 AM')
+    var tempDate = new Date();
+	var y = tempDate.getFullYear().toString();
+	var xm = tempDate.getMonth();
+	var d = tempDate.getDate();
+	xm++
+	m = xm.toString();
+	var dstring = m + "/" + d + "/" + y + " 00:1 AM"
+    // get first day of trip
+	var secondDate = new Date(dstring)
+	//var secondDate = new Date();
+    var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+	if (firstDate > secondDate) {
+		var i = 0;
 		var x = setInterval(function() {
 		    i++
 			if (i >= diffDays) {
                clearInterval(x);
 		    }
 			if (i == 1) {
-			    document.getElementById("marqueemsg").innerText = i + " day to go ";
+			    document.getElementById("marqueemsg2").innerText = "Turkey: " + i + " day to go ";
             } else {	
-				document.getElementById("marqueemsg").innerText = i + " days to go ";
+				document.getElementById("marqueemsg2").innerText = "Turkey: " + i + " days to go ";
 				
 		    }
 		},2500/diffDays)
 	}
 	
+	}
+	
+//countdown2();
 
+
+
+	
 
    
   
