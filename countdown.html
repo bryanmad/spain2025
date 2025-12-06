@@ -9,7 +9,7 @@
     <meta name="theme-color" content="indigo">
     <meta name="robots" content="noindex">
     <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <style>
@@ -47,7 +47,7 @@
 
 
 
-#marqueemsg1, #marqueemsg2, #marqueemsg3 {
+#marqueemsg1, #marqueemsg2, #marqueemsg3, #marqueemsg4 {
 	padding: 5vw;
 	font-family: 'arial';
 font-size: 7vw;
@@ -64,10 +64,12 @@ color: white;
   
   
   <div id="marqueemsg1"></div>
-  <br><br>
+  <br>
   <div id="marqueemsg2"></div>
-   <br><br>
+   <br><
   <div id="marqueemsg3"></div> 
+  <br>
+  <div id="marqueemsg4"></div> 
   
     <div id="warning">Not available in landscape orientation</div>
 
@@ -204,11 +206,44 @@ function countdown3(){
 	
 	}
 	
-
+function countdown4(){
+	// countdown
+	var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    //var firstDate = new Date(2025, 9, 12);
+	var firstDate = new Date('06/28/2026 00:1 AM')
+    var tempDate = new Date();
+	var y = tempDate.getFullYear().toString();
+	var xm = tempDate.getMonth();
+	var d = tempDate.getDate();
+	xm++
+	m = xm.toString();
+	var dstring = m + "/" + d + "/" + y + " 00:1 AM"
+    // get first day of trip
+	var secondDate = new Date(dstring)
+	//var secondDate = new Date();
+    var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+	if (firstDate > secondDate) {
+		var i = 0;
+		var x = setInterval(function() {
+		    i++
+			if (i >= diffDays) {
+			   //countdown2();
+               clearInterval(x);
+		    }
+			if (i == 1) {
+			    document.getElementById("marqueemsg4").innerText = "Jim Stamas: " + i + " day to go ";
+            } else {	
+				document.getElementById("marqueemsg4").innerText = "Jim Stamas: " + i + " days to go ";
+				
+		    }
+		},2500/diffDays)
+	}
+	
+	}
 countdown1()
 countdown2()
 countdown3()
-	
+countdown4()	
 
    
   
