@@ -61,18 +61,32 @@
                 font-size: 6vw;
                 color: white;
             }
+
+            #turkey2,
+            #cardrona2,
+            #spain2,
+            #jimstamas2 {
+                //padding: 5vw;
+                font-family: "arial";
+                font-size: 5vw;
+                color: white;
+                font-style: italic;
+            }
         </style>
     </head>
 
     <body oncontextmenu="return false;" onload="showPhoto()">
         <div id="turkey"></div>
+        <div id="turkey2"></div>
         <br />
         <div id="cardrona"></div>
+        <div id="cardrona2"></div>
         <br />
         <div id="jimstamas"></div>
+        <div id="jimstamas2"></div>
         <br />
         <div id="spain"></div>
-
+        <div id="spain2"></div>
         <div id="warning">Not available in landscape orientation</div>
 
         <script>
@@ -99,6 +113,30 @@
                 },
                 false,
             );
+
+            var arrDays = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+            ];
+            var arrMonths = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+            ];
 
             function countdown1() {
                 // Set the date we're counting down to
@@ -133,6 +171,14 @@
                         "m " +
                         seconds +
                         "s ";
+
+                    var cDD = new Date("Mar 20, 2026 00:00:00");
+                    document.getElementById("turkey2").innerHTML =
+                        arrDays[cDD.getDay()] +
+                        " " +
+                        cDD.getDate() +
+                        " " +
+                        arrMonths[cDD.getMonth()];
 
                     // If the count down is over, write some text
                     if (distance < 0) {
@@ -176,6 +222,13 @@
                         seconds +
                         "s ";
 
+                    var cDD = new Date("Jun 8, 2026 00:00:00");
+                    document.getElementById("cardrona2").innerHTML =
+                        arrDays[cDD.getDay()] +
+                        " " +
+                        cDD.getDate() +
+                        " " +
+                        arrMonths[cDD.getMonth()];
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
@@ -219,6 +272,14 @@
                         seconds +
                         "s ";
 
+                    var cDD = new Date("Oct 11, 2026 00:00:00");
+                    document.getElementById("spain2").innerHTML =
+                        arrDays[cDD.getDay()] +
+                        " " +
+                        cDD.getDate() +
+                        " " +
+                        arrMonths[cDD.getMonth()];
+
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
@@ -261,6 +322,13 @@
                         seconds +
                         "s ";
 
+                    var cDD = new Date("Jun 28, 2026 00:00:00");
+                    document.getElementById("jimstamas2").innerHTML =
+                        arrDays[cDD.getDay()] +
+                        " " +
+                        cDD.getDate() +
+                        " " +
+                        arrMonths[cDD.getMonth()];
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
