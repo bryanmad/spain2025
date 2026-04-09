@@ -214,10 +214,28 @@
             .spacer {
             	height: 1vh;
             }
+
+            #warning {
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              background: indigo;
+              width: 100vw;
+              height: 100vh;
+              z-index: 999;
+              text-align: center;
+              color: white;
+              padding-top: 40vh;
+              font-size: 6vh;
+              font-family: 'Kalam';
+            }
         </style>
     </head>
 
     <body>
+        <div id="warning">Not available in landscape orientation</div>
+
         <div id="page">
             <div onclick="toggleDropdown()" class="dropbtn" id="dropbtn">
                 select player
@@ -707,6 +725,35 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
             // this runs on startup or reload
             //
             //=================================================================================
+
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+            });
+
+            // Detect whether device supports orientationchange event, otherwise fall back to
+            // the resize event.
+            var supportsOrientationChange = "onorientationchange" in window,
+                orientationEvent = supportsOrientationChange
+                    ? "orientationchange"
+                    : "resize";
+
+            window.addEventListener(
+                orientationEvent,
+                function () {
+                    if (window.orientation == 0) {
+                        document.getElementById("warning").style.display =
+                            "none";
+                    } else if (
+                        window.orientation == 90 ||
+                        window.orientation == -90
+                    ) {
+                        document.getElementById("warning").style.display =
+                            "block";
+                    }
+                },
+                false,
+            );
+
             // declare global variables
             var currenthole = 0;
 
