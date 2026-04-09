@@ -20,6 +20,7 @@
             		box-sizing: border-box;
             		margin: 1vw;
             		//padding: 1vw;
+              user-select: none;
             	}
 
             	html {
@@ -726,7 +727,7 @@ https://docs.google.com/forms/d/1g7SBX8Kz1oLoKs5Y_WjwGd6CoITDQeUzkXGLvPGdE1s/pre
             // this runs on startup or reload
             //
             //=================================================================================
-
+            // prevent copy, paste ... etc.
             document.addEventListener("contextmenu", (event) => {
                 event.preventDefault();
             });
