@@ -1655,10 +1655,30 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
             }
 
             function positionSliderForStart() {
+                console.log("positionSliderForStart");
                 // Calculate the new scroll position for the slider
-                var newSliderScrollPos = slideWidth * 16;
+                var newSliderScrollPos = 8000;
                 // Scroll to the new slide position
                 sliderElement.scrollTo(0, newSliderScrollPos);
+                //alert("moving to " + newSliderScrollPos);
+            }
+
+            function positionSliderForScore() {
+                console.log("positionSliderForScore");
+                // Calculate the new scroll position for the slider
+                var newSliderScrollPos = 7000;
+                // Scroll to the new slide position
+                sliderElement.scrollTo(0, newSliderScrollPos);
+                //alert("moving to " + newSliderScrollPos);
+            }
+
+            function positionSliderForBirdie() {
+                console.log("positionSliderForBirdie");
+                // Calculate the new scroll position for the slider
+                var newSliderScrollPos = 6000;
+                // Scroll to the new slide position
+                sliderElement.scrollTo(0, newSliderScrollPos);
+                //alert("moving to " + newSliderScrollPos);
             }
 
             function selected(id) {
@@ -1670,7 +1690,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
                 document.getElementById("back").style.border = "";
                 document.getElementById("frontbutton").style.border = "";
                 document.getElementById("backbutton").style.border = "";
-                // cope with selecting buuton instead of score
+                // cope with selecting button instead of score
                 id = id.replace("button", "");
                 // set selected color
                 xselected = document.getElementById(id);
@@ -1679,6 +1699,21 @@ https://docs.google.com/forms/d/e/1FAIpQLSdjtJrrtuD6fBUPTOnVAp9RxkPK4D2Oib-TLhja
                 yselected = document.getElementById(
                     id + "button",
                 ).style.border = "3px solid cyan";
+                // change scroller to reasonable number
+                // relative to score or birdies
+                //console.log(id);
+                console.log("front");
+
+                if (id == "front") {
+                    // for score ...
+                    positionSliderForScore();
+                }
+
+                console.log("back");
+                if (id == "back") {
+                    // for birdies ...
+                    positionSliderForBirdie();
+                }
             }
         </script>
     </body>
