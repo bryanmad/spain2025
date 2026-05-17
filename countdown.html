@@ -2,10 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <title>countdown</title>
         <meta content="Bryan M" name="author" />
         <meta name="theme-color" content="indigo" />
@@ -13,10 +10,7 @@
         <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
         <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <link
-            href="https://fonts.googleapis.com/css?family=Kalam"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet" />
         <style>
             * {
                 margin: 0;
@@ -93,36 +87,21 @@
             // Detect whether device supports orientationchange event, otherwise fall back to
             // the resize event.
             var supportsOrientationChange = "onorientationchange" in window,
-                orientationEvent = supportsOrientationChange
-                    ? "orientationchange"
-                    : "resize";
+                orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
             window.addEventListener(
                 orientationEvent,
                 function () {
                     if (window.orientation == 0) {
-                        document.getElementById("warning").style.display =
-                            "none";
-                    } else if (
-                        window.orientation == 90 ||
-                        window.orientation == -90
-                    ) {
-                        document.getElementById("warning").style.display =
-                            "block";
+                        document.getElementById("warning").style.display = "none";
+                    } else if (window.orientation == 90 || window.orientation == -90) {
+                        document.getElementById("warning").style.display = "block";
                     }
                 },
-                false,
+                false
             );
 
-            var arrDays = [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-            ];
+            var arrDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var arrMonths = [
                 "January",
                 "February",
@@ -135,12 +114,12 @@
                 "September",
                 "October",
                 "November",
-                "December",
+                "December"
             ];
 
             function countdown1() {
                 // Set the date we're counting down to
-                var countDownDate = new Date("Mar 20, 2026 00:00:00").getTime();
+                var countDownDate = new Date("Mar 26, 2027 00:00:00").getTime();
 
                 // Update the count down every 1 second
                 var x = setInterval(function () {
@@ -152,33 +131,17 @@
 
                     // Time calculations for days, hours, minutes and seconds
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor(
-                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-                    );
-                    var minutes = Math.floor(
-                        (distance % (1000 * 60 * 60)) / (1000 * 60),
-                    );
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="turkey"
                     document.getElementById("turkey").innerHTML =
-                        "Turkey: " +
-                        days +
-                        "d " +
-                        hours +
-                        "h " +
-                        minutes +
-                        "m " +
-                        seconds +
-                        "s ";
+                        "Turkey: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
                     var cDD = new Date("Mar 26, 2027 00:00:00");
                     document.getElementById("turkey2").innerHTML =
-                        arrDays[cDD.getDay()] +
-                        " " +
-                        cDD.getDate() +
-                        " " +
-                        arrMonths[cDD.getMonth()];
+                        arrDays[cDD.getDay()] + " " + cDD.getDate() + " " + arrMonths[cDD.getMonth()];
 
                     // If the count down is over, write some text
                     if (distance < 0) {
@@ -202,38 +165,21 @@
 
                     // Time calculations for days, hours, minutes and seconds
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor(
-                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-                    );
-                    var minutes = Math.floor(
-                        (distance % (1000 * 60 * 60)) / (1000 * 60),
-                    );
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="turkey"
                     document.getElementById("cardrona").innerHTML =
-                        "Cardrona: " +
-                        days +
-                        "d " +
-                        hours +
-                        "h " +
-                        minutes +
-                        "m " +
-                        seconds +
-                        "s ";
+                        "Cardrona: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
                     var cDD = new Date("Jun 8, 2026 00:00:00");
                     document.getElementById("cardrona2").innerHTML =
-                        arrDays[cDD.getDay()] +
-                        " " +
-                        cDD.getDate() +
-                        " " +
-                        arrMonths[cDD.getMonth()];
+                        arrDays[cDD.getDay()] + " " + cDD.getDate() + " " + arrMonths[cDD.getMonth()];
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("cardrona").innerHTML =
-                            "EXPIRED";
+                        document.getElementById("cardrona").innerHTML = "EXPIRED";
                     }
                 }, 1000);
             }
@@ -252,33 +198,17 @@
 
                     // Time calculations for days, hours, minutes and seconds
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor(
-                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-                    );
-                    var minutes = Math.floor(
-                        (distance % (1000 * 60 * 60)) / (1000 * 60),
-                    );
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="turkey"
                     document.getElementById("spain").innerHTML =
-                        "Spain: " +
-                        days +
-                        "d " +
-                        hours +
-                        "h " +
-                        minutes +
-                        "m " +
-                        seconds +
-                        "s ";
+                        "Spain: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
                     var cDD = new Date("Oct 11, 2026 00:00:00");
                     document.getElementById("spain2").innerHTML =
-                        arrDays[cDD.getDay()] +
-                        " " +
-                        cDD.getDate() +
-                        " " +
-                        arrMonths[cDD.getMonth()];
+                        arrDays[cDD.getDay()] + " " + cDD.getDate() + " " + arrMonths[cDD.getMonth()];
 
                     // If the count down is over, write some text
                     if (distance < 0) {
@@ -302,38 +232,21 @@
 
                     // Time calculations for days, hours, minutes and seconds
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor(
-                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-                    );
-                    var minutes = Math.floor(
-                        (distance % (1000 * 60 * 60)) / (1000 * 60),
-                    );
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="turkey"
                     document.getElementById("jimstamas").innerHTML =
-                        "Jim Stamas: " +
-                        days +
-                        "d " +
-                        hours +
-                        "h " +
-                        minutes +
-                        "m " +
-                        seconds +
-                        "s ";
+                        "Jim Stamas: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
                     var cDD = new Date("Jun 28, 2026 00:00:00");
                     document.getElementById("jimstamas2").innerHTML =
-                        arrDays[cDD.getDay()] +
-                        " " +
-                        cDD.getDate() +
-                        " " +
-                        arrMonths[cDD.getMonth()];
+                        arrDays[cDD.getDay()] + " " + cDD.getDate() + " " + arrMonths[cDD.getMonth()];
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("jimstamas").innerHTML =
-                            "EXPIRED";
+                        document.getElementById("jimstamas").innerHTML = "EXPIRED";
                     }
                 }, 1000);
             }
