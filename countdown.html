@@ -47,7 +47,7 @@
             }
 
             #turkey,
-            #cardrona,
+            #kinross,
             #spain,
             #jimstamas {
                 padding: 5vw;
@@ -57,7 +57,7 @@
             }
 
             #turkey2,
-            #cardrona2,
+            #kinross2,
             #spain2,
             #jimstamas2 {
                 //padding: 5vw;
@@ -73,8 +73,8 @@
         <div id="turkey"></div>
         <div id="turkey2"></div>
         <br /><br />
-        <div id="cardrona"></div>
-        <div id="cardrona2"></div>
+        <div id="kinross"></div>
+        <div id="kinross2"></div>
         <br /><br />
         <div id="jimstamas"></div>
         <div id="jimstamas2"></div>
@@ -153,7 +153,7 @@
 
             function countdown2() {
                 // Set the date we're counting down to
-                var countDownDate = new Date("Jun 8, 2026 00:00:00").getTime();
+                var countDownDate = new Date("Jun 7, 2027 00:00:00").getTime();
 
                 // Update the count down every 1 second
                 var x = setInterval(function () {
@@ -170,16 +170,16 @@
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="turkey"
-                    document.getElementById("cardrona").innerHTML =
-                        "Cardrona: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                    document.getElementById("kinross").innerHTML =
+                        "kinross: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-                    var cDD = new Date("Jun 8, 2026 00:00:00");
-                    document.getElementById("cardrona2").innerHTML =
+                    var cDD = new Date("Jun 7, 2027 00:00:00");
+                    document.getElementById("kinross2").innerHTML =
                         arrDays[cDD.getDay()] + " " + cDD.getDate() + " " + arrMonths[cDD.getMonth()];
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("cardrona").innerHTML = "EXPIRED";
+                        document.getElementById("kinross").innerHTML = "EXPIRED";
                     }
                 }, 1000);
             }
