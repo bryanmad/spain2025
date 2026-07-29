@@ -49,7 +49,7 @@
             #turkey,
             #kinross,
             #spain,
-            #jimstamas {
+            #woll {
                 padding: 5vw;
                 font-family: "arial";
                 font-size: 6vw;
@@ -59,7 +59,7 @@
             #turkey2,
             #kinross2,
             #spain2,
-            #jimstamas2 {
+            #woll2 {
                 //padding: 5vw;
                 font-family: "arial";
                 font-size: 5vw;
@@ -76,8 +76,8 @@
         <div id="kinross"></div>
         <div id="kinross2"></div>
         <br /><br />
-        <div id="jimstamas"></div>
-        <div id="jimstamas2"></div>
+        <div id="woll"></div>
+        <div id="woll2"></div>
         <br /><br />
         <div id="spain"></div>
         <div id="spain2"></div>
@@ -146,7 +146,7 @@
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("turkey").innerHTML = "EXPIRED";
+                        document.getElementById("turkey").innerHTML = "Turkey EXPIRED";
                     }
                 }, 1000);
             }
@@ -179,7 +179,7 @@
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("kinross").innerHTML = "EXPIRED";
+                        document.getElementById("kinross").innerHTML = "Kinross EXPIRED";
                     }
                 }, 1000);
             }
@@ -213,14 +213,14 @@
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("spain").innerHTML = "EXPIRED";
+                        document.getElementById("spain").innerHTML = "Spain EXPIRED";
                     }
                 }, 1000);
             }
 
             function countdown4() {
                 // Set the date we're counting down to
-                var countDownDate = new Date("Jun 28, 2026 00:00:00").getTime();
+                var countDownDate = new Date("Sep 17, 2027 00:00:00").getTime();
 
                 // Update the count down every 1 second
                 var x = setInterval(function () {
@@ -237,16 +237,16 @@
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="turkey"
-                    document.getElementById("jimstamas").innerHTML =
-                        "Jim Stamas: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                    document.getElementById("woll").innerHTML =
+                        "Woll golf trip: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-                    var cDD = new Date("Jun 28, 2026 00:00:00");
-                    document.getElementById("jimstamas2").innerHTML =
+                    var cDD = new Date("Sep 17, 2027 00:00:00");
+                    document.getElementById("woll2").innerHTML =
                         arrDays[cDD.getDay()] + " " + cDD.getDate() + " " + arrMonths[cDD.getMonth()];
                     // If the count down is over, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("jimstamas").innerHTML = "EXPIRED";
+                        document.getElementById("woll").innerHTML = "Woll EXPIRED";
                     }
                 }, 1000);
             }
